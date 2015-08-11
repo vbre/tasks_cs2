@@ -18,7 +18,7 @@ namespace SensorAverage
             sensorsCalculators.Add(new Valeriya.SensorAverage());
             sensorsCalculators.Add(new Vladimir.SensorAverage());
 
-            ushort[] myData = { };
+            ushort[] myData = {  };
 
             foreach (var sensorCalculator in sensorsCalculators)
             {

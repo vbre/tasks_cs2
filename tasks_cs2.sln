@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "MainProject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorAverage", "SensorAverage\SensorAverage.csproj", "{08050BB0-5EE8-41BF-A364-BA81D123EF4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miner", "Miner\Miner.csproj", "{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

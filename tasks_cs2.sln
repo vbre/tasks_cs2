@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "MainProject\MainProject.csproj", "{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08050BB0-5EE8-41BF-A364-BA81D123EF4F} = {08050BB0-5EE8-41BF-A364-BA81D123EF4F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorAverage", "SensorAverage\SensorAverage.csproj", "{08050BB0-5EE8-41BF-A364-BA81D123EF4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

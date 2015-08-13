@@ -8,9 +8,87 @@ namespace SensorAverage.Alina
 {
     class SensorAverage : ISensorsAverage
     {
+            public struct SensorData
+            {
+                public ushort codeSensor;
+                public ushort valueSensor;
+                public ushort isСorrupted;
+                public SensorData(ushort code, ushort val, ushort corrupt)
+                {
+                    codeSensor = code;
+                    valueSensor = val;
+                    isСorrupted = corrupt;
+                }
+            }
+            private static ushort[] GetSensors()
+            {
+                ushort[] dataSensors = { 0x28DB, 0x423A, 0x6A92, 0x28AF, 0x42FA, 0x28FF, 0x6AFB, 0x42CD };
+                return dataSensors;
+            }
+            private static SensorData[] GetParse(ushort[] dataSensors)
+            {
+                SensorData[] resultParse = new SensorData[dataSensors.Length];
+                uint firstMask = 0x1;
+                uint secondMask = 0x1FFE;
+                for (int i = 0; i < dataSensors.Length; i++)
+                {
+                    int counter = 0;
+                    int dataResult = dataSensors[i];
+                    while (dataResult > 0)
+                    {
+                        dataResult = dataResult >> 1;
+                        counter++;
+                    }
+                    int amountOfBits = counter - 1;
+                    int cod = dataSensors[i] >> 13;
+                    uint controlBit = dataSensors[i] & firstMask;
+                    uint val = (dataSensors[i] & secondMask) >> 1;
+                    if ((amountOfBits % 2 == 0 && controlBit == 0) || (amountOfBits % 2 != 0 && controlBit == 1))
+                    {
+                        resultParse[i] = new SensorData(Convert.ToUInt16(cod), Convert.ToUInt16(val), Convert.ToUInt16(controlBit));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Данные {0} со счетчика {1} повреждены", dataSensors[i], cod);
+                    }
+                }
+                return resultParse;
+            }
+            private static Tuple<ushort, double>[] GetAverageBySensor(SensorData[] resultParse)
+            {
+                var codMax = resultParse.Max(x => x.codeSensor);
+                int [,] parser = new int [codMax+1, 2];
+                foreach (var result in resultParse)
+                {
+                    parser[result.codeSensor, 0] += result.valueSensor;
+                    parser[result.codeSensor, 1] += 1;
+                }
+                int couter = 0;
+                for (int i = 0; i < parser.GetLength(0); i++)
+                {
+                    if (parser[i,0]>0)
+                    {
+                        couter++;
+                    }
+                }
+                Tuple<ushort, double>[] averageTuples = new Tuple<ushort, double>[couter];
+                couter = 0;
+                for (ushort i = 0; i < parser.GetLength(0); i++)
+                {
+                    if (parser[i,0]>0)
+                    {
+                        averageTuples[couter] = new Tuple<ushort, double>(i, ((double)parser[i, 0]) / ((double)parser[i, 1]));
+                        couter++;
+                    }
+                }
+
+                return averageTuples;
+            }
+
         public Tuple<ushort, double>[] GetAverages(ushort[] data)
         {
-            throw new NotImplementedException();
+            var parsData = GetParse(data);
+            return GetAverageBySensor(parsData);
         }
     }
 }

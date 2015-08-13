@@ -20,18 +20,38 @@ namespace Miner
 
             foreach (var factory in factories)
             {
+                Console.WriteLine("Testing factory {0}...", factory.ToString());
                 try
                 {
+                    /* empty game */
+                    {
+                        Console.WriteLine("Testing empty game...");
+                        IMinerGame game = factory.NewEmptyGame("Dummy", new Tuple<int, int>(5, 5));
+                        Assert(!game.IsGameStarted, "Game shouldn't be started yet");
+                    }
 
+                    /* random game */
+                    {
+                        Console.WriteLine("Testing random game...");
+                        IMinerGame game = factory.NewEmptyGame("Dummy", new Tuple<int, int>(5, 5));
+                        Assert(!game.IsGameStarted, "Game shouldn't be started yet");
+                    }
                 }
                 catch (Exception e)
-                { 
-                    Console.WriteLine("Something ")
+                {
+                    Console.WriteLine("Something was wrong with {0}", factory.ToString());
                 }
+                Console.WriteLine("Factory {0} done.", factory.ToString());
             }
             
         }
 
-
+        static void Assert(bool condition, string message)
+        {
+            if (!condition)
+            {
+                Console.WriteLine("ASSERTION FAILED: {0}", message);
+            }
+        }
     }
 }

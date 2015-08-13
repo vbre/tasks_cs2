@@ -52,7 +52,7 @@ namespace SensorAverage.Alina
             private static Tuple<ushort, double>[] GetAverageBySensor(SensorData[] resultParse)
             {
                 var codMax = resultParse.Max(x => x.codeSensor);
-                int [,] parser = new int [codMax+1, 2];
+                double [,] parser = new double [codMax+1, 2];
                 foreach (var result in resultParse)
                 {
                     parser[result.codeSensor, 0] += result.valueSensor;

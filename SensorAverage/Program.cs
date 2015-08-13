@@ -18,13 +18,12 @@ namespace SensorAverage
             sensorsCalculators.Add(new Valeriya.SensorAverage());
             sensorsCalculators.Add(new Vladimir.SensorAverage());
 
-            ushort[] myData = 
-                { 0x71FA, 0x71F0, 0x71F9, 0x71F5, 0x71F4 /**/, 0x61FB, 0x61F1, 0x21FA, 0x21F0, 0x21F9 };
+            ushort[] myData = { 0xE1FA, 0xE1F0, 0xE1F9, 0xE1F5, 0xE1F4, 0xC1FB, 0xC1F1, 0x21FA, 0x21F0, 0x21F9 };
 
             Dictionary<ushort, double> modelResults = 
                 new Dictionary<ushort, double>
                 {
-                    { 0x2, /* 253 + 248 + 252 */ 251.0 }, 
+                    { 0x1, /* 253 + 248 + 252 */ 251.0 }, 
                     { 0x6, /* 253 + 248 */ 250.5 },
                     { 0x7, /* 253 + 248 + 252 + 250 */ 250.75 }
                 };

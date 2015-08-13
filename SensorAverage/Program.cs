@@ -24,9 +24,9 @@ namespace SensorAverage
             Dictionary<ushort, double> modelResults = 
                 new Dictionary<ushort, double>
                 {
-                    { 0x2, /* 253 + 248 + 252 */ 251.0 }, 
-                    { 0xC, /* 253 + 248 */ 250.5 },
-                    { 0xE, /* 253 + 248 + 252 + 250 */ 250.75 }
+                    { 0x1, /* 253 + 248 + 252 */ 251.0 }, 
+                    { 0x6, /* 253 + 248 */ 250.5 },
+                    { 0x7, /* 253 + 248 + 252 + 250 */ 250.75 }
                 };
 
             foreach (var sensorCalculator in sensorsCalculators)

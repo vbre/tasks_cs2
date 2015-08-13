@@ -20,36 +20,31 @@ namespace SensorAverage.Alina
                     isСorrupted = corrupt;
                 }
             }
-            private static ushort[] GetSensors()
+            private static SensorData[] GetParse(ushort[] myData)
             {
-                ushort[] dataSensors = { 0x28DB, 0x423A, 0x6A92, 0x28AF, 0x42FA, 0x28FF, 0x6AFB, 0x42CD };
-                return dataSensors;
-            }
-            private static SensorData[] GetParse(ushort[] dataSensors)
-            {
-                SensorData[] resultParse = new SensorData[dataSensors.Length];
+                SensorData[] resultParse = new SensorData[myData.Length];
                 uint firstMask = 0x1;
                 uint secondMask = 0x1FFE;
-                for (int i = 0; i < dataSensors.Length; i++)
+                for (int i = 0; i < myData.Length; i++)
                 {
                     int counter = 0;
-                    int dataResult = dataSensors[i];
+                    int dataResult = myData[i];
                     while (dataResult > 0)
                     {
                         dataResult = dataResult >> 1;
                         counter++;
                     }
                     int amountOfBits = counter - 1;
-                    int cod = dataSensors[i] >> 13;
-                    uint controlBit = dataSensors[i] & firstMask;
-                    uint val = (dataSensors[i] & secondMask) >> 1;
+                    int cod = myData[i] >> 13;
+                    uint controlBit = myData[i] & firstMask;
+                    uint val = (myData[i] & secondMask) >> 1;
                     if ((amountOfBits % 2 == 0 && controlBit == 0) || (amountOfBits % 2 != 0 && controlBit == 1))
                     {
                         resultParse[i] = new SensorData(Convert.ToUInt16(cod), Convert.ToUInt16(val), Convert.ToUInt16(controlBit));
                     }
                     else
                     {
-                        Console.WriteLine("Данные {0} со счетчика {1} повреждены", dataSensors[i], cod);
+                        Console.WriteLine("Данные {0} со счетчика {1} повреждены", myData[i], cod);
                     }
                 }
                 return resultParse;

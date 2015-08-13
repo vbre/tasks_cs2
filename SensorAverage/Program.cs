@@ -18,7 +18,8 @@ namespace SensorAverage
             sensorsCalculators.Add(new Valeriya.SensorAverage());
             sensorsCalculators.Add(new Vladimir.SensorAverage());
 
-            ushort[] myData = { 0xE1FA, 0xE1F0, 0xE1F9, 0xE1F5, 0xE1F4, 0xC1FB, 0xC1F1, 0x21FA, 0x21F0, 0x21F9 };
+            ushort[] myData = 
+                { 0xE1FA, 0xE1F0, 0xE1F9, 0xE1F5, 0xE1F4 /**/, 0xC1FB, 0xC1F1, 0x21FA, 0x21F0, 0x21F9 };
 
             Dictionary<ushort, double> modelResults = 
                 new Dictionary<ushort, double>

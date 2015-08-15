@@ -9,14 +9,13 @@ namespace SensorAverage.Vladimir
     class SensorAverage : ISensorsAverage
     {
 
-        int countControllers = 8;    // максимум №№ конроллеров на трех разрядах
-        int countBlocs = 10;         // число получаемых блоков для экперимента
+        int countControllers = 8;    // максимум №№ контроллеров на трех разрядах
+        //int countBlocs;         // число получаемых блоков для эксперимента  //int countBlocs = 10
         int lengthBloc = 16;         // число бит в одном блоке
            
         public Tuple<ushort, double>[] GetAverages(ushort[] data)
         {
-            Tuple<ushort, double>[] answerTuple = new Tuple<ushort, double>[countControllers];
-            
+
               int countTrueBlocs = 0;
               foreach (ushort curentData in data)  // определение количества правильных блоков данных (нечетное к-во единиц в 15 разрядах и 1 в последнем бите)
               {
@@ -26,8 +25,8 @@ namespace SensorAverage.Vladimir
                   }
               }
 
-              if (countTrueBlocs != 0)
-              {
+              //if (countTrueBlocs != 0)
+              //{
                   ushort[] codes = new ushort[countTrueBlocs];
                   ushort[] values = new ushort[countTrueBlocs];
 
@@ -43,22 +42,38 @@ namespace SensorAverage.Vladimir
                           index++;
                       }
                   }
-
+                  
                   //  подготовка результатов к выдаче
-              
+                  
                   AverageByBit[] dataOut = CountAverage(codes, values, countControllers);  // формирование структуры вывода
-          
+                  
+                  int indexWithoutZerro = 0;
                   for (int i = 0; i < countControllers; i++)
                   {
-                    answerTuple[i] = Tuple.Create(dataOut[i].code, dataOut[i].value);
+                      if (dataOut[i].value != 0)
+                      {
+                          indexWithoutZerro++;
+                      }
                   }
-              
-              }
-              else
-              {
-                  //Console.WriteLine("На вход поданы исключительно плохие блоки данных");            
-              }
-            
+
+                  Tuple<ushort, double>[] answerTuple = new Tuple<ushort, double>[indexWithoutZerro];
+                  indexWithoutZerro = 0;
+                  for (int i = 0; i < countControllers; i++)
+                  {
+                          if (dataOut[i].value != 0)
+                          {
+                              answerTuple[indexWithoutZerro] = Tuple.Create(dataOut[i].code, dataOut[i].value);
+                              Console.WriteLine(" Проверка: Код = {0} значение = {1}", Convert.ToString(answerTuple[indexWithoutZerro].Item1,2),answerTuple[indexWithoutZerro].Item2);
+                              indexWithoutZerro++;
+                          }
+                  }
+                
+              //}
+              //else
+              //{
+              //    //Console.WriteLine("На вход поданы исключительно плохие блоки данных");            
+              //}
+
               return answerTuple;
               
         }
@@ -109,12 +124,26 @@ namespace SensorAverage.Vladimir
             public ushort code;
             public double value;
         }
+
+        //public static int HowMachControllersInSystem(int numberAllControllers, double[] inCountValueForAverage)
+        //{
+        //    int answer = 0;
+        //    int indexWithoutZerro = 0;
+        //    for (int i = 0; i < numberAllControllers; i++)
+        //    {
+        //        if (inCountValueForAverage[i] != 0)
+        //        {
+        //            indexWithoutZerro++;
+        //        }
+        //    }
+        //    return answer;
+        //}
         
         public static AverageByBit[] CountAverage(ushort[] inCodes, ushort[] inValues, int inCountControllers)
         {
             AverageByBit[] answerData = new AverageByBit[inCountControllers];  //всего разных датчиков от 000 до 111 - 8 шт.
             
-            for(ushort i = 0; i <= inCountControllers-1; i++)
+            for(ushort i = 0; i < inCountControllers; i++)
             {
                 answerData[i].code = i;    // инициализируем сруктуру ответов
                 answerData[i].value = 0.0;
@@ -122,7 +151,7 @@ namespace SensorAverage.Vladimir
 
             int[] countValueForAverage = new int[inCountControllers];
          
-            for (int i = 0; i <= inCodes.Length -1 ; i++)
+            for (int i = 0; i < inCodes.Length ; i++)
             {
                 ushort currentCode = inCodes[i];
            
@@ -131,15 +160,22 @@ namespace SensorAverage.Vladimir
 
                 //answerData[currentCode].value = (answerData[currentCode].value * countValueForAverage[i] + inValues[i]) / (countValueForAverage[i] + 1);
             }
-            
-            for (int i = 0; i <= inCodes.Length -1 ; i++)
+
+            for (int i = 0; i < inCountControllers; i++)
             {
-                answerData[i].value = countValueForAverage[i]!=0 ? answerData[i].value / countValueForAverage[i] : 0.0;
+                if (countValueForAverage[i] != 0)
+                {
+                    answerData[i].value /= countValueForAverage[i];
+                }
+                else
+                {
+                    answerData[i].value = 0.0;
+                }
+                
             }
+
             return answerData;
         }
-
-        
      }
    }
 

@@ -8,15 +8,21 @@ namespace SensorAverage.Konstantin
 {
     class SensorAverage : ISensorsAverage
     {
+        private const int countOfSensors = 8;
         public Tuple<ushort, double>[] GetAverages(ushort[] data)
         {
-            Tuple<ushort, double>[] averages = new Tuple<ushort, double>[7];
+            Tuple<ushort, double>[] averages = new Tuple<ushort, double>[countOfSensors];
             ushort[] codes = GetCodes(data);
+            ushort[] sensorNumber = new ushort[countOfSensors];
+            for (int index = 0; index < countOfSensors; index++)
+            {
+                sensorNumber[index] = (ushort)index;
+            }
             short[] values = GetValues(data);
             double[] avarege = CountAverage(values, codes);
             for (int i = 0; i < avarege.Length; i++)
             {
-                averages[i] = Tuple.Create(codes[i], avarege[i]);
+                averages[i] = Tuple.Create(sensorNumber[i], avarege[i]);
             }
             return averages;
         }
@@ -24,21 +30,20 @@ namespace SensorAverage.Konstantin
         {
 
             short[] values = new short[data.Length];
-            short[] tempValues = new short[data.Length];
+            int[] tempValues = new int[data.Length];
 
             for (int index = 0; index < data.Length; index++)
             {
                 values[index] = (short)(data[index] << 3);
-                values[index] = (short)(values[index] >> 4);
-                tempValues[index] = values[index];
-                ushort trueBitsCount = 0;
-                for (int indexIn = 0; indexIn < 13; indexIn++)
+                values[index]>>= 4;
+                int trueBitsCount = 0;
+                for (int indexIn = 32768; indexIn >1; indexIn/=2)
                 {
-                    if ((tempValues[index] & 1) == 1)
+                    if ((data[index]&indexIn) != 0)
                     {
                         trueBitsCount++;
                     }
-                    tempValues[index] >>= 1;
+                    
                 }
                 if (trueBitsCount % 2 == 1)
                 {
@@ -61,68 +66,38 @@ namespace SensorAverage.Konstantin
             return codes;
         }
         public static double[] CountAverage(short[] values, ushort[] codes)
-        
         {
-            double [] average = new double [8];
-            int [] sum  = new int [8];
-            int [] count = new int[8];
+            double[] average = new double[countOfSensors];
+            double[] sum = new double[countOfSensors];
+            int[] count = new int[countOfSensors];
             for (int index = 0; index < values.Length; index++)
             {
                 if (values[index] % 2 == 1)
                 {
-                    switch (codes[index])
+
+                    sum[codes[index]] += values[index] >> 1;
+                    count[codes[index]]++;
+
+                }
+            }
+
+
+                
+                for (int i = 0; i < countOfSensors; i++)
+                {
+                    if (count[i] != 0)
                     {
-                        case 0:
-                            sum[0] += values[index];
-                            count[0]++;
-                            break;
-                        case 1:
-                            sum[1] += values[index];
-                            count[1]++;
-                            break;
-                        case 2:
-                             sum[2] += values[index];
-                             count[2]++;
-                            break;
-                        case 3:
-                            sum[3] += values[index];
-                            count[3]++;
-                            break;
-                        case 4:
-                            sum[4] += values[index];
-                            count[4]++;
-                            break;
-                        case 5:
-                            sum[5] += values[index];
-                            count[5]++;
-                            break;
-                        case 6:
-                            sum[6] += values[index];
-                            count[6]++;
-                            break;
-                        case 7:
-                            sum[7] += values[index];
-                            count[7]++;
-                            break;
-                        default:
-                            break;
+                        average[i] = sum[i] / count[i];
+                    }
+                    else
+                    {
+                        average[i] = 0;
                     }
                 }
 
+                return average;
             }
-            for (int i = 0; i < 8; i++)
-			{
-                if (count[i] != 0)
-                {
-                    average[i] = sum[i] / count[i];
-                }
-                else
-                {
-                    average[i] = 0;
-                }
-			}
-            
-            return average;
         }
     }
-}
+
+

@@ -10,6 +10,7 @@ namespace Arrays2.Alina
     {
         public bool JaggedArrayExchange(int[][] inputArray)
         {
+            bool exchange = false;
             for (int i = 1; i < inputArray.Length; i++)
             {
                 if (inputArray[0].Length == inputArray[i].Length)
@@ -17,14 +18,17 @@ namespace Arrays2.Alina
                     int[] inputArrayCopy = inputArray[0];
                     inputArray[0] = inputArray[i];
                     inputArray[i] = inputArrayCopy;
-                    return true;
+                    exchange = true;
+                    break;
                 }
             }
-            return false;
+            return exchange;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)
         {
+            const int TOP_LIFE_LIMIT = 3;
+            const int BOTOOM_LIFE_LIMIT = 2;
             //создаем массив, который на две строки и на два столбца больше входящего массива;
             int[,] bigArray = new int[inputArray.GetLength(0) + 2, inputArray[0].GetLength(0) + 2];
             //переносим входящий массив внутрь созданного бальшого массива;
@@ -45,14 +49,14 @@ namespace Arrays2.Alina
                               bigArray[i + 1, j - 1] + bigArray[i + 1, j] + bigArray[i + 1, j + 1];
                     if (bigArray[i, j] == 1)
                     {
-                        if (sum > 3 || sum < 2)
+                        if (sum > TOP_LIFE_LIMIT || sum < BOTOOM_LIFE_LIMIT)
                         {
                             bigArray[i, j] = 0;
                         }
                     }
                     else
                     {
-                        if (bigArray[i, j] == 3)
+                        if (bigArray[i, j] == TOP_LIFE_LIMIT)
                         {
                             bigArray[i, j] = 1;
                         }

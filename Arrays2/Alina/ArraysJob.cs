@@ -10,20 +10,17 @@ namespace Arrays2.Alina
     {
         public bool JaggedArrayExchange(int[][] inputArray)
         {
-            bool isConvert = false;
             for (int i = 1; i < inputArray.Length; i++)
             {
                 if (inputArray[0].Length == inputArray[i].Length)
                 {
-                    int[] inputArrayClone1 = (int[])inputArray[0].Clone();
+                    int[] inputArrayCopy = inputArray[0];
                     inputArray[0] = inputArray[i];
-                    inputArray[i] = inputArrayClone1;
-                    //return true;
-                    isConvert = true;
+                    inputArray[i] = inputArrayCopy;
+                    return true;
                 }
             }
-            return isConvert;
-            //return false;
+            return false;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)

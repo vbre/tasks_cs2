@@ -16,13 +16,13 @@ namespace Arrays2.Valeriya
                 {
                     for (int j = 0; j < inputArray[i].Length; j++)
                     {
-                        if (inputArray[0][j] == inputArray[i][j])
+                        if (inputArray[0][j] != inputArray[i][j])
                         {
-                            continue;
+                            break;
                         }
                         else
                         {
-                            break;
+                            
                         }
 
                     }

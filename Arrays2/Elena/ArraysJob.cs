@@ -11,14 +11,13 @@ namespace Arrays2.Elena
         public bool JaggedArrayExchange(int[][] inputArray)
         {
             int firstLineLenth = inputArray[0].Length;
-            bool thereIsLine=false;
+            bool thereIsLine = false;
 
             for (int i = 1; i < inputArray.Length; i++)
             {
                 if (firstLineLenth == inputArray[i].Length)
-
                 {
-                    int numberSerchLine=i;
+                    int numberSerchLine = i;
                     int[] chengeArrey = new int[firstLineLenth];
                     for (int j = 0; j < firstLineLenth; j++)
                     {
@@ -32,85 +31,100 @@ namespace Arrays2.Elena
                 }
             }
 
-                return thereIsLine;
+            return thereIsLine;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)
         {
+            int firstIzmerenie = inputArray.Length;
+            int secondIzmerenie = inputArray[0].Length;
             int sum;
-            int[][] newAray=new int[5][];
-            for(int i=0; i<inputArray.Length;i++)
+            int[][] newAray = new int[firstIzmerenie][];
+
+            
+            for (int i = 0; i < firstIzmerenie; i++)
             {
-                for(int j=0; j<inputArray[i].Length; j++)
+                newAray[i] = new int[secondIzmerenie];
+                for (int j = 0; j < secondIzmerenie; j++)
                 {
-                    sum=0;
-                    try 
-                    {sum+=inputArray[i-1][j-1];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i-1][j];}
-                    catch
-                    {sum+=0;}
-                    
-                    try 
-                    {sum+=inputArray[i-1][j+1];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i][j-1];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i][j+1];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i+1][j-1];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i+1][j];}
-                    catch
-                    {sum+=0;}
-
-                    try 
-                    {sum+=inputArray[i+1][j+1];}
-                    catch
-                    {sum+=0;}
-                    
-                    if(inputArray[i][j]==1&&(sum>3||sum<2))
+                    try
                     {
-                        newAray[i][j]=0;
-                    }
+                        if (j == 0)
+                        {
+                            if (i == 0)
+                            { sum = inputArray[i][j + 1] + inputArray[i + 1][j] + inputArray[i + 1][j + 1]; }
 
-                    else if(inputArray[i][j]==0&&sum==3)
-                    {
-                        newAray[i][j]=1;
+                            else if (i == firstIzmerenie - 1)
+                            { sum = inputArray[i - 1][j] + inputArray[i][j + 1] + inputArray[i - 1][j + 1]; }
+
+                            else
+                            {
+                                sum = inputArray[i - 1][j] + inputArray[i - 1][j + 1] + inputArray[i][j + 1] + inputArray[i + 1][j] + inputArray[i + 1][j + 1];
+                            }
+                        }
+
+                        else if (j == secondIzmerenie - 1)
+                        {
+                            if (i == 0)
+                            { sum = inputArray[i][j - 1] + inputArray[i + 1][j - 1] + inputArray[i + 1][j]; }
+
+                            else if (i == firstIzmerenie - 1)
+                            { sum = inputArray[i - 1][j - 1] + inputArray[i - 1][j] + inputArray[i][j - 1]; }
+
+                            else
+                            {
+                                sum = inputArray[i - 1][j - 1] + inputArray[i - 1][j] + inputArray[i][j - 1] + inputArray[i + 1][j - 1] + inputArray[i + 1][j];
+                            }
+                        }
+
+                        else
+                        {
+                            if (i == 0)
+                            {
+                                sum = inputArray[i][j - 1] + inputArray[i][j + 1] + inputArray[i + 1][j - 1] + inputArray[i + 1][j] + inputArray[i + 1][j + 1];
+                            }
+
+                            else if (i == firstIzmerenie - 1)
+                            {
+                                sum = inputArray[i][j - 1] + inputArray[i][j + 1] + inputArray[i - 1][j - 1] + inputArray[i - 1][j] + inputArray[i - 1][j + 1];
+                            }
+                            else
+                            {
+                                sum = inputArray[i - 1][j - 1] + inputArray[i - 1][j] + inputArray[i - 1][j + 1] +
+                                    inputArray[i][j - 1] + inputArray[i][j + 1] +
+                                    inputArray[i + 1][j - 1] + inputArray[i + 1][j] + inputArray[i + 1][j + 1];
+                            }
+
+                        }
+
+
+                        if (inputArray[i][j] == 1 && (sum > 3 || sum < 2))
+                        {
+                            newAray[i][j] = 0;
+                        }
+
+                        else if (inputArray[i][j] == 0 && sum == 3)
+                        {
+                            newAray[i][j] = 1;
+                        }
+                        else
+                        {
+                            newAray[i][j] = inputArray[i][j];
+                        }
                     }
-                    else 
-                    {
-                        newAray[i][j]=inputArray[i][j];
-                    }
+                    catch (Exception ex) { string o = ex.ToString(); }
 
                 }
             }
-
-
 
             return newAray;
         }
 
         public int CalculateEqualPairs(int[] inputArray)
         {
-            int countOfCouple=0;
+            int countOfCouple = 0;
 
-            for (int i = 0; i < inputArray.Length-1; i++)
+            for (int i = 0; i < inputArray.Length - 1; i++)
             {
                 if (inputArray[i] == inputArray[i + 1])
                 {
@@ -118,7 +132,7 @@ namespace Arrays2.Elena
                 }
             }
 
-                return countOfCouple;
+            return countOfCouple;
         }
     }
 }

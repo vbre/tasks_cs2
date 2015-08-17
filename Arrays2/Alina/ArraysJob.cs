@@ -39,6 +39,14 @@ namespace Arrays2.Alina
                     bigArray[i + 1, j + 1] = inputArray[i][j];
                 }
             }
+            int[][] outputArray = new int[inputArray.Length][];
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                outputArray[i] = new int[inputArray[i].Length];
+                outputArray[i] = (int[])inputArray[i].Clone();
+                //Array.Copy(inputArray[i], outputArray[i], inputArray[i].Length);
+            }
+
             //проходим маленький массив, который находится внутри большого - для этого используем смещение на 1;
             for (int i = 1; i < bigArray.GetLength(0) - 1; i++)
             {
@@ -51,32 +59,19 @@ namespace Arrays2.Alina
                     {
                         if (sum > TOP_LIFE_LIMIT || sum < BOTOOM_LIFE_LIMIT)
                         {
-                            bigArray[i, j] = 0;
+                            outputArray[i-1][j-1] = 0;
                         }
                     }
                     else
                     {
-                        if (bigArray[i, j] == TOP_LIFE_LIMIT)
+                        if (sum == TOP_LIFE_LIMIT)
                         {
-                            bigArray[i, j] = 1;
+                            outputArray[i-1][j-1] = 1;
                         }
                     }
 
                 }
             }
-            int[][] outputArray = new int[inputArray.Length][];
-            for (int i = 0; i < outputArray.Length; i++)
-            {
-                outputArray[i] = new int[inputArray[i].Length];
-            }
-            for (int i = 0; i < bigArray.GetLength(0) - 2; i++)
-            {
-                for (int j = 0; j < bigArray.GetLength(1) - 2; j++)
-                {
-                    outputArray[i][j] = bigArray[i + 1, j + 1];
-                }
-            }
-
             return outputArray;
         }
 

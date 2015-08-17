@@ -37,7 +37,7 @@ namespace SensorAverage
                         sensorCalculator.GetAverages(myData),
                         (dataElement) =>
                         { 
-                            Console.WriteLine("sensor {0}: average {1}, status: ",
+                            Console.WriteLine("sensor {0}: average {1}, status: {2}",
                                 dataElement.Item1,
                                 dataElement.Item2, 
                                 modelResults[dataElement.Item1] == dataElement.Item2 

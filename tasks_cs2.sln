@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Visual Studio Express 2012 for Windows Desktop
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "MainProject\MainProject.csproj", "{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}"
@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "MainProject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorAverage", "SensorAverage\SensorAverage.csproj", "{08050BB0-5EE8-41BF-A364-BA81D123EF4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays2", "Arrays2\Arrays2.csproj", "{B48E9DF0-9D65-4A73-BBD4-C3D83C32F715}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays2", "Arrays2\Arrays2.csproj", "{1EBFC6AC-957D-44CB-B69F-808129D6F38C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +26,10 @@ Global
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B48E9DF0-9D65-4A73-BBD4-C3D83C32F715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B48E9DF0-9D65-4A73-BBD4-C3D83C32F715}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B48E9DF0-9D65-4A73-BBD4-C3D83C32F715}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B48E9DF0-9D65-4A73-BBD4-C3D83C32F715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EBFC6AC-957D-44CB-B69F-808129D6F38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EBFC6AC-957D-44CB-B69F-808129D6F38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EBFC6AC-957D-44CB-B69F-808129D6F38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EBFC6AC-957D-44CB-B69F-808129D6F38C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

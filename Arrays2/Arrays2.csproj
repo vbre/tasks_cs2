@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b48e9df0-9d65-4a73-bbd4-c3d83c32f715</ProjectGuid>
+    <ProjectGuid>{1EBFC6AC-957D-44CB-B69F-808129D6F38C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Arrays2</RootNamespace>
@@ -41,12 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alina\ArraysJob.cs" />
+    <Compile Include="Andrey\ArraysJob.cs" />
+    <Compile Include="Elena\ArraysJob.cs" />
+    <Compile Include="IArraysJob.cs" />
+    <Compile Include="Konstantin\ArraysJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Valeriya\ArraysJob.cs" />
+    <Compile Include="Vladimir\ArraysJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

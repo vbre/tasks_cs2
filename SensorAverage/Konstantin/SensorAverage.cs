@@ -11,7 +11,7 @@ namespace SensorAverage.Konstantin
         private const int countOfSensors = 8;
         public Tuple<ushort, double>[] GetAverages(ushort[] data)
         {
-            Tuple<ushort, double>[] averages = new Tuple<ushort, double>[countOfSensors];
+            
             ushort[] codes = GetCodes(data);
             ushort[] sensorNumber = new ushort[countOfSensors];
             for (int index = 0; index < countOfSensors; index++)
@@ -20,10 +20,27 @@ namespace SensorAverage.Konstantin
             }
             short[] values = GetValues(data);
             double[] avarege = CountAverage(values, codes);
+            int countOfValues = 0;
+            foreach (var item in avarege)
+            {
+                if (item !=0)
+                {
+                    countOfValues++;
+                }
+            }
+            Tuple<ushort, double>[] averages = new Tuple<ushort, double>[countOfValues];
+            int tupleIndex = 0;
             for (int i = 0; i < avarege.Length; i++)
             {
-                averages[i] = Tuple.Create(sensorNumber[i], avarege[i]);
+                if (avarege[i]!=0)
+                {
+                    averages[tupleIndex] = Tuple.Create(sensorNumber[i], avarege[i]);
+                    tupleIndex++;
+                }
+                
             }
+           
+
             return averages;
         }
         private static short[] GetValues(ushort[] data)
@@ -45,11 +62,11 @@ namespace SensorAverage.Konstantin
                     }
                     
                 }
-                if (trueBitsCount % 2 == 1)
+                if (trueBitsCount % 2 == 1 && (data[index] %2 ==1)|| (trueBitsCount % 2 == 0 && (data[index] % 2 == 0)))
                 {
                     values[index] = (short)((values[index] << 1) | 1);
                 }
-                else
+                else 
                 {
                     values[index] = (short)(values[index] << 1);
                 }

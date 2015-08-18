@@ -35,7 +35,6 @@ namespace Collections
 
         /// <summary>
         /// создайте linked list, наполните его данными из input в порядке возрастания.
-        /// Запрещается использовать промежуточные контейнеры и массивы.
         /// </summary>
         /// <param name="input">список из чисел</param>
         /// <returns>созданный linked list</returns>

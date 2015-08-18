@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alina\Collections.cs" />
     <Compile Include="ICollections.cs" />
     <Compile Include="IPotatoe.cs" />
     <Compile Include="Program.cs" />
@@ -50,7 +51,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Alina\" />
     <Folder Include="Andrey\" />
     <Folder Include="Elena\" />
     <Folder Include="Konstantin\" />

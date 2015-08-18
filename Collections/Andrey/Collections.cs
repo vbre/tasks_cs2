@@ -12,5 +12,11 @@ namespace Collections.Andrey
         {
             throw new NotImplementedException();
         }
+
+
+        public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

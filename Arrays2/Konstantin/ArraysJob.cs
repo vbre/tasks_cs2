@@ -10,17 +10,42 @@ namespace Arrays2.Konstantin
     {
         public bool JaggedArrayExchange(int[][] inputArray)
         {
-            throw new NotImplementedException();
+            for (int index = 1; index < inputArray.Length; index++)
+            {
+                if (inputArray[0].Length==inputArray[index].Length)
+                {
+                    int[] tempArray = inputArray[index];
+                    inputArray[index] = inputArray[0];
+                    inputArray[0] = tempArray;
+                    return true;
+
+                }
+            }
+            return false;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)
         {
-            throw new NotImplementedException();
+            int[][] outputArray = new int[inputArray.Length][inputArray[0].Length];
+            //int[][] tempArray = new int[inputArray.Length+2][inputArray[0].Length+2];
+            for (int i = 0; i < inputArray.GetLength(0)+2; i++)
+            {
+                
+            }
+            return outputArray;
         }
 
         public int CalculateEqualPairs(int[] inputArray)
         {
-            throw new NotImplementedException();
+            int pairCalculator = 0;
+            for (int index = 0; index < inputArray.Length-1; index++)
+            {
+                if (inputArray[index]==inputArray[index+1])
+                {
+                    pairCalculator++;
+                }
+            }
+            return pairCalculator;
         }
     }
 }

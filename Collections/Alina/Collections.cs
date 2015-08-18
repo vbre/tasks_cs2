@@ -22,10 +22,10 @@ namespace Collections.Alina
                 {
                     good.Add(potatoe);
                 }
-                potatoeBag.Remove(potatoe);
             }
             goodPotatoes = good;
             badPotatoes = bad;
+            potatoeBag.Clear();
             return good.Count;
         }
     }

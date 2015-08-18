@@ -11,18 +11,8 @@ namespace Arrays2.Vladimir
 
         public bool JaggedArrayExchange(int[][] inputArray)
         {
-            //throw new NotImplementedException();
-            // 1
-            /// <summary>
-            /// Given a two-dimensional array of strings of different lengths. Decide
-            /// Whether there is in the array is one more line of the same length, 
-            /// As the first line, and if there is, then swap 
-            /// All the elements of the first row with all elements of the matched string.
-            /// </summary>
-            /// <param name="inputArray">входной массив</param>
-            /// < returns > returns status: whether the fact of sharing strings </ returns >
-
-
+        // 1
+            
             bool answer = false;
             bool[] indexReplacement = new bool[inputArray.Length];
 
@@ -30,12 +20,10 @@ namespace Arrays2.Vladimir
             {
                 indexReplacement[index] = false;
             }
-
             for (int index = 0; index < inputArray.Length; index++)
             {
                 for (int i = 0; i < inputArray.Length; i++)
                 {
-
                     if (inputArray[index].Length == inputArray[i].Length && index != i && indexReplacement[index] != true && indexReplacement[i] != true)
                     {
                         int[] workArray = (int[])inputArray[index].Clone();
@@ -48,41 +36,30 @@ namespace Arrays2.Vladimir
                         indexReplacement[i] = true;
                     }
                 }
-
             }
-            // тестовая печать:
-            //Console.WriteLine("Новый массив");
-            //for (int i = 0; i < inputArray.Length; i++)
-            //{
-            //    Console.Write("testArray[{0}]= ", i);
-            //    for (int j = 0; j < inputArray[i].Length; j++)
-            //    {
-            //        Console.Write("{0,3}", inputArray[i][j]);
-            //    }
-            //    Console.WriteLine("");
-            //}
-            //Console.WriteLine("answer={0}", answer);
-
             return answer;
-        } 
+        }
         //end 1
 
+        public void MyConntrolWriteWork1(int[][] inputArray)
+        {
+         //   тестовая печать:
+            Console.WriteLine("Новый массив");
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                Console.Write("testArray[{0}]= ", i);
+                for (int j = 0; j < inputArray[i].Length; j++)
+                {
+                    Console.Write("{0,3}", inputArray[i][j]);
+                }
+                Console.WriteLine("");
+            }
+        }
+//---------------------------------------------------------
         public int[][] LifeCalculations(int[][] inputArray)
-        { 
-            //throw new NotImplementedException();
+        {
             // 2 <summary>
-            /// Daniel rectangular array of integers of 5 to 10.
-            /// Already filled with values ​​0 and 1.
-            /// Then treat the array as follows:
-            /// Each element if the element 1 
-            /// And the sum of all the surrounding elements is greater than 3 or less than 2,
-            /// Something new element value 0. If the element 0 
-            /// And the sum of all its neighbors is equal to 3, the new value of the element 1.
-            /// </summary>
-            /// < param  name = " inputArray " > original array. Should remain unaltered </ param >
-            /// < returns > returns a new array with the new values ​​</ returns >
-            //int sizeLineArray = inputArray.Length;
-
+        
             // Создание и инициализация массива с нулевыми первыми и последними строками и солбцами
             int[][] workArray = new int[inputArray.Length + 2][];
             int secondIndex = inputArray[1].Length;
@@ -114,28 +91,22 @@ namespace Arrays2.Vladimir
             for (int i = 0; i < inputArray.Length; i++)
             {
                 int l = 1;
-                int a = 1;
                 for (int j = 0; j < inputArray[i].Length; j++)
                 {
                     weightCellsInputArray[i][j] = workArray[k - 1][l - 1] + workArray[k - 1][l] + workArray[k - 1][l + 1] +
-                                                  workArray[k][l - 1] + 0 + workArray[k][l + 1] +
+                                                  workArray[k][l - 1] + workArray[k][l + 1] +
                                                   workArray[k + 1][l - 1] + workArray[k + 1][l] + workArray[k + 1][l + 1];
                     l++;
                 }
                 k++;
             }
 
-
-            Console.WriteLine("контроль веса ячеек");
-            for (int i = 0; i < inputArray.Length; i++)
+            bool f = false;  // Контрольная печать веса ячеек
+            if (f)
             {
-                for (int j = 0; j < inputArray[i].Length; j++)
-                {
-                    Console.Write(weightCellsInputArray[i][j]);
-                }
-                Console.WriteLine("");
+                MyControlWriteWork2WeightCells(weightCellsInputArray);
             }
-
+            
             // Ограничения для подсчета веса ячейки входного массива
             int minWeigtFor1 = 2;
             int maxWeigtFor1 = 3;
@@ -155,29 +126,30 @@ namespace Arrays2.Vladimir
                         {
                             answerArray[i][j] = 1;
                         }
-
                     }
                 }
-
             }
-
             return answerArray;
         }//end2
 
+        public static void MyControlWriteWork2WeightCells(int[][] weightCellsInputArray)
+        {// контрольная печать веса ячеек
 
+            Console.WriteLine("контроль веса ячеек");
+            for (int i = 0; i < weightCellsInputArray.Length; i++)
+            {
+                for (int j = 0; j < weightCellsInputArray[i].Length; j++)
+                {
+                    Console.Write(weightCellsInputArray[i][j]);
+                }
+                Console.WriteLine("");
+            }
+        }
+//------------------------
 
         public int CalculateEqualPairs(int[] inputArray)
         {
-            //throw new NotImplementedException();
-            // 3
-            /// <summary>
-            /// Find how much the incoming array of identical pairs of adjacent elements.
-            /// Example array 0, 0, 1, 2, 2, 3 - two identical pairs of adjacent units
-            /// </summary>
-            /// < param  name = " inputArray " > input array. should remain unaltered. </ param >
-            /// < returns > the number of pairs of identical adjacent elements </ returns >
-            //      int CalculateEqualPairs(int[] inputArray);
-            //
+        // 3
             int answer = 0;
             for (int i = 0; i < inputArray.Length - 1; i++)
             {
@@ -187,7 +159,6 @@ namespace Arrays2.Vladimir
                 }
             }
             return answer;
-        }
-        //end 3 
+        }//end 3 
     }
 }

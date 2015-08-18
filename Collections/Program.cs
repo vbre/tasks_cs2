@@ -72,6 +72,7 @@ namespace Collections
 
                     Assert(goodPotatoes.TrueForAll((p)=>{return !p.IsBad;}), "в мешок с хорошей картошкой попала плохая");
                     Assert(badPotatoes.TrueForAll((p) => { return p.IsBad; }), "в мешок с плохой картошкой попала хорошая");
+                    Assert(myPotatoes.Count == 0, "Изначальный мешок с картошкой не пустой");
                 }
                 catch (Exception e)
                 {

@@ -175,6 +175,7 @@ namespace Arrays2.Valeriya
 
         public int CalculateEqualPairs(int[] inputArray)
         {
+            int inputArrayLenght = inputArray.Length;
             int countOfSameElems = 0;
             for (int i = 0; i < inputArray.Length - 1; i++)
             {
@@ -182,6 +183,10 @@ namespace Arrays2.Valeriya
                 {
                     countOfSameElems += 1;
                 }
+            }
+            if (inputArray[inputArrayLenght - 2] == inputArray[inputArrayLenght - 1])
+            {
+                countOfSameElems += 1;
             }
 
             return countOfSameElems;

@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Andrey\Collections.cs" />
-    <Compile Include="Elena\Collections.cs" />
     <Compile Include="ICollections.cs" />
     <Compile Include="IInData.cs" />
     <Compile Include="IOutData.cs" />
@@ -56,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Alina\" />
+    <Folder Include="Elena\" />
     <Folder Include="Valeriya\" />
     <Folder Include="Vladimir\" />
   </ItemGroup>

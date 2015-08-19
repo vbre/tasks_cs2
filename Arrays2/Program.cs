@@ -60,11 +60,11 @@ namespace Arrays2
                     };
                     int[][] lifeArray2nd = { 
                         new int[] { 0, 1, 1, 0 },
-                        new int[] { 1, 1, 1, 0 },
-                        new int[] { 1, 1, 0, 1 },
+                        new int[] { 1, 1, 0, 0 },
                         new int[] { 1, 0, 0, 1 },
                         new int[] { 1, 0, 0, 1 },
-                        new int[] { 0, 1, 0, 1 }
+                        new int[] { 1, 0, 0, 1 },
+                        new int[] { 0, 1, 0, 0 }
                     };
                     int[][] lifeArrayToCheck = arraysJob.LifeCalculations(lifeArray);
                     if(!Assert(lifeArrayToCheck != null, "Неверный результат: null"))

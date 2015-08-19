@@ -24,12 +24,12 @@ namespace Arrays2
         static void Main(string[] args)
         {
             List<IArraysJob> arraysJobs = new List<IArraysJob>();
-            arraysJobs.Add(new Alina.ArraysJob());
-            arraysJobs.Add(new Andrey.ArraysJob());
-            arraysJobs.Add(new Elena.ArraysJob());
-            arraysJobs.Add(new Konstantin.ArraysJob());
+            //arraysJobs.Add(new Alina.ArraysJob());
+           // arraysJobs.Add(new Andrey.ArraysJob());
+           // arraysJobs.Add(new Elena.ArraysJob());
+           // arraysJobs.Add(new Konstantin.ArraysJob());
             arraysJobs.Add(new Valeriya.ArraysJob());
-            arraysJobs.Add(new Vladimir.ArraysJob());
+          //  arraysJobs.Add(new Vladimir.ArraysJob());
 
             foreach (var arraysJob in arraysJobs)
             {

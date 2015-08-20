@@ -28,5 +28,31 @@ namespace Collections.Alina
             potatoeBag.Clear();
             return good.Count;
         }
+
+
+        public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
+        {
+            //List<IOutData> output = new List<IOutData>();
+
+            //Dictionary<int, int> sensors = new Dictionary<int, int>();
+
+            //foreach (var input in inputData)
+            //{
+            //    if (input.IsValid)
+            //    {
+            //        sensors.Add(input.Code, input.Value);
+
+            //    }
+            //}
+
+            return null;
+        }
+
+        public LinkedList<int> CreateOrderedList(IReadOnlyList<int> input)
+        {
+            List<int> output = new List<int>(input);
+            output.Sort();
+            return new LinkedList<int>(output);      
+        }
     }
 }

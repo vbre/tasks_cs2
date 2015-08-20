@@ -65,7 +65,7 @@ namespace Collections.Konstantin
         {
             public OutData(int code, double average)
             {
-                Code = (int)code;
+                Code = code;
                 Average = average;
             }
 

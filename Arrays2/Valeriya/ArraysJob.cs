@@ -10,6 +10,7 @@ namespace Arrays2.Valeriya
     {
         public bool JaggedArrayExchange(int[][] inputArray)
         {
+            bool flagExchange = false;
             for (int i = 1; i < inputArray.Length; i++)
             {
                 if (inputArray[0].Length == inputArray[i].Length)
@@ -17,11 +18,12 @@ namespace Arrays2.Valeriya
                     int[] tmp = inputArray[0];
                     inputArray[0] = inputArray[i];
                     inputArray[i] = tmp;
-                    return true;
+                    flagExchange = true;
+                    break;
                 }
             }
 
-            return false;
+            return flagExchange;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)

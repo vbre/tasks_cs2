@@ -8,15 +8,11 @@ namespace SensorAverage.Vladimir
 {
     class SensorAverage : ISensorsAverage
     {
-
-        int countControllers = 8;    // максимум №№ конроллеров на трех разрядах
-        int countBlocs = 10;         // число получаемых блоков для экперимента
+        int countControllers = 8;    // максимум №№ контроллеров на трех разрядах
         int lengthBloc = 16;         // число бит в одном блоке
            
         public Tuple<ushort, double>[] GetAverages(ushort[] data)
         {
-            Tuple<ushort, double>[] answerTuple = new Tuple<ushort, double>[countControllers];
-            
               int countTrueBlocs = 0;
               foreach (ushort curentData in data)  // определение количества правильных блоков данных (нечетное к-во единиц в 15 разрядах и 1 в последнем бите)
               {
@@ -25,49 +21,49 @@ namespace SensorAverage.Vladimir
                       countTrueBlocs++;
                   }
               }
+              ushort[] codes = new ushort[countTrueBlocs];
+              ushort[] values = new ushort[countTrueBlocs];
 
-              if (countTrueBlocs != 0)
+              int index = 0;
+              foreach (ushort curentData in data)    // наполнение code и value данными
               {
-                  ushort[] codes = new ushort[countTrueBlocs];
-                  ushort[] values = new ushort[countTrueBlocs];
-
-                  int index = 0;
-                  foreach (ushort curentData in data)    // наполнение code и value данными
-                  {
                       if (IsCodeTrue(curentData, lengthBloc))
-            
                       {
                           codes[index] = BlocCode(curentData, lengthBloc);
                           values[index] = BlocValue(curentData, lengthBloc);
-                          
                           index++;
                       }
                   }
-
-                  //  подготовка результатов к выдаче
-              
+                  //  подготовка результатов к выдаче  
                   AverageByBit[] dataOut = CountAverage(codes, values, countControllers);  // формирование структуры вывода
-          
+                  int indexWithoutZerro = 0;
                   for (int i = 0; i < countControllers; i++)
                   {
-                    answerTuple[i] = Tuple.Create(dataOut[i].code, dataOut[i].value);
+                      if (dataOut[i].value != 0)
+                      {
+                          indexWithoutZerro++;
+                      }
                   }
-              
-              }
-              else
-              {
-                  //Console.WriteLine("На вход поданы исключительно плохие блоки данных");            
-              }
-            
+
+                  bool f = false;   // контрольная печать f = false - выключена
+
+                  Tuple<ushort, double>[] answerTuple = new Tuple<ushort, double>[indexWithoutZerro];
+                  indexWithoutZerro = 0;
+                  for (int i = 0; i < countControllers; i++)
+                  {
+                          if (dataOut[i].value != 0)
+                          {
+                              answerTuple[indexWithoutZerro] = Tuple.Create(dataOut[i].code, dataOut[i].value);
+                              if (f)    // контрольная печать выдаваемых данных
+                              {
+                                Console.WriteLine(" Проверка: Код = {0} значение = {1}", Convert.ToString(answerTuple[indexWithoutZerro].Item1, 2), answerTuple[indexWithoutZerro].Item2);
+                              }
+                              indexWithoutZerro++;
+                          }
+                  }
               return answerTuple;
-              
-        }
-
-
-
-
-//
-
+              }
+//---------------------методы
         public static float CountBit1(ushort inData, int inLength)
         {
             float summ = 0;
@@ -109,12 +105,12 @@ namespace SensorAverage.Vladimir
             public ushort code;
             public double value;
         }
-        
+   
         public static AverageByBit[] CountAverage(ushort[] inCodes, ushort[] inValues, int inCountControllers)
         {
             AverageByBit[] answerData = new AverageByBit[inCountControllers];  //всего разных датчиков от 000 до 111 - 8 шт.
             
-            for(ushort i = 0; i <= inCountControllers-1; i++)
+            for(ushort i = 0; i < inCountControllers; i++)
             {
                 answerData[i].code = i;    // инициализируем сруктуру ответов
                 answerData[i].value = 0.0;
@@ -122,24 +118,27 @@ namespace SensorAverage.Vladimir
 
             int[] countValueForAverage = new int[inCountControllers];
          
-            for (int i = 0; i <= inCodes.Length -1 ; i++)
+            for (int i = 0; i < inCodes.Length ; i++)
             {
                 ushort currentCode = inCodes[i];
            
                 answerData[currentCode].value += inValues[i];
                 countValueForAverage[currentCode]++;
-
-                //answerData[currentCode].value = (answerData[currentCode].value * countValueForAverage[i] + inValues[i]) / (countValueForAverage[i] + 1);
             }
-            
-            for (int i = 0; i <= inCodes.Length -1 ; i++)
+
+            for (int i = 0; i < inCountControllers; i++)
             {
-                answerData[i].value = countValueForAverage[i]!=0 ? answerData[i].value / countValueForAverage[i] : 0.0;
+                if (countValueForAverage[i] != 0)
+                {
+                    answerData[i].value /= countValueForAverage[i];
+                }
+                else
+                {
+                    answerData[i].value = 0.0;
+                }
             }
             return answerData;
         }
-
-        
      }
    }
 

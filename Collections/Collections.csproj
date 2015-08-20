@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Andrey\Collections.cs" />
     <Compile Include="ICollections.cs" />
+    <Compile Include="IInData.cs" />
+    <Compile Include="IOutData.cs" />
     <Compile Include="IPotatoe.cs" />
+    <Compile Include="Konstantin\Collections.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,9 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Alina\" />
-    <Folder Include="Andrey\" />
     <Folder Include="Elena\" />
-    <Folder Include="Konstantin\" />
     <Folder Include="Valeriya\" />
     <Folder Include="Vladimir\" />
   </ItemGroup>

@@ -71,7 +71,7 @@ namespace Arrays2
                     {
                         continue;
                     }
-                    Assert(lifeArrayToCheck == lifeArray, "Неверный результат: вернули входной массив");
+                    Assert(lifeArrayToCheck != lifeArray, "Неверный результат: вернули входной массив");
                     Assert(lifeArrayToCheck.Length == lifeArrayToCheck.Length, "Неверное количество строк в массиве с результатом");
                     for (int row = 0; row < lifeArray2nd.Length; row++)
                     {

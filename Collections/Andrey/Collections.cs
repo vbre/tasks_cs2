@@ -18,5 +18,11 @@ namespace Collections.Andrey
         {
             throw new NotImplementedException();
         }
+
+
+        public LinkedList<int> CreateOrderedList(IReadOnlyList<int> input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

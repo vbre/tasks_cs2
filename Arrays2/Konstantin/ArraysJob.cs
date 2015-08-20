@@ -10,6 +10,7 @@ namespace Arrays2.Konstantin
     {
         public bool JaggedArrayExchange(int[][] inputArray)
         {
+            bool jaggedArrayExchange = false;
             for (int index = 1; index < inputArray.Length; index++)
             {
                 if (inputArray[0].Length==inputArray[index].Length)
@@ -17,11 +18,11 @@ namespace Arrays2.Konstantin
                     int[] tempArray = inputArray[index];
                     inputArray[index] = inputArray[0];
                     inputArray[0] = tempArray;
-                    return true;
+                    jaggedArrayExchange = true;
 
                 }
             }
-            return false;
+            return jaggedArrayExchange;
         }
 
         public int[][] LifeCalculations(int[][] inputArray)

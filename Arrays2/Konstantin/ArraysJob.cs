@@ -19,7 +19,7 @@ namespace Arrays2.Konstantin
                     inputArray[index] = inputArray[0];
                     inputArray[0] = tempArray;
                     jaggedArrayExchange = true;
-
+                    break;
                 }
             }
             return jaggedArrayExchange;

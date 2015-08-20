@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-VisualStudioVersion = 14.0.23107.0
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainProject", "MainProject\MainProject.csproj", "{6FF3ECBC-E25A-4BCA-BE89-D48F58ABE9E1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{08050BB0-5EE8-41BF-A364-BA81D123EF4F} = {08050BB0-5EE8-41BF-A364-BA81D123EF4F}

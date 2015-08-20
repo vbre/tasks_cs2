@@ -186,11 +186,7 @@ namespace Arrays2.Valeriya
                     countOfSameElems += 1;
                 }
             }
-            if (inputArray[inputArrayLenght - 2] == inputArray[inputArrayLenght - 1])
-            {
-                countOfSameElems += 1;
-            }
-
+       
             return countOfSameElems;
         }
     }

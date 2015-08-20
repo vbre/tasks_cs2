@@ -113,8 +113,8 @@ namespace Collections
                         }
 
                         int indexSensor1 = result.FindIndex((element) => { return element.Code == (int)SensorCodes.Sensor1; });
-                        int indexSensor2 = result.FindIndex((element) => { return element.Code == (int)SensorCodes.Sensor1; });
-                        int indexSensor3 = result.FindIndex((element) => { return element.Code == (int)SensorCodes.Sensor1; });
+                        int indexSensor2 = result.FindIndex((element) => { return element.Code == (int)SensorCodes.Sensor2; });
+                        int indexSensor3 = result.FindIndex((element) => { return element.Code == (int)SensorCodes.Sensor3; });
 
                         if (Assert(indexSensor1 >= 0, "Нет одного из требуемых кодов"))
                         {

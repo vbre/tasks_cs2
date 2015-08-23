@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.Vladimir
+namespace TestCollection
 {
-    class Potatoe : IPotatoe
+    class Program
     {
-        public bool IsBad
+        static void Main(string[] args)
         {
-            get { throw new NotImplementedException(); }
         }
     }
 }

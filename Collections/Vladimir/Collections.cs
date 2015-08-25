@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.Andrey
+namespace Collections.Vladimir
 {
     class Collections : ICollections
     {
@@ -13,12 +13,10 @@ namespace Collections.Andrey
             throw new NotImplementedException();
         }
 
-
         public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
         {
             throw new NotImplementedException();
         }
-
 
         public LinkedList<int> CreateOrderedList(IReadOnlyList<int> input)
         {

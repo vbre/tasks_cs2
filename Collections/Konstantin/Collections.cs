@@ -95,7 +95,21 @@ namespace Collections.Konstantin
 
         public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            Dictionary<char, IList<string>> organizeByFirstCharacter = new Dictionary<char, IList<string>>();
+            foreach (string item in text)
+            {
+                char[] chars = item.ToCharArray();
+                if (!organizeByFirstCharacter.ContainsKey(chars[0]))
+	            {   
+		            organizeByFirstCharacter.Add(chars[0], new List<string>());
+                    organizeByFirstCharacter[chars[0]].Add(item);
+	            }
+                else
+                {
+                    organizeByFirstCharacter[chars[0]].Add(item);
+                }                
+            }
+            return organizeByFirstCharacter;
         }
     }
 }

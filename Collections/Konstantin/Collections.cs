@@ -98,12 +98,11 @@ namespace Collections.Konstantin
             Dictionary<char, IList<string>> organizeByFirstCharacter = new Dictionary<char, IList<string>>();
             foreach (string item in text)
             {
-                char[] chars = item.ToCharArray();
-                if (!organizeByFirstCharacter.ContainsKey(chars[0]))
+                if (!organizeByFirstCharacter.ContainsKey(item[0]))
 	            {   
-		            organizeByFirstCharacter.Add(chars[0], new List<string>());                    
+		            organizeByFirstCharacter.Add(item[0], new List<string>());                    
 	            }
-                    organizeByFirstCharacter[chars[0]].Add(item);               
+                    organizeByFirstCharacter[item[0]].Add(item);               
             }
             return organizeByFirstCharacter;
         }

@@ -101,13 +101,9 @@ namespace Collections.Konstantin
                 char[] chars = item.ToCharArray();
                 if (!organizeByFirstCharacter.ContainsKey(chars[0]))
 	            {   
-		            organizeByFirstCharacter.Add(chars[0], new List<string>());
-                    organizeByFirstCharacter[chars[0]].Add(item);
+		            organizeByFirstCharacter.Add(chars[0], new List<string>());                    
 	            }
-                else
-                {
-                    organizeByFirstCharacter[chars[0]].Add(item);
-                }                
+                    organizeByFirstCharacter[chars[0]].Add(item);               
             }
             return organizeByFirstCharacter;
         }

@@ -124,5 +124,11 @@ namespace Collections.Alina
             output.Sort();
             return new LinkedList<int>(output);
         }
+
+
+        public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

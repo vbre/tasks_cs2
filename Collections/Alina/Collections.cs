@@ -128,7 +128,24 @@ namespace Collections.Alina
 
         public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            List <char []> stringArray = new List<char[]>();
+            foreach (var element in text)
+            {
+                char[] array = element.ToCharArray();
+                stringArray.Add(array);
+            }
+            Dictionary <char, IList<string>> stringDictionary = new Dictionary<char, IList<string>>();
+
+            foreach (var item in stringArray)
+            {
+                if (!stringDictionary.ContainsKey(item[0]))
+                {
+                    stringDictionary.Add(item[0], new List<string>());
+                }
+                string str = new string(item);
+                stringDictionary[item[0]].Add(str);
+            }
+            return stringDictionary;
         }
     }
 }

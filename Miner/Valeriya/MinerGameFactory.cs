@@ -10,12 +10,14 @@ namespace Miner.Valeriya
     {
         public IMinerGame NewEmptyGame(string playerName, Tuple<int, int> rowsCols)
         {
-            throw new NotImplementedException();
+           MinerGame NewEmptyGame = new MinerGame(rowsCols.Item1, rowsCols.Item2);
+           return NewEmptyGame;
         }
 
         public IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs)
         {
-            throw new NotImplementedException();
+            MinerGame NewRandomGame = new MinerGame(rowsCols.Item1, rowsCols.Item2, bombs);
+            return NewRandomGame;
         }
 
         internal void Test()

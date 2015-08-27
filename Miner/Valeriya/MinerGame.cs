@@ -8,6 +8,20 @@ namespace Miner.Valeriya
 {
     class MinerGame : IMinerGame
     {
+        struct gameCell
+        {
+            bool isEmpty;
+            bool isOpened;
+
+            gameCell (bool isEmpty, bool isOpened)
+            {
+                this.isEmpty = isEmpty;
+                this.isOpened = isOpened;
+            }
+        }
+
+        gameCell[][] gameField = new gameCell[6][];
+        
         public bool SetBomb(int row, int col)
         {
             throw new NotImplementedException();

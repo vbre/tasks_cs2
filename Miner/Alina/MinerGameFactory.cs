@@ -10,12 +10,12 @@ namespace Miner.Alina
     {
         public IMinerGame NewEmptyGame(string playerName, Tuple<int, int> rowsCols)
         {
-            throw new NotImplementedException();
+            return new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2);
         }
 
         public IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs)
         {
-            throw new NotImplementedException();
+            return new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2, bombs);
         }
 
         internal void Test()

@@ -17,5 +17,16 @@ namespace Miner.Konstantin
         {
             throw new NotImplementedException();
         }
+
+        internal void Test()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        void IMinerGameFactory.Test()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

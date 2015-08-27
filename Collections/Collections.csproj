@@ -55,7 +55,6 @@
     <Compile Include="Vladimir\Collections.cs" />
     <Compile Include="Vladimir\InData.cs" />
     <Compile Include="Valeriya\Collections.cs" />
-    <Compile Include="Vladimir\Collections.cs" />
     <Compile Include="Vladimir\OutData.cs" />
     <Compile Include="Vladimir\Potatoe.cs" />
   </ItemGroup>

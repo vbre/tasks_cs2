@@ -33,12 +33,23 @@ namespace Miner.Valeriya
             get { throw new NotImplementedException(); }
         }
 
-        public int OpenCell(int row, int col)
+        public bool OpenCell(int row, int col)
         {
             throw new NotImplementedException();
         }
 
         public CellStatus this[int row, int col]
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+
+        public int Width
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int Height
         {
             get { throw new NotImplementedException(); }
         }

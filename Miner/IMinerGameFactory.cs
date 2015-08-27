@@ -10,5 +10,6 @@ namespace Miner
     {
         IMinerGame NewEmptyGame(string playerName, Tuple<int,int> rowsCols);
         IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs);
+        void Test();
     }
 }

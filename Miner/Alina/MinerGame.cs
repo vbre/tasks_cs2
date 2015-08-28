@@ -52,9 +52,14 @@ namespace Miner.Alina
         }
         public bool SetBomb(int row, int col)
         {
-            gameField[row, col].StatusInGame = Statuses.HasMine;
-            return true;
-            //TODO: check field size
+            bool inField = InField(row, col);
+            if (inField)
+            {
+                gameField[row, col].StatusInGame = Statuses.HasMine;
+                inField = true;
+            }
+            return inField;
+ 
         }
 
         public bool IsGameStarted
@@ -63,12 +68,9 @@ namespace Miner.Alina
         }
 
         public void Start()
-        {
-            
+        {      
             int amountBombsNear;
             Random rnd = new Random();
-
-
         }
 
         public bool Win
@@ -123,6 +125,10 @@ namespace Miner.Alina
             if (inField)
             {
                 gameField[row, col].StartStatus = true;
+                if (gameField[row, col].StatusInGame == Statuses.HasMine)
+                {
+                    gameField[row, col].StatusInGame = Statuses.HasMine;
+                }
                 switch (BombCalculation(row,col))
                 {
                     case 0: gameField[row, col].StatusInGame = Statuses.Empty;
@@ -151,21 +157,46 @@ namespace Miner.Alina
         public CellStatus this[int row, int col]
         {
             get {
-                if (col > 0 && row > 0 && row <= heigh - 1 && col <= width - 1)
+                bool inField = InField(row, col);
+                if (inField)
                 {
-                     
+                    switch (gameField[row, col].StatusInGame)
+                    {
+                        case Statuses.Empty: gameField[row, col].StatusInGame = Statuses.Empty;
+                            break;
+                        case Statuses.HasMine: gameField[row, col].StatusInGame = Statuses.HasMine;
+                            break;
+                        case Statuses.OneAround: gameField[row, col].StatusInGame = Statuses.OneAround;
+                            break;
+                        case Statuses.TwoAround: gameField[row, col].StatusInGame = Statuses.TwoAround;
+                            break;
+                        case Statuses.ThreeAround: gameField[row, col].StatusInGame = Statuses.ThreeAround;
+                            break;
+                        case Statuses.FourAround: gameField[row, col].StatusInGame = Statuses.FourAround;
+                            break;
+                        case Statuses.FiveAround: gameField[row, col].StatusInGame = Statuses.FiveAround;
+                            break;
+                        case Statuses.SixAround: gameField[row, col].StatusInGame = Statuses.SixAround;
+                            break;
+                        case Statuses.SevenAround: gameField[row, col].StatusInGame = Statuses.SevenAround;
+                            break;
+                        case Statuses.EightAround: gameField[row, col].StatusInGame = Statuses.EightAround;
+                            break;
+                        default:
+                            
+                            break;
+                    }
+                    return (CellStatus)gameField[row, col].StatusInGame;
                 }
                 else
                 {
-                    //return new IndexOutOfRange exception
+                   return new IndexOutOfRangeException();
                 }
-                
+                }               
             }
-        }
         bool InField (int row, int col)
         {
             return (col > 0 && row > 0 && row <= heigh - 1 && col <= width - 1);
-        }
-
+        }       
     }
 }

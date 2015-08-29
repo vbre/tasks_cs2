@@ -8,14 +8,17 @@ namespace Miner.Alina
 {
     class MinerGameFactory : IMinerGameFactory
     {
+        IMinerGame game;
         public IMinerGame NewEmptyGame(string playerName, Tuple<int, int> rowsCols)
         {
-            return new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2);
+            game = new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2);
+            return game;
         }
 
         public IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs)
         {
-            return new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2, bombs);
+            game = new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2, bombs);
+            return game;
         }
 
         internal void Test()

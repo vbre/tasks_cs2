@@ -38,7 +38,11 @@ namespace Miner.Alina
         public MinerGame(string playerName, int heigh, int width, int bombs)
             :this(playerName, heigh, width)
         {
-            this.bombs = bombs;
+            Random randomNumber = new Random();
+            for (int i = 0; i < bombs; i++)
+            {
+                SetBomb(randomNumber.Next(0, heigh-1), randomNumber.Next(0, width-1));
+            }
         }
 
         public int Width
@@ -52,35 +56,49 @@ namespace Miner.Alina
         }
         public bool SetBomb(int row, int col)
         {
+            if (isGameStarted)
+            {
+                throw new InvalidOperationException("Нельзя устанавливать бомбы после старта игры");
+            }
             bool inField = InField(row, col);
             if (inField)
             {
                 gameField[row, col].StatusInGame = Statuses.HasMine;
                 inField = true;
+                bombs += 1;
             }
             return inField;
  
         }
-
+        bool isGameStarted;
         public bool IsGameStarted
         {
-            get { throw new NotImplementedException(); }
+            get { return isGameStarted; }
         }
 
         public void Start()
-        {      
-            int amountBombsNear;
-            Random rnd = new Random();
+        {
+            isGameStarted = true;
         }
-
+        bool win;
         public bool Win
         {
-            get { throw new NotImplementedException(); }
+            get {
+                int counter = 0;
+                foreach (var element in gameField)
+                {
+                    if (element.StartStatus == false)
+                    {
+                        counter++;
+                    }
+                }
+                return counter == bombs;
+            }
         }
-
+        bool lose;
         public bool Lose
         {
-            get { throw new NotImplementedException(); }
+            get { return lose; }
         }
         int BombCalculation(int row, int col)
         {
@@ -121,34 +139,41 @@ namespace Miner.Alina
         }
         public bool OpenCell(int row, int col)
         {
+            if (!isGameStarted)
+            {
+                throw new InvalidOperationException("Нельзя открывать ячейки до начала игры");
+            }
             bool inField = InField(row, col);
             if (inField)
             {
                 gameField[row, col].StartStatus = true;
                 if (gameField[row, col].StatusInGame == Statuses.HasMine)
                 {
-                    gameField[row, col].StatusInGame = Statuses.HasMine;
+                    lose = true;
                 }
-                switch (BombCalculation(row,col))
+                else
                 {
-                    case 0: gameField[row, col].StatusInGame = Statuses.Empty;
-                        break;
-                    case 1: gameField[row, col].StatusInGame = Statuses.OneAround;
-                        break;
-                    case 2: gameField[row, col].StatusInGame = Statuses.TwoAround;
-                        break;
-                    case 3: gameField[row, col].StatusInGame = Statuses.ThreeAround;
-                        break;
-                    case 4: gameField[row, col].StatusInGame = Statuses.FourAround;
-                        break;
-                    case 5: gameField[row, col].StatusInGame = Statuses.FiveAround;
-                        break;
-                    case 6: gameField[row, col].StatusInGame = Statuses.SixAround;
-                        break;
-                    case 7: gameField[row, col].StatusInGame = Statuses.SevenAround;
-                        break;
-                    case 8: gameField[row, col].StatusInGame = Statuses.EightAround;
-                        break;
+                    switch (BombCalculation(row, col))
+                    {
+                        case 0: gameField[row, col].StatusInGame = Statuses.Empty;
+                            break;
+                        case 1: gameField[row, col].StatusInGame = Statuses.OneAround;
+                            break;
+                        case 2: gameField[row, col].StatusInGame = Statuses.TwoAround;
+                            break;
+                        case 3: gameField[row, col].StatusInGame = Statuses.ThreeAround;
+                            break;
+                        case 4: gameField[row, col].StatusInGame = Statuses.FourAround;
+                            break;
+                        case 5: gameField[row, col].StatusInGame = Statuses.FiveAround;
+                            break;
+                        case 6: gameField[row, col].StatusInGame = Statuses.SixAround;
+                            break;
+                        case 7: gameField[row, col].StatusInGame = Statuses.SevenAround;
+                            break;
+                        case 8: gameField[row, col].StatusInGame = Statuses.EightAround;
+                            break;
+                    }
                 }
             }
             return inField;
@@ -158,40 +183,38 @@ namespace Miner.Alina
         {
             get {
                 bool inField = InField(row, col);
+                CellStatus statusReturn = 0;
                 if (inField)
                 {
                     switch (gameField[row, col].StatusInGame)
                     {
-                        case Statuses.Empty: gameField[row, col].StatusInGame = Statuses.Empty;
+                        case Statuses.Empty: statusReturn = CellStatus.Empty; 
                             break;
-                        case Statuses.HasMine: gameField[row, col].StatusInGame = Statuses.HasMine;
+                        case Statuses.HasMine: statusReturn = CellStatus.HasMine;
                             break;
-                        case Statuses.OneAround: gameField[row, col].StatusInGame = Statuses.OneAround;
+                        case Statuses.OneAround: statusReturn = CellStatus.OneAround;
                             break;
-                        case Statuses.TwoAround: gameField[row, col].StatusInGame = Statuses.TwoAround;
+                        case Statuses.TwoAround: statusReturn = CellStatus.TwoAround;
                             break;
-                        case Statuses.ThreeAround: gameField[row, col].StatusInGame = Statuses.ThreeAround;
+                        case Statuses.ThreeAround: statusReturn = CellStatus.ThreeAround;
                             break;
-                        case Statuses.FourAround: gameField[row, col].StatusInGame = Statuses.FourAround;
+                        case Statuses.FourAround: statusReturn = CellStatus.FourAround;
                             break;
-                        case Statuses.FiveAround: gameField[row, col].StatusInGame = Statuses.FiveAround;
+                        case Statuses.FiveAround: statusReturn = CellStatus.FiveAround;
                             break;
-                        case Statuses.SixAround: gameField[row, col].StatusInGame = Statuses.SixAround;
+                        case Statuses.SixAround: statusReturn = CellStatus.SixAround;
                             break;
-                        case Statuses.SevenAround: gameField[row, col].StatusInGame = Statuses.SevenAround;
+                        case Statuses.SevenAround: statusReturn = CellStatus.SevenAround;
                             break;
-                        case Statuses.EightAround: gameField[row, col].StatusInGame = Statuses.EightAround;
-                            break;
-                        default:
-                            
+                        case Statuses.EightAround: statusReturn = CellStatus.EightAround;
                             break;
                     }
-                    return (CellStatus)gameField[row, col].StatusInGame;
                 }
                 else
                 {
-                   return new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException();
                 }
+                return statusReturn;
                 }               
             }
         bool InField (int row, int col)

@@ -12,7 +12,8 @@ namespace Miner.Alina
         int heigh;
         int width;
         int bombs;
-        enum Statuses { 
+        public enum Statuses { 
+            Undefined,
             Empty = 1,
             HasMine,
             OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,       
@@ -21,23 +22,31 @@ namespace Miner.Alina
         {
             public bool StartStatus {get; set;}
             public Statuses StatusInGame { get; set; }
-            public oneCell(Statuses statusInGame)
+            public oneCell()
             {
                 StartStatus = false;
-                this.StatusInGame = statusInGame;
+                this.StatusInGame = Statuses.Undefined;
             }
         }
         oneCell [,] gameField;
         public MinerGame(string playerName, int heigh, int width)
+            : this(playerName, heigh, width, 0)
+        {
+
+        }
+        public MinerGame(string playerName, int heigh, int width, int bombs)
         {
             this.playerName = playerName;
             this.heigh = heigh;
             this.width = width;
             gameField = new oneCell[heigh, width];
-        }
-        public MinerGame(string playerName, int heigh, int width, int bombs)
-            :this(playerName, heigh, width)
-        {
+            for (int row = 0; row < heigh; row++)
+            {
+                for (int col = 0; col < width; col++)
+                {
+                    gameField[row, col] = new oneCell();
+                }
+            }
             Random randomNumber = new Random();
             for (int i = 0; i < bombs; i++)
             {
@@ -103,35 +112,35 @@ namespace Miner.Alina
         int BombCalculation(int row, int col)
         {
             int sum = 0;
-            if (gameField[row - 1, col - 1].StatusInGame == Statuses.HasMine && row != 0 && col != 0)
+            if (row != 0 && col != 0 && gameField[row - 1, col - 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row - 1, col].StatusInGame == Statuses.HasMine && row != 0)
+            if (row != 0 && gameField[row - 1, col].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row - 1, col + 1].StatusInGame == Statuses.HasMine && row != 0 && col != width)
+            if (row != 0 && col != width && gameField[row - 1, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row, col - 1].StatusInGame == Statuses.HasMine && col != 0)
+            if (col != 0 && gameField[row, col - 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row, col + 1].StatusInGame == Statuses.HasMine && col != width)
+            if (col != width && gameField[row, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row + 1, col - 1].StatusInGame == Statuses.HasMine && col != 0 && row != heigh )
+            if (col != 0 && row != heigh && gameField[row + 1, col - 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row + 1, col].StatusInGame == Statuses.HasMine && row != heigh)
+            if (row != heigh && gameField[row + 1, col].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (gameField[row + 1, col + 1].StatusInGame == Statuses.HasMine && col != width && row != heigh)
+            if (col != width && row != heigh && gameField[row + 1, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
@@ -139,6 +148,10 @@ namespace Miner.Alina
         }
         public bool OpenCell(int row, int col)
         {
+            if (lose)
+            {
+                isGameStarted = false;
+            }
             if (!isGameStarted)
             {
                 throw new InvalidOperationException("Нельзя открывать ячейки до начала игры");
@@ -208,6 +221,8 @@ namespace Miner.Alina
                             break;
                         case Statuses.EightAround: statusReturn = CellStatus.EightAround;
                             break;
+                        case Statuses.Undefined: statusReturn = CellStatus.NotOpened;
+                            break;
                     }
                 }
                 else
@@ -219,7 +234,7 @@ namespace Miner.Alina
             }
         bool InField (int row, int col)
         {
-            return (col > 0 && row > 0 && row <= heigh - 1 && col <= width - 1);
+            return (col >= 0 && row >= 0 && row <= heigh - 1 && col <= width - 1);
         }       
     }
 }

@@ -12,15 +12,16 @@ namespace Miner.Alina
         int heigh;
         int width;
         int bombs;
-        public enum Statuses { 
+        public enum Statuses
+        {
             Undefined,
             Empty = 1,
             HasMine,
-            OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,       
+            OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,
         };
         public class oneCell
         {
-            public bool StartStatus {get; set;}
+            public bool StartStatus { get; set; }
             public Statuses StatusInGame { get; set; }
             public oneCell()
             {
@@ -28,7 +29,7 @@ namespace Miner.Alina
                 this.StatusInGame = Statuses.Undefined;
             }
         }
-        oneCell [,] gameField;
+        oneCell[,] gameField;
         public MinerGame(string playerName, int heigh, int width)
             : this(playerName, heigh, width, 0)
         {
@@ -50,7 +51,7 @@ namespace Miner.Alina
             Random randomNumber = new Random();
             for (int i = 0; i < bombs; i++)
             {
-                SetBomb(randomNumber.Next(0, heigh-1), randomNumber.Next(0, width-1));
+                SetBomb(randomNumber.Next(0, heigh - 1), randomNumber.Next(0, width - 1));
             }
         }
 
@@ -77,7 +78,7 @@ namespace Miner.Alina
                 bombs += 1;
             }
             return inField;
- 
+
         }
         bool isGameStarted;
         public bool IsGameStarted
@@ -92,7 +93,8 @@ namespace Miner.Alina
         bool win;
         public bool Win
         {
-            get {
+            get
+            {
                 int counter = 0;
                 foreach (var element in gameField)
                 {
@@ -194,14 +196,15 @@ namespace Miner.Alina
 
         public CellStatus this[int row, int col]
         {
-            get {
+            get
+            {
                 bool inField = InField(row, col);
                 CellStatus statusReturn = 0;
                 if (inField)
                 {
                     switch (gameField[row, col].StatusInGame)
                     {
-                        case Statuses.Empty: statusReturn = CellStatus.Empty; 
+                        case Statuses.Empty: statusReturn = CellStatus.Empty;
                             break;
                         case Statuses.HasMine: statusReturn = CellStatus.HasMine;
                             break;
@@ -230,11 +233,11 @@ namespace Miner.Alina
                     throw new IndexOutOfRangeException();
                 }
                 return statusReturn;
-                }               
             }
-        bool InField (int row, int col)
+        }
+        bool InField(int row, int col)
         {
             return (col >= 0 && row >= 0 && row <= heigh - 1 && col <= width - 1);
-        }       
+        }
     }
 }

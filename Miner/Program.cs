@@ -57,8 +57,8 @@ namespace Miner
                             Console.WriteLine("Testing empty game...");
                             IMinerGame game = factory.NewEmptyGame("Dummy", new Tuple<int, int>(5, 6));
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
-                            Assert(game.Height == 6, "Высота не совпадает");
-                            Assert(game.Width == 5, "Ширина не совпадает");
+                            Assert(game.Height == 5, "Высота не совпадает");
+                            Assert(game.Width == 6, "Ширина не совпадает");
                             int bombs = 0;
                             for (int row = 0; row < game.Width; row++)
                             {
@@ -75,8 +75,8 @@ namespace Miner
                             Console.WriteLine("Testing random game...");
                             IMinerGame game = factory.NewRandomGame("Dummy", new Tuple<int, int>(7, 8), 50);
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
-                            Assert(game.Height == 8, "Высота не совпадает");
-                            Assert(game.Width == 7, "Ширина не совпадает");
+                            Assert(game.Height == 7, "Высота не совпадает");
+                            Assert(game.Width == 8, "Ширина не совпадает");
                             int bombs = 0;
                             for (int row = 0; row < game.Width; row++)
                             {

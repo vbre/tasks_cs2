@@ -11,9 +11,12 @@ namespace Miner.Valeriya
     {
         private bool isGameEmpty;
         private bool isGameStarted = false;
-        private bool isGameOver = false;
+        private bool isGameLost;
+        bool isGameWon;
         int gameFieldWidth = 0;
         int gameFieldHeight = 0;
+        int countOfOpenedCells = 0;
+        int countOfSetBombs = 0;
         static Random rand = new Random();
         GameCell[,] gameField;
         public MinerGame (int rowNumber, int collNumber)
@@ -35,55 +38,66 @@ namespace Miner.Valeriya
         {
             isGameEmpty = false;
             gameField = new GameCell[rowNumber,collNumber];
+            for (int i = 0; i < rowNumber; i++)
+            {
+                for (int j = 0; j < collNumber; j++)
+                {
+                    gameField[i, j] = new GameCell(isEmpty: true, isOpened: false);
+                }
+            }
+            gameFieldWidth = rowNumber;
+            gameFieldHeight = collNumber;
             while (countOfBombs != 0)
             {
                 int i = rand.Next(0, rowNumber);
                 int j = rand.Next(0, collNumber);
-                SetBomb (i, j);
+                if (SetBomb(i, j))
+                {
+                    countOfBombs--;
+                }
             }
-            gameFieldWidth = rowNumber;
-            gameFieldHeight = collNumber;
         }
 
         public bool SetBomb(int row, int col)
         {
             bool bombIsSet = false;
-            if (row >= 0 && row < Height && col >= 0 && col < Width && isGameEmpty && gameField[row, col].IsEmpty && !isGameStarted)
+            if (IsCellWithinField(row, col) && gameField[row, col].IsEmpty && !isGameStarted && !gameField[row, col].IsOpened)
             {
                 gameField[row,col].IsEmpty = false;
-                if (row - 1 >=0 && col - 1 >= 0 && row - 1 < Height && col - 1 < Width)
+                if (IsCellWithinField(row - 1, col - 1) && col - 1 < Width && gameField[row - 1,col - 1].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row - 1, col - 1].CountOfBombsAround++;
                 }
-                if (row - 1 >= 0 && col >= 0 && row - 1 < Height && col < Width)
+                if (IsCellWithinField(row - 1, col) && gameField[row - 1, col].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row - 1, col].CountOfBombsAround++;
                 }
-                if (row - 1 >= 0 && col + 1 >= 0 && row - 1 < Height && col + 1 < Width)
+                if (IsCellWithinField(row - 1, col + 1) && gameField[row - 1, col + 1].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row - 1, col + 1].CountOfBombsAround++;
                 }
-                if (row >= 0 && col - 1 >= 0 && row < Height && col - 1 < Width)
+                if (IsCellWithinField(row, col - 1) && gameField[row, col - 1].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row, col - 1].CountOfBombsAround++;
                 }
-                if (row >= 0 && col + 1 >= 0 && row < Height && col + 1 < Width)
+                if (IsCellWithinField(row, col + 1) && gameField[row, col + 1].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row, col + 1].CountOfBombsAround++;
                 }
-                if (row + 1 >= 0 && col - 1 >= 0 && row + 1 < Height && col - 1 < Width)
+                if (IsCellWithinField(row + 1, col - 1) && gameField[row, col].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row + 1, col - 1].CountOfBombsAround++;
                 }
-                if (row + 1 >= 0 && col >= 0 && row + 1 < Height && col < Width)
+                if (IsCellWithinField(row + 1, col) && gameField[row + 1, col].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row + 1, col].CountOfBombsAround++;
                 }
-                if (row + 1 >= 0 && col + 1 >= 0 && row + 1 < Height && col + 1 < Width)
+                if (IsCellWithinField(row + 1, col + 1) && gameField[row + 1, col + 1].IsEmpty)
                 {
-                    gameField[row, col].CountOfBombsAround++;
+                    gameField[row + 1, col + 1].CountOfBombsAround++;
                 }
                 bombIsSet = true;
+                countOfSetBombs++;
             }
 
             return bombIsSet;
@@ -101,23 +115,32 @@ namespace Miner.Valeriya
 
         public bool Win
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (gameField.Length - countOfOpenedCells == countOfSetBombs)
+                {
+                    isGameWon = true;
+                }
+
+                return isGameWon;
+            }
         }
 
         public bool Lose
         {
-            get { return isGameOver; }
+            get { return isGameLost; }
         }
 
         public bool OpenCell(int row, int col)
         {
-            if (row >= 0 && row < Height && col >= 0 && col < Width && !gameField[row, col].IsOpened && isGameStarted)
+            if (IsCellWithinField(row, col) && !gameField[row, col].IsOpened && isGameStarted)
             {
                 if (!gameField[row, col].IsEmpty)
                 {
-                    isGameOver = true;
+                    isGameLost = true;
                 }
                 gameField[row, col].IsOpened = true;
+                countOfOpenedCells++;
             }
 
             return gameField[row, col].IsOpened;
@@ -173,6 +196,17 @@ namespace Miner.Valeriya
                 }
                 return statusOfCell;
             }
+        }
+
+        bool IsCellWithinField (int row, int col)
+        {
+            bool isCellInField = false;
+            if (row >= 0 && row < Width && col >= 0 && col < Height)
+            {
+                isCellInField = true;
+            }
+
+            return isCellInField;
         }
 
         public int Width

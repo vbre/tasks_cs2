@@ -11,12 +11,12 @@ namespace Miner
         static void Main(string[] args)
         {
             List<IMinerGameFactory> factories = new List<IMinerGameFactory>();
-            factories.Add(new Alina.MinerGameFactory());
-            factories.Add(new Andrey.MinerGameFactory());
-            factories.Add(new Elena.MinerGameFactory());
-            factories.Add(new Konstantin.MinerGameFactory());
+            //factories.Add(new Alina.MinerGameFactory());
+            //factories.Add(new Andrey.MinerGameFactory());
+            //factories.Add(new Elena.MinerGameFactory());
+            //factories.Add(new Konstantin.MinerGameFactory());
             factories.Add(new Valeriya.MinerGameFactory());
-            factories.Add(new Vladimir.MinerGameFactory());
+            //factories.Add(new Vladimir.MinerGameFactory());
 
             if (args.Length > 0)
             {
@@ -72,11 +72,12 @@ namespace Miner
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Something was wrong with {0}", factory.ToString());
+                        Console.WriteLine(e);
                     }
                     Console.WriteLine("Factory {0} done.", factory.ToString());
                 }
             } // args
+            Console.ReadKey();
         }
 
         static void Assert(bool condition, string message)

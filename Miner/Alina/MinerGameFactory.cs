@@ -23,7 +23,7 @@ namespace Miner.Alina
 
         internal void Test()
         {
-            IMinerGame test = NewRandomGame("Alina", new Tuple<int, int>(10, 10), 25);
+            IMinerGame test = NewRandomGame("Alina", new Tuple<int, int>(10, 20), 50);
             PrintGame(test);
             test.Start();
             test.OpenCell(0, 0);
@@ -31,6 +31,8 @@ namespace Miner.Alina
             test.OpenCell(7, 6);
             PrintGame(test);
             test.OpenCell(1, 2);
+            PrintGame(test);
+            test.OpenCell(8, 8);
             PrintGame(test);
             Console.ReadKey();
         }

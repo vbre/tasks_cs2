@@ -19,17 +19,17 @@ namespace Miner.Alina
             HasMine,
             OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,
         };
-        public class oneCell
+        public class OneCell
         {
             public bool StartStatus { get; set; }
             public Statuses StatusInGame { get; set; }
-            public oneCell()
+            public OneCell()
             {
                 StartStatus = false;
                 this.StatusInGame = Statuses.Undefined;
             }
         }
-        oneCell[,] gameField;
+        OneCell[,] gameField;
         public MinerGame(string playerName, int heigh, int width)
             : this(playerName, heigh, width, 0)
         {
@@ -40,12 +40,12 @@ namespace Miner.Alina
             this.playerName = playerName;
             this.heigh = heigh;
             this.width = width;
-            gameField = new oneCell[heigh, width];
+            gameField = new OneCell[heigh, width];
             for (int row = 0; row < heigh; row++)
             {
                 for (int col = 0; col < width; col++)
                 {
-                    gameField[row, col] = new oneCell();
+                    gameField[row, col] = new OneCell();
                 }
             }
             Random randomNumber = new Random();
@@ -109,7 +109,7 @@ namespace Miner.Alina
         bool lose;
         public bool Lose
         {
-            get { return lose; }
+            get {return lose; }
         }
         int BombCalculation(int row, int col)
         {
@@ -152,7 +152,7 @@ namespace Miner.Alina
         {
             if (lose)
             {
-                isGameStarted = false;
+                return false; 
             }
             if (!isGameStarted)
             {
@@ -202,30 +202,35 @@ namespace Miner.Alina
                 CellStatus statusReturn = 0;
                 if (inField)
                 {
-                    switch (gameField[row, col].StatusInGame)
+                    if (gameField[row, col].StartStatus == false)
                     {
-                        case Statuses.Empty: statusReturn = CellStatus.Empty;
-                            break;
-                        case Statuses.HasMine: statusReturn = CellStatus.HasMine;
-                            break;
-                        case Statuses.OneAround: statusReturn = CellStatus.OneAround;
-                            break;
-                        case Statuses.TwoAround: statusReturn = CellStatus.TwoAround;
-                            break;
-                        case Statuses.ThreeAround: statusReturn = CellStatus.ThreeAround;
-                            break;
-                        case Statuses.FourAround: statusReturn = CellStatus.FourAround;
-                            break;
-                        case Statuses.FiveAround: statusReturn = CellStatus.FiveAround;
-                            break;
-                        case Statuses.SixAround: statusReturn = CellStatus.SixAround;
-                            break;
-                        case Statuses.SevenAround: statusReturn = CellStatus.SevenAround;
-                            break;
-                        case Statuses.EightAround: statusReturn = CellStatus.EightAround;
-                            break;
-                        case Statuses.Undefined: statusReturn = CellStatus.NotOpened;
-                            break;
+                        statusReturn = CellStatus.NotOpened;
+                    }
+                    else
+                    {
+                        switch (gameField[row, col].StatusInGame)
+                        {
+                            case Statuses.Empty: statusReturn = CellStatus.Empty;
+                                break;
+                            case Statuses.HasMine: statusReturn = CellStatus.HasMine;
+                                break;
+                            case Statuses.OneAround: statusReturn = CellStatus.OneAround;
+                                break;
+                            case Statuses.TwoAround: statusReturn = CellStatus.TwoAround;
+                                break;
+                            case Statuses.ThreeAround: statusReturn = CellStatus.ThreeAround;
+                                break;
+                            case Statuses.FourAround: statusReturn = CellStatus.FourAround;
+                                break;
+                            case Statuses.FiveAround: statusReturn = CellStatus.FiveAround;
+                                break;
+                            case Statuses.SixAround: statusReturn = CellStatus.SixAround;
+                                break;
+                            case Statuses.SevenAround: statusReturn = CellStatus.SevenAround;
+                                break;
+                            case Statuses.EightAround: statusReturn = CellStatus.EightAround;
+                                break;
+                        }
                     }
                 }
                 else

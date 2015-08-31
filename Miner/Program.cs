@@ -60,9 +60,9 @@ namespace Miner
                             Assert(game.Height == 5, "Высота не совпадает");
                             Assert(game.Width == 6, "Ширина не совпадает");
                             int bombs = 0;
-                            for (int row = 0; row < game.Width; row++)
+                            for (int row = 0; row < game.Height; row++)
                             {
-                                for (int col = 0; col < game.Height; col++)
+                                for (int col = 0; col < game.Width; col++)
                                 {
                                     bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
                                 }
@@ -78,9 +78,9 @@ namespace Miner
                             Assert(game.Height == 7, "Высота не совпадает");
                             Assert(game.Width == 8, "Ширина не совпадает");
                             int bombs = 0;
-                            for (int row = 0; row < game.Width; row++)
+                            for (int row = 0; row < game.Height; row++)
                             {
-                                for (int col = 0; col < game.Height; col++)
+                                for (int col = 0; col < game.Width; col++)
                                 {
                                     bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
                                 }

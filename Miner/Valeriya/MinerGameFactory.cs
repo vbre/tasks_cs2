@@ -22,7 +22,29 @@ namespace Miner.Valeriya
 
         internal void Test()
         {
-            throw new NotImplementedException();
+            int Width = 0;
+            int Height = 0;
+            int bombs = 0;
+            Console.WriteLine("Hello, I'm a Miner game, please, choose type of game:\nFor Empty game type 0\nFor Random game type 1");
+            string typeOfGame = Console.ReadLine();
+            Console.WriteLine("Please, enter your name");
+            string playerName = Console.ReadLine();
+            Console.WriteLine("Please, enter field Width = ");
+            Int32.TryParse(Console.ReadLine(), out Width);
+            Console.WriteLine("Please, enter field Height = ");
+            Int32.TryParse(Console.ReadLine(), out Height);
+            
+            switch (typeOfGame)
+            {
+                case "0":
+                    IMinerGame emptyGame = NewEmptyGame(playerName, new Tuple<int, int>(Height, Width));
+                    break;
+                case "1":
+                    Console.WriteLine("Please, specify number of bombs on the field");
+                    Int32.TryParse(Console.ReadLine(), out bombs);
+                    IMinerGame randomGame = NewRandomGame(playerName, new Tuple<int, int>(Height, Width), bombs);
+                    break;
+            }
         }
 
 

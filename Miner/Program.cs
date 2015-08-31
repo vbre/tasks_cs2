@@ -59,15 +59,6 @@ namespace Miner
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
                             Assert(game.Height == 5, "Высота не совпадает");
                             Assert(game.Width == 6, "Ширина не совпадает");
-                            int bombs = 0;
-                            for (int row = 0; row < game.Height; row++)
-                            {
-                                for (int col = 0; col < game.Width; col++)
-                                {
-                                    bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
-                                }
-                            }
-                            Assert(bombs == 0, "Количество мин на пустом поле не совпадает");
                         }
 
                         /* random game */
@@ -77,15 +68,6 @@ namespace Miner
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
                             Assert(game.Height == 7, "Высота не совпадает");
                             Assert(game.Width == 8, "Ширина не совпадает");
-                            int bombs = 0;
-                            for (int row = 0; row < game.Height; row++)
-                            {
-                                for (int col = 0; col < game.Width; col++)
-                                {
-                                    bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
-                                }
-                            }
-                            Assert(bombs == 50, "Количество мин не совпадает");
                         }
                     }
                     catch (Exception e)

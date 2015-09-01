@@ -10,7 +10,10 @@ namespace Encapsulation.Valeriya
     {
         public void MoneyMoney()
         {
-            throw new NotImplementedException();
+            Money m = new Money(1018);
+            Money m1 = new Money(26,56);
+            Money m2 = new Money(1, 58);
+            int m3 = m1.Hrivnas + m2.Hrivnas;
         }
     }
 }

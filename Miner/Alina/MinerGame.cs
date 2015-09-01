@@ -8,18 +8,20 @@ namespace Miner.Alina
 {
     class MinerGame : IMinerGame
     {
-        string playerName;
-        int heigh;
-        int width;
         int bombs;
-        public enum Statuses
+        string playerName;
+        string PlayerName { get { return playerName; } }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
+        enum Statuses
         {
             Undefined,
             Empty = 1,
             HasMine,
             OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,
         };
-        public class OneCell
+        class OneCell
         {
             public bool StartStatus { get; set; }
             public Statuses StatusInGame { get; set; }
@@ -38,8 +40,8 @@ namespace Miner.Alina
         public MinerGame(string playerName, int heigh, int width, int bombs)
         {
             this.playerName = playerName;
-            this.heigh = heigh;
-            this.width = width;
+            Height = heigh;
+            Width = width;
             gameField = new OneCell[heigh, width];
             for (int row = 0; row < heigh; row++)
             {
@@ -55,18 +57,9 @@ namespace Miner.Alina
             }
         }
 
-        public int Width
-        {
-            get { return width; }
-        }
-
-        public int Height
-        {
-            get { return heigh; }
-        }
         public bool SetBomb(int row, int col)
         {
-            if (isGameStarted)
+            if (IsGameStarted)
             {
                 throw new InvalidOperationException("Нельзя устанавливать бомбы после старта игры");
             }
@@ -80,15 +73,11 @@ namespace Miner.Alina
             return inField;
 
         }
-        bool isGameStarted;
-        public bool IsGameStarted
-        {
-            get { return isGameStarted; }
-        }
+        public bool IsGameStarted { get; private set; }
 
         public void Start()
         {
-            isGameStarted = true;
+            IsGameStarted = true;
         }
         bool win;
         public bool Win
@@ -122,7 +111,7 @@ namespace Miner.Alina
             {
                 sum += 1;
             }
-            if (row != 0 && col != width && gameField[row - 1, col + 1].StatusInGame == Statuses.HasMine)
+            if (row != 0 && col != Width && gameField[row - 1, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
@@ -130,19 +119,19 @@ namespace Miner.Alina
             {
                 sum += 1;
             }
-            if (col != width && gameField[row, col + 1].StatusInGame == Statuses.HasMine)
+            if (col != Width && gameField[row, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (col != 0 && row != heigh && gameField[row + 1, col - 1].StatusInGame == Statuses.HasMine)
+            if (col != 0 && row != Height && gameField[row + 1, col - 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (row != heigh && gameField[row + 1, col].StatusInGame == Statuses.HasMine)
+            if (row != Height && gameField[row + 1, col].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
-            if (col != width && row != heigh && gameField[row + 1, col + 1].StatusInGame == Statuses.HasMine)
+            if (col != Width && row != Height && gameField[row + 1, col + 1].StatusInGame == Statuses.HasMine)
             {
                 sum += 1;
             }
@@ -150,21 +139,26 @@ namespace Miner.Alina
         }
         public bool OpenCell(int row, int col)
         {
-            if (lose)
+            int counter = 0;
+            bool inField = InField(row, col);
+            if (lose || win)
             {
-                return false; 
+                inField = false; 
             }
-            if (!isGameStarted)
+            if (!IsGameStarted)
             {
                 throw new InvalidOperationException("Нельзя открывать ячейки до начала игры");
-            }
-            bool inField = InField(row, col);
+            }           
             if (inField)
             {
                 gameField[row, col].StartStatus = true;
                 if (gameField[row, col].StatusInGame == Statuses.HasMine)
                 {
                     lose = true;
+                }
+                else if (counter == gameField.Rank - bombs)
+                {
+                    win = true;
                 }
                 else
                 {
@@ -191,6 +185,7 @@ namespace Miner.Alina
                     }
                 }
             }
+            counter++;
             return inField;
         }
 
@@ -242,7 +237,7 @@ namespace Miner.Alina
         }
         bool InField(int row, int col)
         {
-            return (col >= 0 && row >= 0 && row <= heigh - 1 && col <= width - 1);
+            return (col >= 0 && row >= 0 && row <= Height - 1 && col <= Width - 1);
         }
     }
 }

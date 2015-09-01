@@ -9,9 +9,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorAverage", "SensorAverage\SensorAverage.csproj", "{08050BB0-5EE8-41BF-A364-BA81D123EF4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miner", "Miner\Miner.csproj", "{66BBEA79-3DFC-4C14-8869-F8F384C0D7FB}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays2", "Arrays2\Arrays2.csproj", "{1EBFC6AC-957D-44CB-B69F-808129D6F38C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{15D75C11-AE96-4B8C-A5F8-3B35BF40C184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encapsulation", "Encapsulation\Encapsulation.csproj", "{0B86DA56-DD67-4418-A8A4-9A6E058EC444}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +42,10 @@ Global
 		{15D75C11-AE96-4B8C-A5F8-3B35BF40C184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15D75C11-AE96-4B8C-A5F8-3B35BF40C184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15D75C11-AE96-4B8C-A5F8-3B35BF40C184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B86DA56-DD67-4418-A8A4-9A6E058EC444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B86DA56-DD67-4418-A8A4-9A6E058EC444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B86DA56-DD67-4418-A8A4-9A6E058EC444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B86DA56-DD67-4418-A8A4-9A6E058EC444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

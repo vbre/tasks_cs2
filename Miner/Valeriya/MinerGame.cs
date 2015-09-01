@@ -12,7 +12,7 @@ namespace Miner.Valeriya
         private bool isGameEmpty;
         private bool isGameStarted = false;
         private bool isGameLost;
-        bool isGameWon;
+        private bool isGameWon;
         int gameFieldWidth = 0;
         int gameFieldHeight = 0;
         int countOfOpenedCells = 0;

@@ -55,7 +55,7 @@ namespace Miner.Valeriya
                     }
                     if (randomGame.Win)
                     {
-                        Console.WriteLine("The Victory is yours!");
+                        Console.WriteLine("{0} the Victory is yours!", playerName);
                     }
                     else
                     {

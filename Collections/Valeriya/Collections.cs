@@ -139,7 +139,21 @@ namespace Collections.Valeriya
 
         public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            Dictionary<char, IList<string>> returnDictionary = new Dictionary<char, IList<string>>();
+            foreach (var elem in text)
+            {
+                if (!returnDictionary.ContainsKey(elem[0]))
+                {
+                    returnDictionary.Add(elem[0], new List<string>());
+                    returnDictionary[elem[0]].Add(elem);
+                }
+                else
+                {
+                    returnDictionary[elem[0]].Add(elem);
+                }
+            }
+
+            return returnDictionary;
         }
     }
 }

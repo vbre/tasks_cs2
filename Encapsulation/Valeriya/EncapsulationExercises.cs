@@ -15,14 +15,14 @@ namespace Encapsulation.Valeriya
             Console.WriteLine("float: {0}", (float)m1);
             Console.WriteLine(m3);
             Console.WriteLine("------------Matrix------------");
-            Matrix matrix1 = new Matrix();
-            Matrix matrix2 = new Matrix();
+            Matrix matrix1 = new Matrix(2);
+            Matrix matrix2 = new Matrix(2);
             Matrix matrix3 = matrix1 + matrix2;
             Matrix.PrintMatrix(matrix1);
             Matrix.PrintMatrix(matrix2);
-            //Matrix.PrintMatrix(matrix3);
-            Matrix matrix4 = matrix1 * matrix2;
-            Matrix.PrintMatrix(matrix4);
+            Matrix.PrintMatrix(matrix3);
+            Matrix matrix4 = matrix1 - matrix2;
+            Matrix.PrintMatrix(matrix3);
             Console.ReadKey();
         }
     }

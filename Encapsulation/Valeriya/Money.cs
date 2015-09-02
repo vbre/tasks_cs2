@@ -39,12 +39,110 @@ namespace Encapsulation.Valeriya
 
         public static Money operator+ (Money operand1, Money operand2)
         {
-            return new Money(operand1.Kopeyki + operand2.Kopeyki);
+            return new Money(operand1.kopeiky + operand2.kopeiky);
         }
 
-        public static Money operator *(Money operand1, int operand2)
+        public static Money operator* (Money operand1, int operand2)
         {
-            return new Money(operand1.Kopeyki * operand2);
+            return new Money(operand1.kopeiky * operand2);
+        }
+
+        public static Money operator* (int operand1, Money operand2)
+        {
+            return new Money(operand2.kopeiky * operand1);
+        }
+
+        public static Money operator- (Money operand1, Money operand2)
+        {
+            return new Money(operand1.kopeiky - operand2.kopeiky);
+        }
+
+        public static Money operator/ (int operand1, Money operand2)
+        {
+            return new Money(operand2.kopeiky / operand1);
+        }
+
+        public static bool operator!= (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.kopeiky != operand2.kopeiky)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool operator== (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.kopeiky == operand2.kopeiky)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool operator> (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.kopeiky > operand2.kopeiky)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool operator< (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.kopeiky < operand2.kopeiky)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool operator>= (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.kopeiky >= operand2.kopeiky)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static bool operator<= (Money operand1, Money operand2)
+        {
+            bool result = false;
+            if (operand1.Kopeyki <= operand2.Kopeyki)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Your sum is {0} kopecs", kopeiky);
+        }
+
+        public static explicit operator int (Money operand)
+        {
+            int kopecs = operand.kopeiky;
+            return kopecs;
+        }
+
+        public static explicit operator float (Money operand)
+        {
+            float kopecs = operand.kopeiky;
+            return kopecs;
         }
     }
 }

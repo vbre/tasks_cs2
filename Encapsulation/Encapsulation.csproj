@@ -49,6 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Valeriya\EncapsulationExercises.cs" />
+    <Compile Include="Valeriya\Matrix.cs" />
     <Compile Include="Valeriya\Money.cs" />
     <Compile Include="Vladimir\EncapsulationExercises.cs" />
   </ItemGroup>

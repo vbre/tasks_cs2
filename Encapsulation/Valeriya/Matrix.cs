@@ -37,10 +37,10 @@ namespace Encapsulation.Valeriya
             matrix[1, 1] = 4;
         }
 
-        public static double[,] MatrixToArray(Matrix operand)
+        public static double[,] MatrixToArray(Matrix inputMatrix)
         {
-            double[,] result = new double[operand.SizeOfMatrix, operand.SizeOfMatrix];
-            result = operand.matrix;
+            double[,] result = new double[inputMatrix.SizeOfMatrix, inputMatrix.SizeOfMatrix];
+            result = (double[,])inputMatrix.matrix.Clone();
             return result;
         }
 

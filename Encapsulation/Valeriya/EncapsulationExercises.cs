@@ -12,5 +12,11 @@ namespace Encapsulation.Valeriya
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkPriorityQueue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

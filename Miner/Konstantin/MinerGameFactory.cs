@@ -8,14 +8,17 @@ namespace Miner.Konstantin
 {
     class MinerGameFactory : IMinerGameFactory
     {
+        IMinerGame game;    
         public IMinerGame NewEmptyGame(string playerName, Tuple<int, int> rowsCols)
         {
-            throw new NotImplementedException();
+            game = new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2);
+            return game;
         }
 
         public IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs)
         {
-            throw new NotImplementedException();
+            game = new MinerGame(playerName, rowsCols.Item1, rowsCols.Item2);
+            return game;
         }
 
         internal void Test()

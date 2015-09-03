@@ -14,13 +14,13 @@ namespace Encapsulation.Valeriya
             //Console.WriteLine("int: {0}", (int)m1);
             //Console.WriteLine("float: {0}", (float)m1);
             //Console.WriteLine(m3);
-            //Console.WriteLine("------------Matrix------------");
-            Matrix matrix1 = new Matrix(3);
-            Matrix matrix2 = new Matrix(3);
-            Matrix matrix3 = matrix1 + matrix2;
-            Matrix.PrintMatrix(matrix1);
-            Matrix.PrintMatrix(matrix2);
-            Matrix.PrintMatrix(matrix3);
+            //Console.WriteLine("------------SquarredMatrix------------");
+            SquarredMatrix matrix1 = new SquarredMatrix(3);
+            SquarredMatrix matrix2 = new SquarredMatrix(3);
+            SquarredMatrix matrix3 = matrix1 + matrix2;
+            SquarredMatrix.PrintMatrix(matrix1);
+            SquarredMatrix.PrintMatrix(matrix2);
+            SquarredMatrix.PrintMatrix(matrix3);
             Console.ReadKey();
         }
     }

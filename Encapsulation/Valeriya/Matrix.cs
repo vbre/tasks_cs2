@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
-    class Matrix
+    class SquarredMatrix
     {
         static Random rnd = new Random();
         double[,] matrix = null;
-        public Matrix(int sizeOfMatrix)
+        public SquarredMatrix(int sizeOfMatrix)
         {
             matrix = new double[sizeOfMatrix, sizeOfMatrix];
 
@@ -23,12 +23,12 @@ namespace Encapsulation.Valeriya
             }
         }
 
-        public Matrix (double[,] matrixInArray)
+        public SquarredMatrix (double[,] matrixInArray)
         {
             matrix  = matrixInArray;
         }
 
-        public Matrix()
+        public SquarredMatrix()
         {
             matrix = new double[2, 2];
             matrix[0, 0] = 1;
@@ -37,7 +37,15 @@ namespace Encapsulation.Valeriya
             matrix[1, 1] = 4;
         }
 
-        public static double[,] MatrixToArray(Matrix inputMatrix)
+        public T this[int row, int col]
+        {
+            get;
+            set;
+            //get { return this[row,col]; }
+            //set { this[row, col] = value; }
+        }
+
+        public static double[,] MatrixToArray(SquarredMatrix inputMatrix)
         {
             double[,] result = new double[inputMatrix.SizeOfMatrix, inputMatrix.SizeOfMatrix];
             result = (double[,])inputMatrix.matrix.Clone();
@@ -49,60 +57,68 @@ namespace Encapsulation.Valeriya
             get { return (int)(Math.Sqrt(matrix.Length)); }
         }
 
-        public static Matrix operator+ (Matrix operand1, Matrix operand2)
+        public static SquarredMatrix operator+ (SquarredMatrix operand1, SquarredMatrix operand2)
         {
-            double[,] sumArray = new double[operand1.SizeOfMatrix, operand2.SizeOfMatrix];
-            double[,] operand1Array = MatrixToArray(operand1);
-            double[,] operand2Array = MatrixToArray(operand2);
+            SquarredMatrix result = new SquarredMatrix(operand1.SizeOfMatrix);
 
             for (int i = 0; i < operand1.SizeOfMatrix; i++)
             {
                 for (int j = 0; j < operand2.SizeOfMatrix; j++)
                 {
-                    sumArray[i, j] = operand1Array[i, j] + operand2Array[i, j];
+                    result[i, j] = operand1[i, j] + operand2[i, j];
                 }
             }
-            Matrix sum = new Matrix(sumArray);
-            return sum;
+            return result;
         }
 
-        public static Matrix operator- (Matrix operand1, Matrix operand2)
+        public static SquarredMatrix operator- (SquarredMatrix operand1, SquarredMatrix operand2)
         {
-            double[,] differenceArray = new double[operand1.SizeOfMatrix, operand2.SizeOfMatrix];
-            double[,] operand1Array = MatrixToArray(operand1);
-            double[,] operand2Array = MatrixToArray(operand2);
+            SquarredMatrix result = new SquarredMatrix(operand1.SizeOfMatrix);
 
             for (int i = 0; i < operand1.SizeOfMatrix; i++)
             {
                 for (int j = 0; j < operand2.SizeOfMatrix; j++)
                 {
-                    differenceArray[i, j] = operand1Array[i, j] - operand2Array[i, j];
+                    result[i, j] = operand1[i, j] - operand2[i, j];
                 }
             }
-            Matrix difference = new Matrix(differenceArray);
-            return difference;
+            return result;
         }
 
-        public static Matrix MultiplyWithIdentityMatrix(Matrix inputMatrix)
+        public static SquarredMatrix MultiplyWithIdentityMatrix(SquarredMatrix inputMatrix)
         {
-            return new Matrix(inputMatrix.SizeOfMatrix);
+            SquarredMatrix result = new SquarredMatrix(inputMatrix.SizeOfMatrix);
+            //copy inputMatrix to result
+            return result;
         }
 
-        public static void PrintMatrix(Matrix operand)
+        public static void PrintMatrix(SquarredMatrix operand)
         {
-            double[,] operandArray = MatrixToArray(operand);
-
             for (int i = 0; i < operand.SizeOfMatrix; i++)
             {
                 for (int j = 0; j < operand.SizeOfMatrix; j++)
                 {
-                    Console.Write(operandArray[i,j] + " ");
+                    Console.Write(operand[i,j] + " ");
                 }
                 Console.WriteLine("\n");
             }
 
             Console.WriteLine("------------------------------");
         }
+
+    }
+
+    class Matrix<T>
+    {
+        static Random rnd = new Random();
+        private T[,] internalData = null;
+        public Matrix(int width, int height)
+        {
+            internalData = new T[width, height];
+        }
+
+       
+    
 
     }
 }

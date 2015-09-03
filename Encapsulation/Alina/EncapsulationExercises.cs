@@ -54,6 +54,12 @@ namespace Encapsulation.Alina
             Matrix matrix5 = matrix1 * 5;
             matrix5.PrintMatrix(matrix2);
 
+//------------------------------------------------------------------
+//          class GeneralizedMatrixMatrix
+            GeneralizedMatrix<int> matrix6 = new GeneralizedMatrix<int> (2, 2);
+
+
+
             Console.ReadKey();
 
         }

@@ -45,6 +45,7 @@
     <Compile Include="Andrey\EncapsulationExercises.cs" />
     <Compile Include="Elena\EncapsulationExercises.cs" />
     <Compile Include="IEncapsulationExercises.cs" />
+    <Compile Include="IPriorityQueue.cs" />
     <Compile Include="Konstantin\EncapsulationExercises.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

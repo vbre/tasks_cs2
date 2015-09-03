@@ -23,5 +23,11 @@ namespace Encapsulation.Valeriya
             SquarredMatrix.PrintMatrix(matrix3);
             Console.ReadKey();
         }
+
+
+        public void WorkPriorityQueue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

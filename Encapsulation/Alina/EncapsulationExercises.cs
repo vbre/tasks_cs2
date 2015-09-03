@@ -43,7 +43,19 @@ namespace Encapsulation.Alina
             Console.WriteLine(m11);
             Money m12 = Money.Clone(m2);
             Console.WriteLine(m12);
+
+//------------------------------------------------------------------
+//          class Matrix
+
+            Matrix matrix1 = new Matrix(3, 3);
+            Matrix matrix2 = new Matrix(3, 3);
+            Matrix matrix3 = matrix1 + matrix2;
+            Matrix matrix4 = matrix1 - matrix2;
+            Matrix matrix5 = matrix1 * 5;
+            matrix5.PrintMatrix(matrix2);
+
             Console.ReadKey();
+
         }
     }
 }

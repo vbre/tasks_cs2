@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alina\EncapsulationExercises.cs" />
+    <Compile Include="Alina\Matrix.cs" />
     <Compile Include="Alina\Money.cs" />
     <Compile Include="Alina\Number.cs" />
     <Compile Include="Andrey\EncapsulationExercises.cs" />

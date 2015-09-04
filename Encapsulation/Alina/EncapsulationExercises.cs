@@ -44,8 +44,8 @@ namespace Encapsulation.Alina
             Money m12 = Money.Clone(m2);
             Console.WriteLine(m12);
 
-//------------------------------------------------------------------
-//          class Matrix
+            //------------------------------------------------------------------
+            //          class Matrix
 
             Matrix matrix1 = new Matrix(3, 3);
             Matrix matrix2 = new Matrix(3, 3);
@@ -54,9 +54,27 @@ namespace Encapsulation.Alina
             Matrix matrix5 = matrix1 * 5;
             matrix5.PrintMatrix(matrix2);
 
-//------------------------------------------------------------------
-//          class GeneralizedMatrixMatrix
-            GeneralizedMatrix<int> matrix6 = new GeneralizedMatrix<int> (2, 2);
+            //------------------------------------------------------------------
+            //          class ComplexNumbers
+
+            ComplexNumbers number1 = new ComplexNumbers(4, 8);
+            ComplexNumbers number2 = new ComplexNumbers(3, 7);
+            ComplexNumbers number3 = number1 + number2;
+            ComplexNumbers number4 = number1 - number2;
+            ComplexNumbers number5 = number1 * number2;
+            ComplexNumbers number6 = number1 / number2;
+            ComplexNumbers number7 = number1 * 2;
+            ComplexNumbers number8 = number1 / 2;
+            Console.WriteLine(number1);
+            Console.WriteLine(number4);
+            Console.WriteLine(number5);
+            Console.WriteLine(number6);
+            Console.WriteLine(number7);
+            Console.WriteLine(number8);
+            bool isTrue1 = number1 == number2;
+            bool isTrue2 = number1 != number2;
+            Console.WriteLine(isTrue1);
+            Console.WriteLine(isTrue2);
 
 
 

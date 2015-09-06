@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Alina
 {
-    class Matrix
+    public class Matrix
     {
         int[,] matrix;
         int matrixHigh;
@@ -18,17 +18,12 @@ namespace Encapsulation.Alina
             this.matrixHigh = matrixHigh;
             this.matrixWidth = matrixWidth;
             matrix = new int[matrixHigh, matrixWidth];
-            for (int i = 0; i < matrixHigh; i++)
-            {
-                for (int j = 0; j < matrixWidth; j++)
-                {
-                    matrix[i, j] = 1;
-                }
-            }
         }
         public Matrix(int[,] matrix)
         {
             this.matrix = matrix;
+            this.matrixHigh = matrix.GetLength(0);
+            this.matrixWidth = matrix.GetLength(1);
         }
 
         public int this[int index1, int index2]
@@ -45,12 +40,12 @@ namespace Encapsulation.Alina
 
         public static Matrix operator +(Matrix operand1, Matrix operand2)
         {
-            int[,] sum = new int [operand1.matrixHigh, operand1.matrixWidth];
+            int[,] sum = new int[operand1.matrixHigh, operand1.matrixWidth];
             for (int i = 0; i < operand1.matrixHigh; i++)
             {
                 for (int j = 0; j < operand1.matrixWidth; j++)
                 {
-                    sum[i,j] = operand1[i, j] + operand2[i, j];
+                    sum[i, j] = operand1[i, j] + operand2[i, j];
                 }
             }
             return new Matrix(sum);
@@ -92,13 +87,13 @@ namespace Encapsulation.Alina
             return new Matrix(result);
         }
 
-        public void PrintMatrix(Matrix matrix)
+        public static void PrintMatrix(Matrix matrix)
         {
-            for (int i = 0; i <= matrix.MatrixHigh; i++)
+            for (int i = 0; i < matrix.MatrixHigh; i++)
             {
-                for (int j = 0; j <= matrix.matrixWidth; j++)
+                for (int j = 0; j < matrix.matrixWidth; j++)
                 {
-                    Console.Write("{0}", matrix[i,j]);
+                    Console.Write("{0}", matrix[i, j]);
                 }
                 Console.Write(Environment.NewLine);
             }

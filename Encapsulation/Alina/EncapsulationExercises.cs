@@ -47,12 +47,26 @@ namespace Encapsulation.Alina
             //------------------------------------------------------------------
             //          class Matrix
 
-            Matrix matrix1 = new Matrix(3, 3);
-            Matrix matrix2 = new Matrix(3, 3);
+            int[,] myArr1 = new int[,]
+            {
+                {2,2,2,2,2},
+                {2,2,2,2,2},
+                {2,2,2,2,2},
+            };
+            int[,] myArr2 = new int[,]
+            {
+                {1,1,1,1,1},
+                {1,1,1,1,1},
+                {1,1,1,1,1},
+            };
+            Matrix matrix1 = new Matrix(myArr1);
+            Matrix matrix2 = new Matrix(myArr2);
             Matrix matrix3 = matrix1 + matrix2;
             Matrix matrix4 = matrix1 - matrix2;
             Matrix matrix5 = matrix1 * 5;
-            matrix5.PrintMatrix(matrix2);
+            Matrix.PrintMatrix(matrix1);
+            Matrix.PrintMatrix(matrix3);
+            Matrix.PrintMatrix(matrix5);
 
             //------------------------------------------------------------------
             //          class ComplexNumbers

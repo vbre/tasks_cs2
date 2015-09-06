@@ -12,6 +12,10 @@ namespace Encapsulation.Konstantin
 
         public void Enqueue(T val, int priority)
         {
+            if (priority < 0)
+            {
+                throw new IndexOutOfRangeException("priority must be greater then 0");
+            }
             if (internalData.Count<priority)
             {
                 for (int i = internalData.Count; i < priority; i++)
@@ -24,23 +28,41 @@ namespace Encapsulation.Konstantin
 
         public T Dequeue()
         {
-            T firstVal;           
-            if (internalData[0].Count==0)
+            T firstVal;
+            int index = 0;
+            for (int i = 0; i < internalData.Count; i++)
             {
-                internalData.RemoveAt(0);
+                if (internalData[i].Count != 0)
+                {
+                    index = i;
+                    break;
+                }
             }
             firstVal = First();
-            internalData[0].RemoveFirst();
+            internalData[index].RemoveFirst();
             return firstVal;
         }
 
         public T First()
         {
-            return internalData[0].First();
+            int index = 0;
+            for (int i = 0; i < internalData.Count; i++)
+            {
+                if (internalData[i].Count!=0)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return internalData[index].First();
         }
 
         public T First(int priority)
         {
+            if (priority>internalData.Count-1||priority<0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             return internalData[priority].First();
         }
 
@@ -50,6 +72,10 @@ namespace Encapsulation.Konstantin
         }
         public T Last(int priority)
         {
+            if (priority > internalData.Count - 1 || priority < 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             return internalData[priority].Last();
         }
 
@@ -68,6 +94,10 @@ namespace Encapsulation.Konstantin
 
         public int GetCount(int priority)
         {
+            if (priority > internalData.Count - 1 || priority < 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             return internalData[priority].Count;
         }
     }

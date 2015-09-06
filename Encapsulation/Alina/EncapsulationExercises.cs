@@ -12,5 +12,11 @@ namespace Encapsulation.Alina
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkPriorityQueue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

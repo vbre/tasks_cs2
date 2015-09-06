@@ -30,6 +30,10 @@ namespace Encapsulation.Alina
 
         public T First(int priority)
         {
+            if (!myQueue.ContainsKey(priority) || myQueue[priority].Count == 0)
+            {
+                throw new Exception("There is no value with such priority");
+            }
             return myQueue[priority].Peek();
         }
 
@@ -40,6 +44,10 @@ namespace Encapsulation.Alina
 
         public T Last(int priority)
         {
+            if (!myQueue.ContainsKey(priority) || myQueue[priority].Count == 0)
+            {
+                throw new Exception("There is no value with such priority");
+            }
             return myQueue[priority].Last();
         }
 

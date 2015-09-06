@@ -10,7 +10,15 @@ namespace Encapsulation.Vladimir
     {
         public void MoneyMoney()
         {
-            throw new NotImplementedException();
+            Number.Test();
+            
+
         }
+
+
+
+
+
+
     }
 }

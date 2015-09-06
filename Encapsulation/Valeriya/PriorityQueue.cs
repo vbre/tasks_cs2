@@ -6,50 +6,136 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
-    class PriorityQueue : Encapsulation.IPriorityQueue <T>
+    class PriorityQueue <T> : Encapsulation.IPriorityQueue <T>
     {
-        List<Tuple<int, T>> priorityQueue = new List<Tuple<int, T>>;
+        List<Tuple<int, T>> priorityQueue;
+
+        public PriorityQueue()
+        {
+            priorityQueue = new List<Tuple<int, T>>();
+        }
+        
+        public Tuple<int, T> this[int elem]
+        {
+            get { return priorityQueue[elem]; }
+            set { priorityQueue[elem] = value; }
+        }
+
+        public void Add(int priority, T value)
+        {
+            priorityQueue.Add(Tuple.Create(priority, value));
+        }
+
         public int Count
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return priorityQueue.Count; }
         }
 
         public T Dequeue()
         {
-            throw new NotImplementedException();
+            T result = GetHighestPriorityElem().Item2;
+
+            if (priorityQueue.Count == 0)
+            {
+                throw new IndexOutOfRangeException("The queue is empty");
+            }
+              
+            return result;
         }
 
         public void Enqueue(T val, int priority)
         {
-            throw new NotImplementedException();
+            int index = 0;
+            if (priorityQueue.Count == 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            for (int i = 0; i < priorityQueue.Count; i++)
+            {
+                if (priorityQueue[i].Item1 > priority)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            priorityQueue.Insert(index, Tuple.Create(priority, val));
         }
 
         public T First()
         {
-            throw new NotImplementedException();
+            return priorityQueue[0].Item2;
         }
 
         public T First(int priority)
         {
-            throw new NotImplementedException();
+            T result = priorityQueue[0].Item2;
+            for (int i = 0; i < priorityQueue.Count; i++)
+            {
+                if (priorityQueue[i].Item1 == priority)
+                {
+                    result = priorityQueue[i].Item2;
+                    break;
+                }
+            }
+
+            return result;
         }
 
         public int GetCount(int priority)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            for (int i = 0; i < priorityQueue.Count; i++)
+            {
+                if (priorityQueue[i].Item1 == priority)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         public T Last()
         {
-            throw new NotImplementedException();
+            return priorityQueue[priorityQueue.Count - 1].Item2;
         }
 
         public T Last(int priority)
         {
-            throw new NotImplementedException();
+            T result = priorityQueue[0].Item2;
+            for (int i = priorityQueue.Count - 1; i >= 0; i--)
+            {
+                if (priorityQueue[i].Item1 == priority)
+                {
+                    result = priorityQueue[i].Item2;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        Tuple<int, T> GetHighestPriorityElem()
+        {
+            Tuple<int, T> minElemInQueue = priorityQueue[0];
+            for (int i = 0; i < priorityQueue.Count; i++)
+            {
+                if (priorityQueue[i].Item1 < minElemInQueue.Item1)
+                {
+                    minElemInQueue = priorityQueue[i];
+                }
+            }
+
+            return minElemInQueue;
+        }
+
+        public void PrintQueue ()
+        {
+            for (int i = 0; i < priorityQueue.Count; i++)
+            {
+                Console.WriteLine(priorityQueue[i]);
+            }
         }
     }
 }

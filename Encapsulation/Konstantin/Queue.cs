@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Konstantin
 {
-    class Queue<T>: IPriorityQueue<T>
+    class Queue<T> : IPriorityQueue<T>, ICollection<Tuple<T,int>>
     {
-        private List<LinkedList<T>> internalData = new List<LinkedList<T>>(); 
+        private List<LinkedList<T>> internalData = new List<LinkedList<T>>();
 
         public void Enqueue(T val, int priority)
         {
@@ -16,7 +16,7 @@ namespace Encapsulation.Konstantin
             {
                 throw new IndexOutOfRangeException("priority must be greater then 0");
             }
-            if (internalData.Count<priority)
+            if (internalData.Count < priority)
             {
                 for (int i = internalData.Count; i < priority; i++)
                 {
@@ -48,7 +48,7 @@ namespace Encapsulation.Konstantin
             int index = 0;
             for (int i = 0; i < internalData.Count; i++)
             {
-                if (internalData[i].Count!=0)
+                if (internalData[i].Count != 0)
                 {
                     index = i;
                     break;
@@ -59,7 +59,7 @@ namespace Encapsulation.Konstantin
 
         public T First(int priority)
         {
-            if (priority>internalData.Count-1||priority<0)
+            if (priority > internalData.Count - 1 || priority < 0)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -100,5 +100,72 @@ namespace Encapsulation.Konstantin
             }
             return internalData[priority].Count;
         }
+
+
+
+        public void Add(Tuple<T, int> item)
+        {
+            Enqueue(item.Item1, item.Item2);
+        }
+
+        public void Clear()
+        {
+            internalData.Clear();
+        }
+
+        public bool Contains(Tuple<T, int> item)
+        {
+            bool contains = false;
+            for (int i = 0; i < internalData.Count; i++)
+            {
+                if (internalData[i].Contains(item.Item1))
+                {
+                    contains = true;
+                    break;
+                }
+            }
+            return contains;
+        }
+
+        public void CopyTo(Tuple<T, int>[] array, int arrayIndex)
+        {
+            int iterator = arrayIndex;
+            foreach (var item in this)
+            {
+                array[iterator] = item;
+                iterator++;
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return this.IsReadOnly; }
+        }
+
+        public bool Remove(Tuple<T, int> item)
+        {
+            return this.Remove(item);
+        }
+
+        public IEnumerator<Tuple<T, int>> GetEnumerator()
+        {
+            for (int i = 0; i < internalData.Count; i++)
+            {
+                foreach (var item in internalData[i])
+                {
+                    if (internalData[i].Count!=0)
+                    {
+                        yield return Tuple.Create(item, i);
+                    } 
+                }
+            }
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 }
+
+

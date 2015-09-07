@@ -8,6 +8,14 @@ namespace Encapsulation.Vladimir
 {
     class EncapsulationExercises : IEncapsulationExercises
     {
+
+
+
+        public void WorkPriorityQueue()
+        {
+            throw new NotImplementedException();
+        }
+
         public void MoneyMoney()
         {
             Number.Test();

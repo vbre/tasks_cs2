@@ -191,18 +191,18 @@ namespace Miner.Vladimir
                 }
             }
             // Посчет весов ячеек входного массива (вес ячейки = количества бомб в окружающих ячейках)
-            int k = 1;
+            int indexI = 1;
             for (int i = 0; i < poleGame.Length; i++)
             {
-                int l = 1;
+                int indexJ = 1;
                 for (int j = 0; j < poleGame[i].Length; j++)
                 {
-                    poleGame[i][j].weightCells = workArray[k - 1][l - 1] + workArray[k - 1][l] + workArray[k - 1][l + 1] +
-                                                  workArray[k][l - 1] + workArray[k][l + 1] +
-                                                  workArray[k + 1][l - 1] + workArray[k + 1][l] + workArray[k + 1][l + 1];
-                    l++;
+                    poleGame[i][j].weightCells = workArray[indexI - 1][indexJ - 1] + workArray[indexI - 1][indexJ] + workArray[indexI - 1][indexJ + 1] +
+                                                  workArray[indexI][indexJ - 1] + workArray[indexI][indexJ + 1] +
+                                                  workArray[indexI + 1][indexJ - 1] + workArray[indexI + 1][indexJ] + workArray[indexI + 1][indexJ + 1];
+                    indexJ++;
                 }
-                k++;
+                indexI++;
             }
 
 

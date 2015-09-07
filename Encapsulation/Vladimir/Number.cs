@@ -48,6 +48,7 @@ namespace Encapsulation.Vladimir
             Console.WriteLine("someMoney= {0}", someMoney);
             Console.WriteLine("amount= {0}", amount);
 
+            Console.ReadKey();
             //-------------------------------------
 
             Complex c1 = new Complex(1, 1);
@@ -69,6 +70,43 @@ namespace Encapsulation.Vladimir
             Console.WriteLine("c1= {0}", c1);
 
             Console.ReadKey();
+            //-----------------------------
+
+            PriorityQueue<int> testQueue = new PriorityQueue<int>();
+            testQueue.Enqueue(1, 0);
+            testQueue.Enqueue(2, 0);
+            testQueue.Enqueue(3, 0);
+            testQueue.Enqueue(4, 0);
+            testQueue.Enqueue(5, 0);
+
+            testQueue.Enqueue(1, 2);
+            testQueue.Enqueue(2, 2);
+            testQueue.Enqueue(3, 3);
+            testQueue.Enqueue(4, 3);
+            testQueue.Enqueue(5, 5);
+
+            Console.WriteLine();
+            Console.WriteLine("First test {0}", testQueue.First());  // 1
+            Console.WriteLine("Last test {0}", testQueue.Last());    // 5
+            
+            Console.WriteLine("First test {0} с приоритетом {1}", testQueue.First(2), 2);  //1
+            Console.WriteLine("Last test {0} с приоритетом {1}", testQueue.Last(3), 3);    // 4
+
+            int p1 = 0;
+            Console.WriteLine("число элементов с приоритетом {0} = {1}", p1, testQueue.GetCount(p1));  //5
+            p1 = 2;
+            Console.WriteLine("число элементов с приоритетом {0} = {1}", p1, testQueue.GetCount(p1));  //2
+            p1 = 5;
+            Console.WriteLine("число элементов с приоритетом {0} = {1}", p1, testQueue.GetCount(p1));  //1
+
+            Console.ReadKey();
+            //-----------------------------
+
+
+
+
+
+
       }
     }
 }

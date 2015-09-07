@@ -51,9 +51,9 @@
     <Compile Include="Valeriya\EncapsulationExercises.cs" />
     <Compile Include="Vladimir\Complex.cs" />
     <Compile Include="Vladimir\EncapsulationExercises.cs" />
-    <Compile Include="Vladimir\Matrix.cs" />
     <Compile Include="Vladimir\Money.cs" />
     <Compile Include="Vladimir\Number.cs" />
+    <Compile Include="Vladimir\PriorityQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

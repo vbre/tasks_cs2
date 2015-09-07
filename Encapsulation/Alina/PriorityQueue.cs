@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Alina
 {
-    class PriorityQueue <T> : IPriorityQueue<T>
+    class PriorityQueue<T> : IPriorityQueue<T>, ICollection<Tuple<int, T>>
     {
         SortedDictionary<int, Queue<T>> myQueue = new SortedDictionary<int, Queue<T>>();
         public void Enqueue(T val, int priority)
@@ -20,12 +21,26 @@ namespace Encapsulation.Alina
 
         public T Dequeue()
         {
-            return myQueue.First().Value.Dequeue();
+            try
+            {
+                return myQueue.First().Value.Dequeue();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public T First()
         {
-            return myQueue.First().Value.Peek();
+            try
+            {
+                return myQueue.First().Value.Peek();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public T First(int priority)
@@ -39,7 +54,14 @@ namespace Encapsulation.Alina
 
         public T Last()
         {
-            return myQueue.Last().Value.ElementAt(myQueue.Last().Value.Count-1);
+            try
+            {
+                return myQueue.Last().Value.ElementAt(myQueue.Last().Value.Count - 1);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public T Last(int priority)
@@ -58,7 +80,76 @@ namespace Encapsulation.Alina
 
         public int GetCount(int priority)
         {
-           return myQueue[priority].Count;
+            return myQueue[priority].Count;
         }
+
+        public void Add(Tuple<int, T> item)
+        {
+            if (!myQueue.ContainsKey(item.Item1))
+            {
+                myQueue.Add(item.Item1, new Queue<T>());
+            }
+            myQueue[item.Item1].Enqueue(item.Item2);
+        }
+        public bool Remove(Tuple<int, T> item)
+        {
+            bool isRemoved = false;
+            if (myQueue.ContainsKey(item.Item1))
+            {
+                myQueue.Remove(item.Item1);
+                isRemoved = true;
+            }
+            return isRemoved;
+        }
+        public bool Contains(Tuple<int, T> item)
+        {
+            bool isElement = false;
+            if (myQueue.Values.Any(x => x.Contains(item.Item2)))
+            {
+                isElement = true;
+            }
+            return isElement;
+        }
+
+        public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
+        {
+            int count = 0;
+            Tuple<int, T>[] tuple = new Tuple<int, T>[myQueue.Values.Sum(q => q.Count)];
+            foreach (var item in myQueue)
+            {
+                tuple[count] = new Tuple<int, T>(item.Key, item.Value.Peek());
+                count++;
+            }
+        }
+        public void Clear()
+        {
+            myQueue.Clear();
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public IEnumerator<Tuple<int, T>> GetEnumerator()
+        {
+            foreach (var key in myQueue)
+            {
+                foreach (var value in key.Value)
+                {
+                    yield return new Tuple<int, T>(key.Key, value);
+                }
+            }
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
     }
 }
+

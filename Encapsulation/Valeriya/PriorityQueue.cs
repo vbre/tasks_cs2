@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
-    class PriorityQueue <T> : Encapsulation.IPriorityQueue <T>
+    class PriorityQueue <T> : Encapsulation.IPriorityQueue <T>, ICollection<Tuple<int, T>>
     {
         List<Tuple<int, T>> priorityQueue;
 
@@ -37,7 +37,7 @@ namespace Encapsulation.Valeriya
 
             if (priorityQueue.Count == 0)
             {
-                throw new IndexOutOfRangeException("The queue is empty");
+                throw new EmptyQueueException("The queue is empty");
             }
               
             return result;
@@ -46,10 +46,6 @@ namespace Encapsulation.Valeriya
         public void Enqueue(T val, int priority)
         {
             int index = 0;
-            if (priorityQueue.Count == 0)
-            {
-                throw new IndexOutOfRangeException();
-            }
             for (int i = 0; i < priorityQueue.Count; i++)
             {
                 if (priorityQueue[i].Item1 > priority)
@@ -130,12 +126,59 @@ namespace Encapsulation.Valeriya
             return minElemInQueue;
         }
 
-        public void PrintQueue ()
+      
+
+        public void Add(Tuple<int, T> item)
         {
-            for (int i = 0; i < priorityQueue.Count; i++)
+            priorityQueue.Add(item);
+        }
+
+        public void Clear()
+        {
+            priorityQueue.Clear();
+        }
+
+        public bool Contains(Tuple<int, T> item)
+        {
+            bool result = false;
+            if (priorityQueue.Contains(item))
             {
-                Console.WriteLine(priorityQueue[i]);
+                result = true;
             }
+
+            return result;
+        }
+
+        public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
+        {
+            priorityQueue.CopyTo(array, arrayIndex);
+        }
+
+        public bool IsReadOnly
+        {
+            get;
+        }
+
+        public bool Remove(Tuple<int, T> item)
+        {
+            bool result = false;
+            if (priorityQueue.Remove(item))
+            {
+                result = true;
+            }
+
+            return result;
+        } 
+        
+        public IEnumerator<Tuple<int, T>> GetEnumerator()
+        {
+                foreach (Tuple<int, T> item in priorityQueue)
+                    yield return item;
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+ 	        return this.GetEnumerator();
         }
     }
 }

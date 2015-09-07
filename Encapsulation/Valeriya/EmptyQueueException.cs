@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
-    class MyExceptionClass: Exception
+    class EmptyQueueException: ApplicationException
     {
-        public MyExceptionClass() : base ()
+        public EmptyQueueException(string msg) : base (msg)
         {
-            Console.WriteLine("There is no element with such priority");
         }
     }
 }

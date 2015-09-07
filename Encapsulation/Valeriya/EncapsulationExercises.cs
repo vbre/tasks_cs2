@@ -10,6 +10,14 @@ namespace Encapsulation.Valeriya
     {
         static Random rnd = new Random();
 
+        public static void PrintQueue(PriorityQueue<int> queue)
+        {
+            for (int i = 0; i < queue.Count; i++)
+            {
+                Console.WriteLine(queue[i]);
+            }
+        }
+
         public void WorkPriorityQueue()
         {
             PriorityQueue<int> intPriorityQueue = new PriorityQueue<int>();
@@ -29,7 +37,7 @@ namespace Encapsulation.Valeriya
             intPriorityQueue.Add(8, rnd.Next(1, 100));
             intPriorityQueue.Add(8, rnd.Next(1, 100));
             intPriorityQueue.Add(8, rnd.Next(1, 100));
-            intPriorityQueue.PrintQueue();
+            PrintQueue(intPriorityQueue);
 
             try
             {
@@ -48,15 +56,15 @@ namespace Encapsulation.Valeriya
                 Console.WriteLine("Count of elems with priority {0} is {1}", inputIndexForTestGetCount, intPriorityQueue.GetCount(inputIndexForTestFirst));
 
                 Console.WriteLine("The element {0} dequeued", intPriorityQueue.Dequeue());
-                intPriorityQueue.PrintQueue();
+                PrintQueue(intPriorityQueue);
 
                 Console.WriteLine("Enter the element<priority, value> to push");
                 Int32.TryParse(Console.ReadLine(), out priorityTest);
                 Int32.TryParse(Console.ReadLine(), out valueTest);
                 intPriorityQueue.Enqueue(valueTest, priorityTest);
-                intPriorityQueue.PrintQueue();
+                PrintQueue(intPriorityQueue);
             }
-            catch (Exception e)
+            catch (EmptyQueueException e)
             {
                 Console.WriteLine("Error: The queue is empty", e.Message);
             }

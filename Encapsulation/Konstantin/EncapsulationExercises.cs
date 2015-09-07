@@ -12,7 +12,7 @@ namespace Encapsulation.Konstantin
         {
             Money m1 = new Money();
             Money m2 = new Money(25,51);
-            Money m3 = new Money(768);
+            Money m3 = new Money(1024);
 
             int hrivnas = m1.Hrivnas;
             int kopecks = m1.Kopecks;
@@ -21,6 +21,7 @@ namespace Encapsulation.Konstantin
             int totalKopecs = (int)m2;
             float someMoney = (float)m2;
             string moneyString = (string)m2;
+            string moneyString1 = m2.ToString();
         }
 
 

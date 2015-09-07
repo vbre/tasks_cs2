@@ -18,7 +18,6 @@ namespace Encapsulation.Konstantin
             }
         }
 
-        public void Enqueue(T value, int priority)
         public ComplexNumber() { Real=0; Imaginary=0;}
 
         public ComplexNumber(double real, double imaginary)
@@ -72,6 +71,26 @@ namespace Encapsulation.Konstantin
         public static implicit operator string(ComplexNumber operand1)
         {
             return String.Format("{0}+{1}i",operand1.Real,operand1.Imaginary);
+        }
+        public override string ToString()
+        {
+ 	        return (string)this;
+        }
+        public static bool operator <(ComplexNumber operand1, ComplexNumber operand2)
+        {
+            return (operand1.Magnitude < operand2.Magnitude);
+        }
+        public static bool operator >(ComplexNumber operand1, ComplexNumber operand2)
+        {
+            return (operand1.Magnitude > operand2.Magnitude);
+        }
+        public static bool operator >=(ComplexNumber operand1, ComplexNumber operand2)
+        {
+            return (operand1.Magnitude >= operand2.Magnitude);
+        }
+        public static bool operator <=(ComplexNumber operand1, ComplexNumber operand2)
+        {
+            return (operand1.Magnitude < operand2.Magnitude);
         }
     }
 }

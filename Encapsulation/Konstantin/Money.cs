@@ -79,5 +79,9 @@ namespace Encapsulation.Konstantin
         {
             return String.Format("{0} hrivnas, {1} kopecks.", operand1.Hrivnas, operand1.Kopecks);
         }
+        public override string ToString()
+        {
+            return (string)this;
+        }
     }
 }

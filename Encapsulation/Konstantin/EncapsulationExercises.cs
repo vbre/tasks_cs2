@@ -10,7 +10,17 @@ namespace Encapsulation.Konstantin
     {
         public void MoneyMoney()
         {
-            throw new NotImplementedException();
+            Money m1 = new Money();
+            Money m2 = new Money(25,51);
+            Money m3 = new Money(768);
+
+            int hrivnas = m1.Hrivnas;
+            int kopecks = m1.Kopecks;
+
+            Money m4 = m1 + m3;
+            int totalKopecs = (int)m2;
+            float someMoney = (float)m2;
+            string moneyString = (string)m2;
         }
 
 

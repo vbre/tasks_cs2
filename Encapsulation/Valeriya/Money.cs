@@ -11,17 +11,11 @@ namespace Encapsulation.Valeriya
         private int kopeiky;
         public int Hrivnas
         {
-            get
-            {
-                return kopeiky / 100;
-            }
+            get { return kopeiky / 100; }
         }
         public int Kopeyki
         {
-            get
-            {
-                return kopeiky % 100;
-            }
+            get { return kopeiky % 100; }
 
         }
         public Money(int hrivnas, int kopeiky)
@@ -64,68 +58,32 @@ namespace Encapsulation.Valeriya
 
         public static bool operator!= (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.kopeiky != operand2.kopeiky)
-            {
-                result = true;
-            }
-
-            return result;
+            return operand1.kopeiky != operand2.kopeiky;
         }
 
         public static bool operator== (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.kopeiky == operand2.kopeiky)
-            {
-                result = true;
-            }
-
-            return result;
+           return operand1.kopeiky == operand2.kopeiky;
         }
 
         public static bool operator> (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.kopeiky > operand2.kopeiky)
-            {
-                result = true;
-            }
-
-            return result;
+            return operand1.kopeiky > operand2.kopeiky;
         }
 
         public static bool operator< (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.kopeiky < operand2.kopeiky)
-            {
-                result = true;
-            }
-
-            return result;
+            return operand1.kopeiky < operand2.kopeiky;
         }
 
         public static bool operator>= (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.kopeiky >= operand2.kopeiky)
-            {
-                result = true;
-            }
-
-            return result;
+            return operand1.kopeiky >= operand2.kopeiky;
         }
 
         public static bool operator<= (Money operand1, Money operand2)
         {
-            bool result = false;
-            if (operand1.Kopeyki <= operand2.Kopeyki)
-            {
-                result = true;
-            }
-
-            return result;
+            return operand1.Kopeyki <= operand2.Kopeyki;
         }
 
         public override string ToString()

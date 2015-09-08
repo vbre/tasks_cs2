@@ -9,6 +9,7 @@ namespace Miner
     enum CellStatus { 
         NotOpened = -1,
         Empty = 0, 
+        /*don't change the order*/
         OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,
         HasMine = 100
     }

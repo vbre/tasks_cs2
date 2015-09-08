@@ -29,5 +29,11 @@ namespace Encapsulation.Konstantin
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkCollectionInheritedClasses()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

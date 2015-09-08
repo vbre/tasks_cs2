@@ -40,5 +40,11 @@ namespace Encapsulation.Elena
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkCollectionInheritedClasses()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

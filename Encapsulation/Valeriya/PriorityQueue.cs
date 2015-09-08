@@ -140,13 +140,7 @@ namespace Encapsulation.Valeriya
 
         public bool Contains(Tuple<int, T> item)
         {
-            bool result = false;
-            if (priorityQueue.Contains(item))
-            {
-                result = true;
-            }
-
-            return result;
+            return priorityQueue.Contains(item);
         }
 
         public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
@@ -161,13 +155,7 @@ namespace Encapsulation.Valeriya
 
         public bool Remove(Tuple<int, T> item)
         {
-            bool result = false;
-            if (priorityQueue.Remove(item))
-            {
-                result = true;
-            }
-
-            return result;
+            return priorityQueue.Remove(item);
         } 
         
         public IEnumerator<Tuple<int, T>> GetEnumerator()

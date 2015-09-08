@@ -24,9 +24,9 @@ namespace Encapsulation.Vladimir
         }
 
 
-
-
-
-
+        public void WorkCollectionInheritedClasses()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -41,6 +41,9 @@ namespace Miner
         /// <returns>status of cell (not opened, empty, has mine, does not have mine but has some mines around)</returns>
         CellStatus this[int row, int col] { get; }
 
+
+
+
         int Width { get; }
         int Height { get; }
     }

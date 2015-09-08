@@ -40,6 +40,8 @@ namespace Encapsulation
                 if (exercises != null)
                 {
                     exercises.MoneyMoney();
+                    exercises.WorkPriorityQueue();
+                    exercises.WorkCollectionInheritedClasses();
                 }
             }
         }

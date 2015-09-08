@@ -20,5 +20,11 @@ namespace Encapsulation.Vladimir
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkCollectionInheritedClasses()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -18,5 +18,11 @@ namespace Encapsulation.Alina
         {
             throw new NotImplementedException();
         }
+
+
+        public void WorkCollectionInheritedClasses()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace Encapsulation
         void MoneyMoney();
 
         void WorkPriorityQueue();
+
+        void WorkCollectionInheritedClasses();
     }
 }

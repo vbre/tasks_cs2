@@ -64,57 +64,27 @@ namespace Encapsulation.Alina
         }
         public static bool operator ==  (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks == operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks == operand2.kopeks;
         }
         public static bool operator != (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks != operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks != operand2.kopeks;
         }
         public static bool operator > (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks > operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks > operand2.kopeks;
         }
         public static bool operator >= (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks >= operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks >= operand2.kopeks;
         }
         public static bool operator < (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks < operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks < operand2.kopeks;
         }
         public static bool operator <= (Money operand1, Money operand2)
         {
-            bool isTrue = false;
-            if (operand1.kopeks <= operand2.kopeks)
-            {
-                isTrue = true;
-            }
-            return isTrue;
+            return operand1.kopeks <= operand2.kopeks;
         }
 
         public override string ToString()

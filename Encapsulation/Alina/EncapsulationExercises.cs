@@ -33,14 +33,14 @@ namespace Encapsulation.Alina
             Console.WriteLine(m6.ToString());
             Money m7 = m3 / 5;
             Console.WriteLine(m7.ToString());
-            bool m8 = m1 == m2;
-            Console.WriteLine(m8);
-            bool m9 = m1 != m2;
-            Console.WriteLine(m9);
-            bool m10 = m1 > m2;
-            Console.WriteLine(m10);
-            bool m11 = m1 < m2;
-            Console.WriteLine(m11);
+            bool isMatrix1EqualMatrix2 = m1 == m2;
+            Console.WriteLine(isMatrix1EqualMatrix2);
+            bool isMatrix1NotEqualMatrix2 = m1 != m2;
+            Console.WriteLine(isMatrix1NotEqualMatrix2);
+            bool isMatrix1LargeMatrix2 = m1 > m2;
+            Console.WriteLine(isMatrix1LargeMatrix2);
+            bool isMatrix1LessMatrix2 = m1 < m2;
+            Console.WriteLine(isMatrix1LessMatrix2);
             Money m12 = Money.Clone(m2);
             Console.WriteLine(m12);
 
@@ -85,13 +85,11 @@ namespace Encapsulation.Alina
             Console.WriteLine(number6);
             Console.WriteLine(number7);
             Console.WriteLine(number8);
-            bool isTrue1 = number1 == number2;
-            bool isTrue2 = number1 != number2;
-            Console.WriteLine(isTrue1);
-            Console.WriteLine(isTrue2);
-
-
-
+            bool isNumber1EqualNumber2 = number1 == number2;
+            bool isNumber1NotEqualNumber2 = number1 != number2;
+            Console.WriteLine(isNumber1EqualNumber2);
+            Console.WriteLine(isNumber1NotEqualNumber2);
+            
             Console.ReadKey();
 
         }

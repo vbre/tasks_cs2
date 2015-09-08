@@ -37,9 +37,17 @@ namespace Encapsulation.Konstantin
             
             Student st1 = new Student() {firstName = "1", lastName = "2", birthDate = new DateTime(12,12,2012) };
             Tuple<string, string, DateTime> st1Key = new Tuple<string, string, DateTime>("1", "2", new DateTime(12, 12, 2012));
+
+            if (studentsBase.Contains(st1))
+            {
+                studentsBase.Add(st1);
+                Student st1Copy = studentsBase[st1Key];
+            }
+            else
+            {
+                Console.WriteLine("Student is not found");
+            }
             
-            studentsBase.Add(st1);
-            Student st1Copy = studentsBase[st1Key];
         }
     }
 }

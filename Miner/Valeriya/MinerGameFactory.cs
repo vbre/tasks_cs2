@@ -65,7 +65,11 @@ namespace Miner.Valeriya
             }
         }
 
+<<<<<<< HEAD
         void PrintGameField()
+=======
+        void IMinerGameFactory.Test()
+>>>>>>> master
         {
             for (int i = 0; i < Width; i++)
             {

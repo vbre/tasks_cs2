@@ -46,15 +46,22 @@
     <Compile Include="Elena\EncapsulationExercises.cs" />
     <Compile Include="IEncapsulationExercises.cs" />
     <Compile Include="IPriorityQueue.cs" />
+    <Compile Include="Konstantin\ComplexNumber.cs" />
     <Compile Include="Konstantin\EncapsulationExercises.cs" />
+    <Compile Include="Konstantin\Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Valeriya\Double.cs" />
     <Compile Include="Valeriya\EncapsulationExercises.cs" />
+<<<<<<< HEAD
     <Compile Include="Valeriya\Int.cs" />
     <Compile Include="Valeriya\Matrix.cs" />
     <Compile Include="Valeriya\Money.cs" />
     <Compile Include="Valeriya\Number.cs" />
+=======
+    <Compile Include="Valeriya\EmptyQueueException.cs" />
+    <Compile Include="Valeriya\PriorityQueue.cs" />
+>>>>>>> master
     <Compile Include="Vladimir\EncapsulationExercises.cs" />
   </ItemGroup>
   <ItemGroup>

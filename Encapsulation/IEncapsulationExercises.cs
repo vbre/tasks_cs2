@@ -9,5 +9,9 @@ namespace Encapsulation
     interface IEncapsulationExercises
     {
         void MoneyMoney();
+
+        void WorkPriorityQueue();
+
+        void WorkCollectionInheritedClasses();
     }
 }

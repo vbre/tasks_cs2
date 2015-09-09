@@ -8,9 +8,22 @@ namespace Encapsulation.Andrey
 {
     class EncapsulationExercises : IEncapsulationExercises
     {
+
         public void MoneyMoney()
         {
             throw new NotImplementedException();
         }
-    }
+
+
+        public void WorkPriorityQueue()
+        {
+            throw new NotImplementedException();
+        }
+    
+
+        public void WorkCollectionInheritedClasses()
+        {
+ 	        throw new NotImplementedException();
+        }
+}
 }

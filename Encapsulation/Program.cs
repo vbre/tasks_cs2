@@ -33,8 +33,11 @@ namespace Encapsulation
                     case "Vladimir":
                         exercises = new Vladimir.EncapsulationExercises();
                         break;
+                    case "MatrixExample":
+                        MatrixExample.MatrixExample.Do();
+                        break;
                     default:
-                        Console.WriteLine("Wrong argument. Choose one of: Alina, Andrey, Elena, Konstantin, Valeriya, Vladimir");
+                        Console.WriteLine("Wrong argument. Choose one of: Alina, Andrey, Elena, Konstantin, Valeriya, Vladimir, MatrixExample");
                         break;
                 }
                 if (exercises != null)

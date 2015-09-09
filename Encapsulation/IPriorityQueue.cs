@@ -8,6 +8,7 @@ namespace Encapsulation
 {
     interface IPriorityQueue <T>
     {
+        
         void Enqueue(T val, int priority);
         T Dequeue();
         T First();

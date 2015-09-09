@@ -9,6 +9,7 @@ namespace Miner
     enum CellStatus { 
         NotOpened = -1,
         Empty = 0, 
+        /*don't change the order*/
         OneAround, TwoAround, ThreeAround, FourAround, FiveAround, SixAround, SevenAround, EightAround,
         HasMine = 100
     }
@@ -40,6 +41,9 @@ namespace Miner
         /// <param name="col">column of field. must be within field, numbered from 0 to Width-1</param>
         /// <returns>status of cell (not opened, empty, has mine, does not have mine but has some mines around)</returns>
         CellStatus this[int row, int col] { get; }
+
+
+
 
         int Width { get; }
         int Height { get; }

@@ -9,7 +9,7 @@ namespace Collections.Vladimir
     class Collections : ICollections
     {
         public int SortPotatoes(List<IPotatoe> potatoeBag, out List<IPotatoe> goodPotatoes, out List<IPotatoe> badPotatoes)
-        {
+        { 
             goodPotatoes = new List<IPotatoe>();
             badPotatoes = new List<IPotatoe>();
 
@@ -145,9 +145,40 @@ namespace Collections.Vladimir
         //--------------------------------------------------------
 
 
+        
+        //
+        //List<string> inData = new List<string>();
+        //inData[0] = "abcd";
+        //inData[1] = "45da";
+        //inData[2] = "naa";
+        //inData[3] = "nasdfas";
+
+
         public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            Dictionary<char, IList<string>> answer = new Dictionary<char, IList<string>>();
+            foreach (string item in text)
+            {
+                answer.Add(item[0], new List<string>());
+                do
+                {
+                    answer[item[0]].Add(item);  // .Substring(1, item.Length));
+                }
+                while (answer.ContainsKey(item[0]));
+            }
+            return answer;
         }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

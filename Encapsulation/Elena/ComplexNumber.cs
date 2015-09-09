@@ -65,7 +65,11 @@ namespace Encapsulation.Elena
 
         public static ComplexNumber operator /(ComplexNumber operand1, int div)
         {
-            return new ComplexNumber(operand1.real/div, operand1.imegion/div);
+            if (div != 0)
+            {
+                return new ComplexNumber(operand1.real / div, operand1.imegion / div);
+            }
+            else { return null; }
         }
 
         public static bool operator ==(ComplexNumber operand1, ComplexNumber operand2)

@@ -72,11 +72,12 @@ namespace Miner
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Something was wrong with {0}", factory.ToString());
+                        Console.WriteLine(e);
                     }
                     Console.WriteLine("Factory {0} done.", factory.ToString());
                 }
             } // args
+            Console.ReadKey();
         }
 
         static void Assert(bool condition, string message)

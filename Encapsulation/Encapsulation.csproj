@@ -51,7 +51,13 @@
     <Compile Include="Alina\MyDictionary.cs" />
     <Compile Include="Alina\Student.cs" />    
     <Compile Include="Andrey\EncapsulationExercises.cs" />
+    <Compile Include="Elena\ComplexNumber.cs" />
     <Compile Include="Elena\EncapsulationExercises.cs" />
+    <Compile Include="Elena\Money.cs" />
+    <Compile Include="Elena\MyCollection.cs" />
+    <Compile Include="Elena\MyDictionary.cs" />
+    <Compile Include="Elena\Number.cs" />
+    <Compile Include="Elena\PriorityQueue.cs" />
     <Compile Include="IEncapsulationExercises.cs" />
     <Compile Include="IPriorityQueue.cs" />
     <Compile Include="Konstantin\ComplexNumber.cs" />

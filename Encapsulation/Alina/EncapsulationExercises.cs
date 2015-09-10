@@ -97,9 +97,24 @@ namespace Encapsulation.Alina
 
         public void WorkPriorityQueue()
         {
-            throw new NotImplementedException();
+            Student firstStudent = new Student("Alina", "Kylish", 123456789, new DateTime(1988, 4, 3));
+            Student secondStudent = new Student("Elena", "Kylish", 987654321, new DateTime(1987, 8, 15));
+            Student thirdStudent = new Student("Oleg", "Ivanov", 975312468, new DateTime(1992, 11, 20));
+            Student fourthStudent = new Student("Andrey", "Pavlov", 1243576890, new DateTime(1977, 8, 10));
+            PriorityQueue<Student> students = new PriorityQueue<Student>();
+            students.Enqueue(firstStudent, 0);
+            students.Enqueue(secondStudent, 1);
+            students.Enqueue(thirdStudent, 2);
+            students.Enqueue(fourthStudent, 0);
+            Console.WriteLine(students.Count());
+            Console.WriteLine(students.First());
+            Console.WriteLine(students.Last());  
+            students.Dequeue();
+            Console.WriteLine(students.Count());
+            Console.ReadKey();
+            students.Clear();
+            students.Dequeue(); // throw exeption with message "Queue is empty. There is no value in queue"
         }
-
 
         public void WorkCollectionInheritedClasses()
         {

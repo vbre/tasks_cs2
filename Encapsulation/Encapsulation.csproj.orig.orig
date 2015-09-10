@@ -43,11 +43,15 @@
   <ItemGroup>
     <Compile Include="Alina\ComplexNumbers.cs" />
     <Compile Include="Alina\EncapsulationExercises.cs" />
+<<<<<<< HEAD
 <Compile Include="Alina\PriorityQueue.cs" />
+<Compile Include="Alina\MyCollection.cs" />
+=======
+    <Compile Include="Alina\GeneralizedMatrix.cs" />
     <Compile Include="Alina\Matrix.cs" />
     <Compile Include="Alina\Money.cs" />
-    <Compile Include="Alina\GeneralizedMatrix.cs" />
-    <Compile Include="Alina\MyCollection.cs" />
+ <Compile Include="Alina\MyCollection.cs" />
+>>>>>>> master
     <Compile Include="Alina\MyDictionary.cs" />
     <Compile Include="Alina\Student.cs" />    
     <Compile Include="Andrey\EncapsulationExercises.cs" />

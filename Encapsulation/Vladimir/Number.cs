@@ -103,6 +103,63 @@ namespace Encapsulation.Vladimir
             //-----------------------------
 
 
+            // 080915...KlassWork
+
+            MyDictionary dict = new MyDictionary();
+    
+            for (int i = 0; i <10; i++)
+            {
+             dict.Add(new Student()
+                  {FirstName = "1"+i;
+                   LastName = "2"+i;
+                   applicationDate = new DtaTime(2015,11,11);
+                   birthDay = new DtaTime(2015,12,12);
+                   rating =0; personalCode =1+i} )                   
+            }
+
+
+    class MyDictionary : KeyedCollection<Tuple<string, string, DateTime, int>, Student>
+    { 
+       protected override Tuple<Tuple<string, string, DateTime, int>> GetForItem(Student S)
+       {
+           throw new NotImplementedException();
+       }
+   }
+    
+
+   class MyCollection<T> : Collection<Student> 
+   {
+       protected override void ClearItems()
+       {
+            base.ClearItems();
+            Console.WriteLine("Cleared!");
+       }
+
+       protected override void InsertItem(int index,T item)
+       {
+            base.InsertItem(indeх,item);
+            Console.WriteLine("Inserted!");
+       }
+
+       protected override void RemoveItem(int index)
+       {
+           base.RemoveItem(index);
+           Console.WriteLine("Removed!");
+       }
+
+       protected override void SetItem(int index, T item)
+       {
+           base.SetItem(index,item);
+           Console.WriteLine("Seted!");
+       }
+       //================================================
+ 
+   }
+
+
+
+
+
 
 
 

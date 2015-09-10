@@ -218,5 +218,8 @@ namespace Miner.Valeriya
         {
             get { return gameFieldHeight; }
         }
+
+        
+
     }
 }

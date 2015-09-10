@@ -66,7 +66,10 @@
     <Compile Include="Valeriya\Money.cs" />
     <Compile Include="Valeriya\Number.cs" />
     <Compile Include="Valeriya\EmptyQueueException.cs" />
+    <Compile Include="Valeriya\MyCollection.cs" />
+    <Compile Include="Valeriya\MyDictionary.cs" />
     <Compile Include="Valeriya\PriorityQueue.cs" />
+    <Compile Include="Valeriya\Student.cs" />
     <Compile Include="Vladimir\EncapsulationExercises.cs" />
   </ItemGroup>
   <ItemGroup>

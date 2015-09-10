@@ -91,7 +91,15 @@ namespace Encapsulation.Valeriya
 
         public void WorkCollectionInheritedClasses()
         {
-            throw new NotImplementedException();
+            MyDictionary students = new MyDictionary();
+            students.Add(new Student("Name", "Surname", new DateTime(2015, 9, 8), 100000000));
+            Tuple<string, string, DateTime, int> key = Tuple.Create("Name", "Surname", new DateTime(2015, 9, 8), 100000000);
+            if (students.Contains(key))
+            {
+                Console.WriteLine("Succeed");
+            }
+
+            Console.ReadKey();
         }
     }
 }

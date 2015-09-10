@@ -27,7 +27,7 @@ namespace Encapsulation.Alina
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("Queue is empty. There is no value in queue", e);
             }
         }
 
@@ -39,7 +39,7 @@ namespace Encapsulation.Alina
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("Queue is empty. There is no value in queue", e);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Encapsulation.Alina
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("Queue is empty. There is no value in queue", e);
             }
         }
 
@@ -103,12 +103,7 @@ namespace Encapsulation.Alina
         }
         public bool Contains(Tuple<int, T> item)
         {
-            bool isElement = false;
-            if (myQueue.Values.Any(x => x.Contains(item.Item2)))
-            {
-                isElement = true;
-            }
-            return isElement;
+            return myQueue.Values.Any(x => x.Contains(item.Item2));
         }
 
         public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
@@ -149,7 +144,6 @@ namespace Encapsulation.Alina
         {
             return GetEnumerator();
         }
-
     }
 }
 

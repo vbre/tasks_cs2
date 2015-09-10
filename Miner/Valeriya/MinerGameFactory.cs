@@ -65,9 +65,25 @@ namespace Miner.Valeriya
             }
         }
 
+<<<<<<< HEAD
+        void PrintGameField()
+=======
         void IMinerGameFactory.Test()
+>>>>>>> master
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    Console.WriteLine("=================Miner game=================");
+                    switch (gameField[i][j])
+                    {
+                        case 
+                    { Console.Write(); }
+                    Console.WriteLine("Think of your next step");
+                
+                }
+            }
         }
     }
 }

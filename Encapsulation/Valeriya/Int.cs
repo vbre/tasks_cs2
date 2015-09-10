@@ -8,7 +8,7 @@ namespace Encapsulation.Valeriya
 {
     class Int: Number<int>
     {
-        int Add(int oper)
+        public override int Add(int oper)
         {
             return oper + value;
         }

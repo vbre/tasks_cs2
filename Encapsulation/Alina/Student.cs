@@ -19,5 +19,9 @@ namespace Encapsulation.Alina
             PersonalCode = personalCode;
             BirthDate = birthDate;
         }
+        public override string ToString()
+        {
+            return String.Format(FirstName, LastName, BirthDate, PersonalCode);
+        }
     }
 }

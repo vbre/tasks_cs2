@@ -63,6 +63,7 @@
     <Compile Include="Konstantin\ComplexNumber.cs" />
     <Compile Include="Konstantin\EncapsulationExercises.cs" />
     <Compile Include="Konstantin\Money.cs" />
+    <Compile Include="Konstantin\MyDictionary.cs" />
     <Compile Include="MatrixExample\MatrixExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

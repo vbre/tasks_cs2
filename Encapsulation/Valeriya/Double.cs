@@ -8,7 +8,7 @@ namespace Encapsulation.Valeriya
 {
     class Double: Number<double>
     {
-        double Add(double oper)
+        public override double Add(double oper)
         {
             return oper + value;
         }

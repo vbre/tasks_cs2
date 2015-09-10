@@ -30,6 +30,10 @@ namespace Encapsulation.Konstantin
         {
             T firstVal;
             int index = 0;
+            if (this.Count()==0)
+            {
+                throw new Exception();
+            }
             for (int i = 0; i < internalData.Count; i++)
             {
                 if (internalData[i].Count != 0)
@@ -45,6 +49,10 @@ namespace Encapsulation.Konstantin
 
         public T First()
         {
+            if (this.Count() == 0)
+            {
+                throw new Exception();
+            }
             int index = 0;
             for (int i = 0; i < internalData.Count; i++)
             {
@@ -72,9 +80,9 @@ namespace Encapsulation.Konstantin
         }
         public T Last(int priority)
         {
-            if (priority > internalData.Count - 1 || priority < 0)
+            if (priority > internalData.Count - 1 || priority < 0||internalData[priority].Count==0)
             {
-                throw new IndexOutOfRangeException();
+                throw new Exception();
             }
             return internalData[priority].Last();
         }

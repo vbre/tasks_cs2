@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
@@ -74,13 +70,36 @@ namespace Encapsulation.Valeriya
 
         public void MoneyMoney()
         {
-            throw new NotImplementedException();
+            Money m = new Money(1018);
+            Money m1 = new Money(26,56);
+            Money m2 = new Money(1, 58);
+            Money m3 = m1 + m2;
+            //Console.WriteLine("string: {0}", m1.ToString());
+            //Console.WriteLine("int: {0}", (int)m1);
+            //Console.WriteLine("float: {0}", (float)m1);
+            //Console.WriteLine(m3);
+            //Console.WriteLine("------------SquarredMatrix------------");
+            SquarredMatrix matrix1 = new SquarredMatrix(3);
+            SquarredMatrix matrix2 = new SquarredMatrix(3);
+            SquarredMatrix matrix3 = matrix1 + matrix2;
+            SquarredMatrix.PrintMatrix(matrix1);
+            SquarredMatrix.PrintMatrix(matrix2);
+            SquarredMatrix.PrintMatrix(matrix3);
+            Console.ReadKey();
         }
 
 
         public void WorkCollectionInheritedClasses()
         {
-            throw new NotImplementedException();
+            MyDictionary students = new MyDictionary();
+            students.Add(new Student("Name", "Surname", new DateTime(2015, 9, 8), 100000000));
+            Tuple<string, string, DateTime, int> key = Tuple.Create("Name", "Surname", new DateTime(2015, 9, 8), 100000000);
+            if (students.Contains(key))
+            {
+                Console.WriteLine("Succeed");
+            }
+
+            Console.ReadKey();
         }
     }
 }

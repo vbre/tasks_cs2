@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Vladimir
 {
-    class PriorityQueue<T> :ICollection<Tuple<Int16,T>>
+    class PriorityQueue<T> //: ICollection<Tuple<int,T>>
     {
         SortedList<int, Queue<T>> priorityQueue = new SortedList<int, Queue<T>>();
         
-        //private int priority;
         private T first;
         private T last;
         
@@ -18,13 +17,14 @@ namespace Encapsulation.Vladimir
         {
             if (!priorityQueue.ContainsKey(priority))
             {
-                priorityQueue.Add(priority, new Queue<T>());
-                priorityQueue[priority].Enqueue(value);
-                
-                if (first == null)
+                if (priorityQueue.Count == 0)
                 {
                     first = value;
-                }                        
+                }
+
+                priorityQueue.Add(priority, new Queue<T>());
+                priorityQueue[priority].Enqueue(value);
+                                        
             }
             else
             {
@@ -47,7 +47,6 @@ namespace Encapsulation.Vladimir
             return priorityQueue[maxKey].Dequeue();  
         }
 
-
         public T First()
         {
             return first;
@@ -68,19 +67,15 @@ namespace Encapsulation.Vladimir
             return priorityQueue[priority].Last();
         }
 
-        //public int Count
-        //{ get; }
-
         public int GetCount(int priority)
         {
-            //throw new NotImplementedException();
             return priorityQueue[priority].Count(); 
         }
 
 
         public void Add(Tuple<short, T> item)
         {
-            //throw new NotImplementedException();
+            
             if (!priorityQueue.ContainsKey(item.Item1))
             {
                 priorityQueue.Add(item.Item1, new Queue<T>());
@@ -91,58 +86,99 @@ namespace Encapsulation.Vladimir
                 priorityQueue[item.Item1].Enqueue(item.Item2);
             }
         }
-
+        //-------------------------------------
         public void Clear()
         {
            priorityQueue.Clear();
         }
 
 
-        public bool Contains(Tuple<short, T> item)
-        {
-            //throw new NotImplementedException();
+        public bool Contains(Tuple<int, T> item)
+        {       
             return (priorityQueue[item.Item1].Contains(item.Item2)) ? true : false; 
         }
 
-        public void CopyTo(Tuple<short, T>[] array, int arrayIndex)
+        public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
-           // ? priorityQueue[item.Item1].CopyTo(item.Item2)
-
-
+           throw new NotImplementedException();
         }
 
         public int Count
         {
             get { throw new NotImplementedException(); }
-            //get { ; }
-            //return priorityQueue.Count();
-
         }
 
         public bool IsReadOnly
         {
             get { throw new NotImplementedException(); }
-
+            //return (priorityQueue.IsReadOnly) ? true : false; 
 
         }
 
-        public bool Remove(Tuple<short, T> item)
+        public bool Remove(Tuple<int, T> item)
+        {
+            throw new NotImplementedException();
+            //return (priorityQueue[item.Item1].Remove(item.Item2)) ? true : false;
+
+        }
+
+        public IEnumerator<Tuple<int, T>> GetEnumerator()
         {
             throw new NotImplementedException();
 
+        //     return this.priorityQueue.GetEnumerator();
 
         }
 
-        public IEnumerator<Tuple<short, T>> GetEnumerator()
-        {
-            throw new NotImplementedException();
-
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
+
+    //public class PeopleEnum : IEnumerator
+    //{
+    //    public Person[] _people;
+
+    //    // Enumerators are positioned before the first element
+    //    // until the first MoveNext() call.
+    //    int position = -1;
+
+    //    public PeopleEnum(Person[] list)
+    //    {
+    //        _people = list;
+    //    }
+
+    //    public bool MoveNext()
+    //    {
+    //        position++;
+    //        return (position < _people.Length);
+    //    }
+
+    //    public void Reset()
+    //    {
+    //        position = -1;
+    //    }
+
+    //    object IEnumerator.Current
+    //    {
+    //        get
+    //        {
+    //            return Current;
+    //        }
+    //    }
+
+    //    public Person Current
+    //    {
+    //        get
+    //        {
+    //            try
+    //            {
+    //                return _people[position];
+    //            }
+    //            catch (IndexOutOfRangeException)
+    //            {
+    //                throw new InvalidOperationException();
+    //            }
+    //        }
+    //    }
+    //}
+
 }

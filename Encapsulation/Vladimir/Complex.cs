@@ -28,13 +28,7 @@ namespace Encapsulation.Vladimir
         { get; set; }
 
         public Complex()
-        {
-            realPart =0;
-            imaginaryPart = 0;
-            ConvertComplexToTrigonomViev();
-            ViewTrigonom = false; 
-            Tuple<double, double> complex = Tuple.Create<double, double>(realPart, imaginaryPart);
-        }
+            : this(0.0, 0.0) { }
         
         public Complex(double re, double im)
         {
@@ -44,7 +38,7 @@ namespace Encapsulation.Vladimir
             ViewTrigonom = false;
             Tuple<double, double> complex = Tuple.Create<double, double>(realPart, imaginaryPart);
         }
-        
+
         static public explicit operator string(Complex operand1)
         {
             return operand1.ToString();

@@ -10,8 +10,8 @@ namespace Miner.Valeriya
     {
         public IMinerGame NewEmptyGame(string playerName, Tuple<int, int> rowsCols)
         {
-           MinerGame NewEmptyGame = new MinerGame(rowsCols.Item1, rowsCols.Item2);
-           return NewEmptyGame;
+            MinerGame NewEmptyGame = new MinerGame(rowsCols.Item1, rowsCols.Item2);
+            return NewEmptyGame;
         }
 
         public IMinerGame NewRandomGame(string playerName, Tuple<int, int> rowsCols, int bombs)
@@ -35,7 +35,7 @@ namespace Miner.Valeriya
             Int32.TryParse(Console.ReadLine(), out Width);
             Console.WriteLine("Please, enter field Height = ");
             Int32.TryParse(Console.ReadLine(), out Height);
-            
+
             switch (typeOfGame)
             {
                 case "0":

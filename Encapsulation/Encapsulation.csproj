@@ -43,13 +43,13 @@
   <ItemGroup>
     <Compile Include="Alina\ComplexNumbers.cs" />
     <Compile Include="Alina\EncapsulationExercises.cs" />
-<Compile Include="Alina\PriorityQueue.cs" />
+    <Compile Include="Alina\PriorityQueue.cs" />
     <Compile Include="Alina\Matrix.cs" />
     <Compile Include="Alina\Money.cs" />
     <Compile Include="Alina\GeneralizedMatrix.cs" />
     <Compile Include="Alina\MyCollection.cs" />
     <Compile Include="Alina\MyDictionary.cs" />
-    <Compile Include="Alina\Student.cs" />    
+    <Compile Include="Alina\Student.cs" />
     <Compile Include="Andrey\EncapsulationExercises.cs" />
     <Compile Include="Elena\ComplexNumber.cs" />
     <Compile Include="Elena\EncapsulationExercises.cs" />
@@ -80,8 +80,11 @@
     <Compile Include="Valeriya\Student.cs" />
     <Compile Include="Vladimir\EncapsulationExercises.cs" />
     <Compile Include="Vladimir\Money.cs" />
+    <Compile Include="Vladimir\MyCollection.cs" />
+    <Compile Include="Vladimir\MyDictionary.cs" />
     <Compile Include="Vladimir\Number.cs" />
     <Compile Include="Vladimir\PriorityQueue.cs" />
+    <Compile Include="Vladimir\Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

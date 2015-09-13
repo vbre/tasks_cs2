@@ -37,9 +37,10 @@ namespace Encapsulation.Valeriya
             matrix[1, 1] = 4;
         }
 
-        public T this[int row, int col]
+        public double this[int row, int col]
         {
-            get; set;
+            get { return matrix[row, col]; }
+            set { matrix[row, col] = value; }
         }
 
         public static double[,] MatrixToArray(SquarredMatrix inputMatrix)

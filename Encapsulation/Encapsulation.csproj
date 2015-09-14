@@ -62,6 +62,7 @@
     <Compile Include="IPriorityQueue.cs" />
     <Compile Include="Konstantin\ComplexNumber.cs" />
     <Compile Include="Konstantin\EncapsulationExercises.cs" />
+    <Compile Include="Konstantin\Queue.cs" />
     <Compile Include="Konstantin\Money.cs" />
     <Compile Include="Konstantin\MyDictionary.cs" />
     <Compile Include="MatrixExample\MatrixExample.cs" />

@@ -10,11 +10,10 @@ namespace VeterinaryValeriya
     {
         private static Dictionary<int, DomesticAnimal> registry;
 
-        private static int countOfAnimals = 0;
-
         private static int CreateID()
         {
-            return countOfAnimals++;
+            int count = registry.Count;
+            return count++;
         }
 
         public void AddAnimal (DomesticAnimal animal)
@@ -32,9 +31,9 @@ namespace VeterinaryValeriya
             get { return registry.Count; }
         }
 
-        public Tuple<string, string> this[int elem]
+        public DomesticAnimal this[int elem]
         {
-            get { return Tuple.Create(registry[elem].name, registry[elem].disease); }
+            get { return registry[elem]; }
         }
 
         static ClinicRegistry()

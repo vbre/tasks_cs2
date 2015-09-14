@@ -6,30 +6,24 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    enum Disease
+    abstract class DomesticAnimal
     {
-        Cold,
-        Cancer,
-        Diarrhea,
-        Fracture
-    }
-
-    class DomesticAnimal
-    {
-        public string name
+        protected string Name
         {
             get; set;
         }
 
-        public string disease
+        protected int Age
         {
             get; set;
         }
 
-        public DomesticAnimal (string name, string disease)
+        public abstract void ExamReaction();
+
+        public DomesticAnimal (string name, int age)
         {
-            this.name = name;
-            this.disease = disease;
+            Name = name;
+            Age = age;
         }
     }
 }

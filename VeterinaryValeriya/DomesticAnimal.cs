@@ -25,5 +25,10 @@ namespace VeterinaryValeriya
             Name = name;
             Age = age;
         }
+
+        public override string ToString()
+        {
+            return String.Format("Name: {0}, Age: {1}", Name, Age);
+        }
     }
 }

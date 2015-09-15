@@ -8,7 +8,7 @@ namespace VeterinaryValeriya
 {
     class ClinicRegistry
     {
-        private static Dictionary<int, DomesticAnimal> registry;
+        private static Dictionary<int, DomesticAnimal> registry = new Dictionary<int, DomesticAnimal>();
 
         private static int CreateID()
         {
@@ -36,9 +36,9 @@ namespace VeterinaryValeriya
             get { return registry[elem]; }
         }
 
-        static ClinicRegistry()
+        public ClinicRegistry()
         {
-            registry = new Dictionary<int, DomesticAnimal>();
+            
         }
     }
 }

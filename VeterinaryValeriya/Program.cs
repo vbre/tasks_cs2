@@ -94,7 +94,7 @@ namespace VeterinaryValeriya
             Console.WriteLine("\n-----List of animals-----");
             for (int i = 0; i < inputRegistry.Count; i++)
             {
-                Console.WriteLine(inputRegistry[i]);
+                Console.WriteLine(inputRegistry[i].ToString());
             }
         }
 

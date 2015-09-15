@@ -18,5 +18,10 @@ namespace VeterinaryValeriya
         {
             Console.WriteLine("Hamsted {0} has run out:(", Name);
         }
+
+        public override string ToString()
+        {
+            return String.Format("Name: {0}, Age: {1}, Type: {2}", Name, Age, TypeOfAnimal.Hamsted.ToString());
+        }
     }
 }

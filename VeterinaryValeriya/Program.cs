@@ -12,7 +12,6 @@ namespace VeterinaryValeriya
         Dog,
         Hamsted,
         Fish,
-        Undentified
     }
 
     class Program

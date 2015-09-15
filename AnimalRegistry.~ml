@@ -89,7 +89,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">624</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">56</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">60</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">244</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">160</XPD:ATTR>
 <XPD:REF name="Model">q9xL6WLSYkOjZVoR85cTlgAA</XPD:REF>
@@ -243,7 +243,7 @@
 <XPD:OBJ name="OwnedViews[6]" type="UMLAssociationView" guid="b+yHcaoKiU22yl6mewLHdwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">624,104;548,85</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">624,107;548,87</XPD:ATTR>
 <XPD:REF name="Model">zdi7UyLkWEy6FP5CvDa2eAAA</XPD:REF>
 <XPD:REF name="Head">Tsp+7kpWG0e975FXm/TfsAAA</XPD:REF>
 <XPD:REF name="Tail">3ZmRkdrnM06fDzU9iTgtVgAA</XPD:REF>
@@ -691,6 +691,7 @@
 </XPD:OBJ>
 <XPD:OBJ name="Operations[4]" type="UMLOperation" guid="jfh6IXxjJU+CfgU0wetdlwAA">
 <XPD:ATTR name="Name" type="string">ClinicRegistry</XPD:ATTR>
+<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">q9xL6WLSYkOjZVoR85cTlgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Operations[5]" type="UMLOperation" guid="Lo30ZdlgAEeiT9Tfl9UMDgAA">

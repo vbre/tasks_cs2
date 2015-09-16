@@ -19,10 +19,7 @@ namespace VeterinaryValeriya
 
         public Menu (List<MenuItem> ListOfMenuItems)
         {
-            foreach (MenuItem elem in ListOfMenuItems)
-            {
-                items.Add(elem);
-            }
+            items = ListOfMenuItems;
         }
 
         private void PrintMenu ()

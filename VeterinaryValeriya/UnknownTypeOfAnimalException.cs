@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    class UnknownTypeOfAnimalException
+    class UnknownTypeOfAnimalException: Exception
     {
-        public UnknownTypeOfAnimalException()
+        public UnknownTypeOfAnimalException(string msg) : base(msg)
         {
 
         }

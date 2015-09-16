@@ -22,44 +22,24 @@ namespace VeterinaryValeriya
         {
             Menu mainMenu = new Menu(
             new List<Menu.MenuItem> {
-               new Menu.MenuItem { Label = "About company", ActionToDo = ShowAboutCompany },
-               new Menu.MenuItem { Label = "Put new animal in clinic", ActionToDo = PutAnimalInClinic },
-               new Menu.MenuItem { Label = "Examinate animal", ActionToDo = ExaminteReaction },
-               //new Menu.MenuItem { Label = "Show list of animals", ActionToDo =  }
-               new Menu.MenuItem { Label = "Remove animal", ActionToDo = RemoveAnimal }
-               new Menu.MenuItem { Label = "Quit", ActionToDo = null }
+               new Menu.MenuItem { Code = 'H' , Label = "About company", ActionToDo = ShowAboutCompany },
+               new Menu.MenuItem { Code = 'P' , Label = "Put new animal in clinic", ActionToDo = PutAnimalInClinic },
+               new Menu.MenuItem { Code = 'E' , Label = "Examinate animal", ActionToDo = ExaminteReaction },
+               new Menu.MenuItem { Code = 'S' , Label = "Show list of animals", ActionToDo = PrintListOfAnimals },
+               new Menu.MenuItem { Code = 'R' , Label = "Remove animal", ActionToDo = RemoveAnimal },
+               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = null }
             });
 
-            Console.WriteLine("[H] About company\n[R] Put new animal in clinic\n[E]Examinate animal\n[L] Show list of animals\n[D] Remove animal\n[Q] Quit\n");
-            string menuChoise = "";
-            
-            do
-            {
-                menuChoise = Console.ReadLine();
-
-                else if (menuChoise.ToUpper() == "L")
-                {
-                    PrintListOfAnimals(AnimalRegistry);
-                }
-                else if (menuChoise.ToUpper() == "D")
-                {
-                    Console.WriteLine("Input animal's ID:");
-                    int ID;
-                    Int32.TryParse(Console.ReadLine(), out ID);
-                    AnimalRegistry.RemoveAnimal(ID);
-                }
-            } while (menuChoise.ToUpper() != "Q");
-
-            Environment.Exit(0);
+            mainMenu.HandleUserInput(GetUserInput());
             Console.ReadKey();
         }
 
-        static void PrintListOfAnimals (ClinicRegistry inputRegistry)
+        private static void PrintListOfAnimals ()
         {
             Console.WriteLine("\n-----List of animals-----");
-            for (int i = 0; i < inputRegistry.Count; i++)
+            for (int i = 0; i < AnimalRegistry.Count; i++)
             {
-                Console.WriteLine(inputRegistry[i].ToString());
+                Console.WriteLine(AnimalRegistry[i].ToString());
             }
         }
 
@@ -72,7 +52,7 @@ namespace VeterinaryValeriya
             Console.WriteLine();
         }
 
-        public char GetUserInput()
+        public static char GetUserInput()
         {
             return Console.ReadLine()[0];
         }
@@ -109,7 +89,7 @@ namespace VeterinaryValeriya
                     newAnimal = new Fish(nameOfAnimal, ageOfAnimal);
                     break;
                 default:
-                    throw ApplicationException("Unfortunately, our clinic doesn't take care of such animals");
+                    throw new UnknownTypeOfAnimalException("Unfortunately, our clinic doesn't take care of such animals");
                     break;
             }
 

@@ -22,7 +22,7 @@ namespace VeterinaryValeriya
             items = ListOfMenuItems;
         }
 
-        private void PrintMenu ()
+        public void PrintMenu ()
         {
             foreach (MenuItem elem in items)
             {
@@ -32,19 +32,9 @@ namespace VeterinaryValeriya
 
         public void HandleUserInput (char code)
         {
-            Action currentAction = null;
-            do
-            {
-                PrintMenu();
                 int currentItemIndex = items.FindIndex((items) => { return items.Code == code; });
                 if (currentItemIndex != -1)
-                    currentAction = items[currentItemIndex].ActionToDo;
-                if (currentAction != null)
-                {
-                    currentAction();
-                }
-            }
-            while (currentAction != null);
+                    items[currentItemIndex].ActionToDo();
         }
     }
 }

@@ -27,10 +27,18 @@ namespace VeterinaryValeriya
                new Menu.MenuItem { Code = 'E' , Label = "Examinate animal", ActionToDo = ExaminteReaction },
                new Menu.MenuItem { Code = 'S' , Label = "Show list of animals", ActionToDo = PrintListOfAnimals },
                new Menu.MenuItem { Code = 'R' , Label = "Remove animal", ActionToDo = RemoveAnimal },
-               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = null }
+               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = () => { Environment.Exit(0); } }
             });
 
-            mainMenu.HandleUserInput(GetUserInput());
+            mainMenu.PrintMenu();
+            char inputCode;
+            do
+            {
+                inputCode = GetUserInput();
+                mainMenu.HandleUserInput(inputCode);
+                
+            } while ( inputCode != 'Q' );
+
             Console.ReadKey();
         }
 

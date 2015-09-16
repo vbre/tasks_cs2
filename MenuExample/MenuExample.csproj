@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B86DA56-DD67-4418-A8A4-9A6E058EC444}</ProjectGuid>
+    <ProjectGuid>{7F10638F-DD2F-4641-9A96-958F350B0350}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Encapsulation</RootNamespace>
-    <AssemblyName>Encapsulation</AssemblyName>
+    <RootNamespace>MenuExample</RootNamespace>
+    <AssemblyName>MenuExample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,52 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alina\ComplexNumbers.cs" />
-    <Compile Include="Alina\EncapsulationExercises.cs" />
-    <Compile Include="Alina\PriorityQueue.cs" />
-    <Compile Include="Alina\Matrix.cs" />
-    <Compile Include="Alina\Money.cs" />
-    <Compile Include="Alina\GeneralizedMatrix.cs" />
-    <Compile Include="Alina\MyCollection.cs" />
-    <Compile Include="Alina\MyDictionary.cs" />
-    <Compile Include="Alina\Student.cs" />
-    <Compile Include="Andrey\EncapsulationExercises.cs" />
-    <Compile Include="Elena\ComplexNumber.cs" />
-    <Compile Include="Elena\EncapsulationExercises.cs" />
-    <Compile Include="Elena\Money.cs" />
-    <Compile Include="Elena\MyCollection.cs" />
-    <Compile Include="Elena\MyDictionary.cs" />
-    <Compile Include="Elena\Number.cs" />
-    <Compile Include="Elena\PriorityQueue.cs" />
-    <Compile Include="IEncapsulationExercises.cs" />
-    <Compile Include="IPriorityQueue.cs" />
-    <Compile Include="Konstantin\ComplexNumber.cs" />
-    <Compile Include="Konstantin\EncapsulationExercises.cs" />
-    <Compile Include="Konstantin\Queue.cs" />
-    <Compile Include="Konstantin\Money.cs" />
-    <Compile Include="Konstantin\MyDictionary.cs" />
-    <Compile Include="MatrixExample\MatrixExample.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Valeriya\Double.cs" />
-    <Compile Include="Valeriya\EncapsulationExercises.cs" />
-    <Compile Include="Vladimir\Complex.cs" />
-    <Compile Include="Valeriya\Int.cs" />
-    <Compile Include="Valeriya\Matrix.cs" />
-    <Compile Include="Valeriya\Money.cs" />
-    <Compile Include="Valeriya\Number.cs" />
-    <Compile Include="Valeriya\EmptyQueueException.cs" />
-    <Compile Include="Valeriya\MyCollection.cs" />
-    <Compile Include="Valeriya\MyDictionary.cs" />
-    <Compile Include="Valeriya\PriorityQueue.cs" />
-    <Compile Include="Valeriya\Student.cs" />
-    <Compile Include="Vladimir\EncapsulationExercises.cs" />
-    <Compile Include="Vladimir\Money.cs" />
-    <Compile Include="Vladimir\MyCollection.cs" />
-    <Compile Include="Vladimir\MyDictionary.cs" />
-    <Compile Include="Vladimir\Number.cs" />
-    <Compile Include="Vladimir\PriorityQueue.cs" />
-    <Compile Include="Vladimir\Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

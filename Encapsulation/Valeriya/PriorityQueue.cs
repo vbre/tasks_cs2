@@ -126,8 +126,6 @@ namespace Encapsulation.Valeriya
             return minElemInQueue;
         }
 
-      
-
         public void Add(Tuple<int, T> item)
         {
             priorityQueue.Add(item);

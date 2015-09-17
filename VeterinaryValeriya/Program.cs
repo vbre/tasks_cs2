@@ -27,7 +27,7 @@ namespace VeterinaryValeriya
                new Menu.MenuItem { Code = 'E' , Label = "Examinate animal", ActionToDo = ExaminteReaction },
                new Menu.MenuItem { Code = 'S' , Label = "Show list of animals", ActionToDo = PrintListOfAnimals },
                new Menu.MenuItem { Code = 'R' , Label = "Remove animal", ActionToDo = RemoveAnimal },
-               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = () => { Environment.Exit(0); } }
+               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = () => { Environment.Exit(0 ); } }
             });
 
             mainMenu.PrintMenu();
@@ -74,9 +74,7 @@ namespace VeterinaryValeriya
         {
             Console.WriteLine("Input animal name:");
             string nameOfAnimal = Console.ReadLine();
-            Console.WriteLine("\nPlease, input age of animal");
-            int ageOfAnimal;
-            Int32.TryParse(Console.ReadLine(), out ageOfAnimal);
+            int ageOfAnimal = GetNumbeFromConsole("Please input age of animal\n");
             int inputTypeOfanimal;
             Console.WriteLine("Input type of animal from the list below:\n");
             PrintEnumOfAnimalTypes();
@@ -118,6 +116,29 @@ namespace VeterinaryValeriya
             int ID;
             Int32.TryParse(Console.ReadLine(), out ID);
             AnimalRegistry.RemoveAnimal(ID);
+        }
+
+        public static int GetNumbeFromConsole (string msg)
+        {
+            int correctResult = 0;
+            int ageOfAnimal;
+            Console.WriteLine(msg);
+                
+            do
+            {
+                Int32.TryParse(Console.ReadLine(), out ageOfAnimal);
+                if (ageOfAnimal > 0)
+                {
+                    correctResult = ageOfAnimal;
+                }
+                else
+                {
+                    Console.WriteLine("Please, input correct data");
+                }
+
+            } while (correctResult != ageOfAnimal);
+
+            return correctResult;
         }
     }
 }

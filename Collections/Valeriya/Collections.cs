@@ -40,7 +40,7 @@ namespace Collections.Valeriya
 
             for (int i = 0; i < inputData.Count; i++)
             {
-                if (inputData[i].IsValid == true)
+                if (inputData[i].IsValid)
                 {
                     onlyValidFromInputData.Add(inputData[i]);
                 }

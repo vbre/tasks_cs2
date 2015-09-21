@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Collections
 {
-    interface ISimpleNumbers : ICollection<int>
+    interface ISimpleNumbers : IEnumerable<int>
     {
     }
 }

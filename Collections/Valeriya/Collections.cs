@@ -156,10 +156,9 @@ namespace Collections.Valeriya
             return returnDictionary;
         }
 
-
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            return new SNSequence(this);
+            return new SimpleNumbers(limit);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Collections.Valeriya
         private int topBorder;
         private List<int> simpleNumbersList = new List<int>();
 
-        public SimpleNumbers (int top)
+        public SimpleNumbers(int top)
         {
             topBorder = top;
 
@@ -43,46 +43,49 @@ namespace Collections.Valeriya
             return result;
         }
 
-        private class SNSequence : IEnumerable
-        {
-            private int currNumber = 0;
-            private SimpleNumbers instance;
-
-            public SNSequence (SimpleNumbers instance)
-            {
-                this.instance = instance;
-            }
-
-            int MoveNext (int currNumber)
-            {
-                this.currNumber = currNumber;
-                return simpleNumbersList.FindIndex((index) => { if (simpleNumbersList.Contains(currNumber) return ) });
-            }
-
-            int Reset()
-            {
-
-            }
-
-            int CurrentNumber ()
-            {
-
-            }
-
-            public IEnumerator GetEnumerator()
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public IEnumerator<int> GetEnumerator()
         {
-            
+            return (IEnumerator<int>)new SNSequence(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
+        }
+
+        private class SNSequence : IEnumerator
+        {
+            private int position = -1;
+            private SimpleNumbers instance;
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    return Current;
+                }
+            }
+
+            public SNSequence(SimpleNumbers instance)
+            {
+                this.instance = instance;
+            }
+
+            public bool MoveNext()
+            {
+                position++;
+                return (position < instance.simpleNumbersList.Count);
+            }
+
+            public void Reset()
+            {
+                position = -1;
+            }
+
+            public int Current
+            {
+                get { return instance.simpleNumbersList[position]; }
+            }
         }
     }
 }

@@ -151,5 +151,11 @@ namespace Collections.Elena
 
         public static IOutData MyConverter(OutData element)
         {return   (IOutData)element;}
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

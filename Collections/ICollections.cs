@@ -53,6 +53,6 @@ namespace Collections
         /// <returns>"карта" символов и списков строк из text, которые начинаются с этого символа</returns>
         IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text);
 
-
+        ISimpleNumbers GetSimpleNumbersInstance(int limit);
     }
 }

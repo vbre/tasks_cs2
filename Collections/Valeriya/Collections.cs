@@ -155,5 +155,11 @@ namespace Collections.Valeriya
 
             return returnDictionary;
         }
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

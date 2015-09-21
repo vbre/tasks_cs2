@@ -180,5 +180,11 @@ namespace Collections.Vladimir
 
 
 
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

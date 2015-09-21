@@ -60,6 +60,18 @@ namespace Collections
             {
                 try
                 {
+                    // simple numbers
+                    int[] arrToCheck = new int[] { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
+                    int index = 0;
+                    foreach (var number in collection.GetSimpleNumbersInstance(20))
+                    {
+                        if (index > arrToCheck.Length - 1)
+                        {
+                            Assert(false, "Too many simple numbers generated!");
+                        }
+                        Assert(number == arrToCheck[index], "Wrong simple number " + number + " must be " + arrToCheck[index]);
+                    }
+
                     // Potatoes
                     List<IPotatoe> myPotatoes = new List<IPotatoe>();
                     myPotatoes.Add(new Potatoe(false));

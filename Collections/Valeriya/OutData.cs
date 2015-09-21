@@ -8,12 +8,12 @@ namespace Collections.Valeriya
 {
     class OutData : IOutData
     {
-        public int Code { get; }
-        public double Average { get; }
+        public int Code { get { return 0; } }
+        public double Average { get { return 0; } }
         public OutData (int code, double average)
         {
-            this.Code = code;
-            this.Average = average;
+            //this.Code = code;
+            //this.Average = average;
         }
     }
 }

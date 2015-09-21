@@ -57,17 +57,8 @@ namespace Miner
                             Console.WriteLine("Testing empty game...");
                             IMinerGame game = factory.NewEmptyGame("Dummy", new Tuple<int, int>(5, 6));
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
-                            Assert(game.Height == 6, "Высота не совпадает");
-                            Assert(game.Width == 5, "Ширина не совпадает");
-                            int bombs = 0;
-                            for (int row = 0; row < game.Width; row++)
-                            {
-                                for (int col = 0; col < game.Height; col++)
-                                {
-                                    bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
-                                }
-                            }
-                            Assert(bombs == 0, "Количество мин на пустом поле не совпадает");
+                            Assert(game.Height == 5, "Высота не совпадает");
+                            Assert(game.Width == 6, "Ширина не совпадает");
                         }
 
                         /* random game */
@@ -75,26 +66,18 @@ namespace Miner
                             Console.WriteLine("Testing random game...");
                             IMinerGame game = factory.NewRandomGame("Dummy", new Tuple<int, int>(7, 8), 50);
                             Assert(!game.IsGameStarted, "Game shouldn't be started yet");
-                            Assert(game.Height == 8, "Высота не совпадает");
-                            Assert(game.Width == 7, "Ширина не совпадает");
-                            int bombs = 0;
-                            for (int row = 0; row < game.Width; row++)
-                            {
-                                for (int col = 0; col < game.Height; col++)
-                                {
-                                    bombs += game[row, col].HasFlag(CellStatus.HasMine) ? 1 : 0;
-                                }
-                            }
-                            Assert(bombs == 50, "Количество мин не совпадает");
+                            Assert(game.Height == 7, "Высота не совпадает");
+                            Assert(game.Width == 8, "Ширина не совпадает");
                         }
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Something was wrong with {0}", factory.ToString());
+                        Console.WriteLine(e);
                     }
                     Console.WriteLine("Factory {0} done.", factory.ToString());
                 }
             } // args
+            Console.ReadKey();
         }
 
         static void Assert(bool condition, string message)

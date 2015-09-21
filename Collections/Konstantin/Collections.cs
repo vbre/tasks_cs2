@@ -106,5 +106,11 @@ namespace Collections.Konstantin
             }
             return organizeByFirstCharacter;
         }
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

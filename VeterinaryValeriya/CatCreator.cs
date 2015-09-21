@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    class CatCreator : ICatCreator
+    class CatCreator : IAnimalCreator
     {
-        public Cat CreateCat(string name, int age)
+        public DomesticAnimal CreateAnimal(string name, int age)
         {
             return new Cat(name, age);
         }

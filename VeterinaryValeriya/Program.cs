@@ -88,16 +88,16 @@ namespace VeterinaryValeriya
             switch (inputTypeOfanimal)
             {
                 case 0:
-                    newAnimal = CatFactory.CreateCat(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
+                    newAnimal = CatFactory.CreateAnimal(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 1:
-                    newAnimal = DogFactory.CreateDog(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
+                    newAnimal = DogFactory.CreateAnimal(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 2:
-                    newAnimal = HamstedFactory.CreateHamsted(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
+                    newAnimal = HamstedFactory.CreateAnimal(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 3:
-                    newAnimal = FishFactory.CreateFish(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
+                    newAnimal = FishFactory.CreateAnimal(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 default:
                     Console.WriteLine("Unfortunately, our clinic doesn't take care of such animals");

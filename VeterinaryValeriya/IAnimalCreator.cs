@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    interface IDogCreator
+    interface IAnimalCreator
     {
-        Dog CreateDog(string name, int age);
+        DomesticAnimal CreateAnimal(string name, int age);
     }
 }

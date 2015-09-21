@@ -48,13 +48,10 @@
     <Compile Include="DogCreator.cs" />
     <Compile Include="DomesticAnimal.cs" />
     <Compile Include="Fish.cs" />
-    <Compile Include="FIshCreator.cs" />
+    <Compile Include="FishCreator.cs" />
     <Compile Include="Hamsted.cs" />
     <Compile Include="HamstedCreator.cs" />
-    <Compile Include="ICatCreator.cs" />
-    <Compile Include="IDogCreator.cs" />
-    <Compile Include="IFishCreator.cs" />
-    <Compile Include="IHamstedCreator.cs" />
+    <Compile Include="IAnimalCreator.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

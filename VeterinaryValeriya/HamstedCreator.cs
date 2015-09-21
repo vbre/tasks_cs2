@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    class HamstedCreator : IHamstedCreator
+    class HamstedCreator : IAnimalCreator
     {
-        public Hamsted CreateHamsted(string name, int age)
+        public DomesticAnimal CreateAnimal(string name, int age)
         {
             return new Hamsted(name, age);
         }

@@ -159,7 +159,7 @@ namespace Collections.Valeriya
 
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            throw new NotImplementedException();
+            return new SNSequence(this);
         }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="IInData.cs" />
     <Compile Include="IOutData.cs" />
     <Compile Include="IPotatoe.cs" />
+    <Compile Include="ISimpleNumbers.cs" />
     <Compile Include="Konstantin\Collections.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,5 +30,11 @@ namespace Collections.Andrey
         {
             throw new NotImplementedException();
         }
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

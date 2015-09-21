@@ -140,5 +140,11 @@ namespace Collections.Alina
             }
             return stringDictionary;
         }
+
+
+        public ISimpleNumbers GetSimpleNumbersInstance(int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

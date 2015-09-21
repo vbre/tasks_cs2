@@ -42,11 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cat.cs" />
+    <Compile Include="CatCreator.cs" />
     <Compile Include="ClinicRegistry.cs" />
     <Compile Include="Dog.cs" />
+    <Compile Include="DogCreator.cs" />
     <Compile Include="DomesticAnimal.cs" />
     <Compile Include="Fish.cs" />
+    <Compile Include="FIshCreator.cs" />
     <Compile Include="Hamsted.cs" />
+    <Compile Include="HamstedCreator.cs" />
+    <Compile Include="ICatCreator.cs" />
+    <Compile Include="IDogCreator.cs" />
+    <Compile Include="IFishCreator.cs" />
+    <Compile Include="IHamstedCreator.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

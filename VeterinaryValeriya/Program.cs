@@ -11,26 +11,30 @@ namespace VeterinaryValeriya
         Cat,
         Dog,
         Hamsted,
-        Fish,
+        Fish
     }
 
     class Program
     {
-        static ClinicRegistry AnimalRegistry = new ClinicRegistry();
+        private static Menu mainMenu = new Menu (
+
+           new List<Menu.MenuItem> {
+               new Menu.MenuItem { Code = 'H' , Label = "[H]elp", ActionToDo = ShowAboutCompany },
+               new Menu.MenuItem { Code = 'P' , Label = "[P]ut new animal in clinic", ActionToDo = PutAnimalInClinic },
+               new Menu.MenuItem { Code = 'E' , Label = "[E]xaminate animal", ActionToDo = ExaminteReaction },
+               new Menu.MenuItem { Code = 'S' , Label = "[S]how list of animals", ActionToDo = PrintListOfAnimals },
+               new Menu.MenuItem { Code = 'R' , Label = "[R]emove animal", ActionToDo = RemoveAnimal },
+               new Menu.MenuItem { Code = 'Q' , Label = "[Q]uit", ActionToDo = () => { Environment.Exit(0); } }
+           });
+
+        static CatCreator CatFactory = new CatCreator();
+        static DogCreator DogFactory = new DogCreator();
+        static HamstedCreator HamstedFactory = new HamstedCreator();
+        static FishCreator FishFactory = new FishCreator();
 
         static void Main(string[] args)
         {
-            Menu mainMenu = new Menu(
-            new List<Menu.MenuItem> {
-               new Menu.MenuItem { Code = 'H' , Label = "About company", ActionToDo = ShowAboutCompany },
-               new Menu.MenuItem { Code = 'P' , Label = "Put new animal in clinic", ActionToDo = PutAnimalInClinic },
-               new Menu.MenuItem { Code = 'E' , Label = "Examinate animal", ActionToDo = ExaminteReaction },
-               new Menu.MenuItem { Code = 'S' , Label = "Show list of animals", ActionToDo = PrintListOfAnimals },
-               new Menu.MenuItem { Code = 'R' , Label = "Remove animal", ActionToDo = RemoveAnimal },
-               new Menu.MenuItem { Code = 'Q' , Label = "Quit", ActionToDo = () => { Environment.Exit(0 ); } }
-            });
-
-            mainMenu.PrintMenu();
+            PrintMenu();
             char inputCode;
             do
             {
@@ -45,9 +49,9 @@ namespace VeterinaryValeriya
         private static void PrintListOfAnimals ()
         {
             Console.WriteLine("\n-----List of animals-----");
-            for (int i = 0; i < AnimalRegistry.Count; i++)
+            for (int i = 0; i < ClinicRegistry.Instance.Count; i++)
             {
-                Console.WriteLine(AnimalRegistry[i].ToString());
+                Console.WriteLine(ClinicRegistry.Instance[i].ToString());
             }
         }
 
@@ -72,41 +76,42 @@ namespace VeterinaryValeriya
 
         private static void PutAnimalInClinic()
         {
-            Console.WriteLine("Input animal name:");
-            string nameOfAnimal = Console.ReadLine();
-            int ageOfAnimal = GetNumbeFromConsole("Please input age of animal\n");
-            int inputTypeOfanimal;
             Console.WriteLine("Input type of animal from the list below:\n");
             PrintEnumOfAnimalTypes();
+
+            int inputTypeOfanimal;
+
             Int32.TryParse(Console.ReadLine(), out inputTypeOfanimal);
+
             DomesticAnimal newAnimal = null;
+
             switch (inputTypeOfanimal)
             {
                 case 0:
-                    newAnimal = new Cat(nameOfAnimal, ageOfAnimal);
+                    newAnimal = CatFactory.CreateCat(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 1:
-                    newAnimal = new Dog(nameOfAnimal, ageOfAnimal);
+                    newAnimal = DogFactory.CreateDog(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 2:
-                    newAnimal = new Hamsted(nameOfAnimal, ageOfAnimal);
+                    newAnimal = HamstedFactory.CreateHamsted(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 case 3:
-                    newAnimal = new Fish(nameOfAnimal, ageOfAnimal);
+                    newAnimal = FishFactory.CreateFish(GetNameOfAnimalFromConsole(), GetNumberFromConsole("\nPlease input age of animal"));
                     break;
                 default:
-                    throw new UnknownTypeOfAnimalException("Unfortunately, our clinic doesn't take care of such animals");
+                    Console.WriteLine("Unfortunately, our clinic doesn't take care of such animals");
                     break;
             }
 
-           AnimalRegistry.AddAnimal(newAnimal);
+           ClinicRegistry.Instance.AddAnimal(newAnimal);
         }
 
         private static void ExaminteReaction ()
         {
-            for (int i = 0; i < AnimalRegistry.Count; i++)
+            for (int i = 0; i < ClinicRegistry.Instance.Count; i++)
             {
-                AnimalRegistry[i].ExamReaction();
+                ClinicRegistry.Instance[i].ExamReaction();
             }
         }
 
@@ -115,18 +120,18 @@ namespace VeterinaryValeriya
             Console.WriteLine("Input animal's ID:");
             int ID;
             Int32.TryParse(Console.ReadLine(), out ID);
-            AnimalRegistry.RemoveAnimal(ID);
+            ClinicRegistry.Instance.RemoveAnimal(ID);
         }
 
-        public static int GetNumbeFromConsole (string msg)
+        public static int GetNumberFromConsole (string msg)
         {
             int correctResult = 0;
             int ageOfAnimal;
             Console.WriteLine(msg);
+            Int32.TryParse(Console.ReadLine(), out ageOfAnimal);
                 
             do
             {
-                Int32.TryParse(Console.ReadLine(), out ageOfAnimal);
                 if (ageOfAnimal > 0)
                 {
                     correctResult = ageOfAnimal;
@@ -136,9 +141,27 @@ namespace VeterinaryValeriya
                     Console.WriteLine("Please, input correct data");
                 }
 
-            } while (correctResult != ageOfAnimal);
+                Int32.TryParse(Console.ReadLine(), out ageOfAnimal);
+
+            } while (ageOfAnimal <= 0);
 
             return correctResult;
+        }
+
+        public static void PrintMenu()
+        {
+            foreach (Menu.MenuItem elem in mainMenu)
+            {
+                Console.WriteLine("{0} - {1}", elem.Code, elem.Label);
+            }
+
+            Console.WriteLine();
+        }
+
+        public static string GetNameOfAnimalFromConsole()
+        {
+            Console.WriteLine("\nInput animal name:");
+            return Console.ReadLine();
         }
     }
 }

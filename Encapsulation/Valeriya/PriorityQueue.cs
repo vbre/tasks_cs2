@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Valeriya
 {
-    class PriorityQueue <T> : Encapsulation.IPriorityQueue <T>, ICollection<Tuple<int, T>>
+    class PriorityQueue <T> : IPriorityQueue <T>, ICollection<Tuple<int, T>>
     {
         List<Tuple<int, T>> priorityQueue;
 

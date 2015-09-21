@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VeterinaryValeriya
 {
-    class Menu
+    class Menu: IEnumerable
     {
         public struct MenuItem
         {
@@ -22,19 +23,27 @@ namespace VeterinaryValeriya
             items = ListOfMenuItems;
         }
 
-        public void PrintMenu ()
+        public void HandleUserInput (char code)
         {
-            foreach (MenuItem elem in items)
+            int currentItemIndex = items.FindIndex((items) => { return items.Code == code; });
+
+            if (currentItemIndex != -1 && items[currentItemIndex].ActionToDo != null)
             {
-                Console.WriteLine("{0} - {1}", elem.Code, elem.Label);
+                items[currentItemIndex].ActionToDo();
             }
         }
 
-        public void HandleUserInput (char code)
+        public IEnumerator GetEnumerator()
         {
-                int currentItemIndex = items.FindIndex((items) => { return items.Code == code; });
-                if (currentItemIndex != -1)
-                    items[currentItemIndex].ActionToDo();
+            foreach (MenuItem elem in items)
+            {
+                yield return elem;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

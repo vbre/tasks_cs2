@@ -15,14 +15,6 @@ namespace Collections.Valeriya
         public SimpleNumbers(int top)
         {
             topBorder = top;
-
-            for (int i = 2; i <= top; i++)
-            {
-                if (IsNumberSimple(i))
-                {
-                    simpleNumbersList.Add(i);
-                }
-            }
         }
 
         private bool IsNumberSimple(int inputNumber)
@@ -38,14 +30,12 @@ namespace Collections.Valeriya
                 }
             }
 
-            result = true;
-
             return result;
         }
 
         public IEnumerator<int> GetEnumerator()
         {
-            return (IEnumerator<int>)new SNSequence(this);
+            return new SNSequence(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -53,18 +43,11 @@ namespace Collections.Valeriya
             return GetEnumerator();
         }
 
-        private class SNSequence : IEnumerator
+        private class SNSequence : IEnumerator<int>
         {
-            private int position = -1;
+            private int currNumber = 0;
+            private int position = 0;
             private SimpleNumbers instance;
-
-            object IEnumerator.Current
-            {
-                get
-                {
-                    return Current;
-                }
-            }
 
             public SNSequence(SimpleNumbers instance)
             {
@@ -73,8 +56,21 @@ namespace Collections.Valeriya
 
             public bool MoveNext()
             {
-                position++;
-                return (position < instance.simpleNumbersList.Count);
+                bool result = false;
+
+                while (position < instance.topBorder)
+                {
+                    if (instance.IsNumberSimple(position + 1))
+                    {
+                        currNumber = position + 1;
+                        result = true;
+                        break;
+                    }
+
+                    position++;
+                }
+
+                return result;
             }
 
             public void Reset()
@@ -82,9 +78,22 @@ namespace Collections.Valeriya
                 position = -1;
             }
 
+            public void Dispose()
+            {
+                this.instance = null;
+            }
+
             public int Current
             {
-                get { return instance.simpleNumbersList[position]; }
+                get { return currNumber; }
+            }
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    return Current;
+                }
             }
         }
     }

@@ -10,7 +10,6 @@ namespace Collections.Valeriya
     class SimpleNumbers : ISimpleNumbers
     {
         private int topBorder;
-        private List<int> simpleNumbersList = new List<int>();
 
         public SimpleNumbers(int top)
         {
@@ -75,12 +74,12 @@ namespace Collections.Valeriya
 
             public void Reset()
             {
-                position = -1;
+                position = 0;
             }
 
             public void Dispose()
             {
-                this.instance = null;
+                instance = null;
             }
 
             public int Current

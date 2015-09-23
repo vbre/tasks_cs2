@@ -25,8 +25,11 @@ namespace Patterns.Valeriya
 
         public void NotifySubscribers()
         {
-            GoodArrived();
-            ShopClosed();
+            if (GoodArrived != null)
+                GoodArrived();
+
+            if (ShopClosed != null)
+                ShopClosed();
         }
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)

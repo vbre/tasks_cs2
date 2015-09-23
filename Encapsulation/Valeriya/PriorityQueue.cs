@@ -149,6 +149,7 @@ namespace Encapsulation.Valeriya
         public bool IsReadOnly
         {
             get;
+            private set;
         }
 
         public bool Remove(Tuple<int, T> item)

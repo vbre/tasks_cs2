@@ -207,6 +207,11 @@ namespace Encapsulation.Vladimir
         {
             return GetEnumerator();
         }
+
+        public void Add(Tuple<int, T> item)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

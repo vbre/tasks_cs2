@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Valeriya\IPublisher.cs" />
+    <Compile Include="Valeriya\ISubscriber.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Valeriya\Customer.cs" />
+    <Compile Include="Valeriya\Shop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -51,7 +55,6 @@
     <Folder Include="Alina\" />
     <Folder Include="Elena\" />
     <Folder Include="Konstantin\" />
-    <Folder Include="Valeriya\" />
     <Folder Include="Vladimir\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

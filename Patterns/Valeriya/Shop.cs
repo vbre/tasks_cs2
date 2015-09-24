@@ -10,7 +10,6 @@ namespace Patterns.Valeriya
         private List<ISubscriber> customerList = new List<ISubscriber>();
 
         public delegate void MyHandler();
-        public event MyHandler ShopClosed;
         public event MyHandler GoodArrived;
 
         public void AddSubscriber(ISubscriber obj)
@@ -27,9 +26,6 @@ namespace Patterns.Valeriya
         {
             if (GoodArrived != null)
                 GoodArrived();
-
-            if (ShopClosed != null)
-                ShopClosed();
         }
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)

@@ -8,5 +8,8 @@ namespace Patterns
 {
     interface ISubscriber
     {
+        void ReactOnGoodArrivalIgnore();
+        void ReactOnGoodArrivalBuy();
+        void ReactOnGoodArrivalUnSubscribe();
     }
 }

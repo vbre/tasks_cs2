@@ -19,14 +19,19 @@ namespace Patterns.Valeriya
             }
         }
 
-        public void ReactOnGoodArrival ()
+        public void ReactOnGoodArrivalIgnore ()
         {
-            Console.WriteLine("Customer reaction on good's arrval");
+            Console.WriteLine("Customer ignored good's arrval");
         }
 
-        public void ReactOnClosing ()
+        public void ReactOnGoodArrivalBuy ()
         {
-            Console.WriteLine("Customer reaction on shop's closing");
+            Console.WriteLine("Customer bought arrived good");
+        }
+
+        public void ReactOnGoodArrivalUnSubscribe ()
+        {
+            Console.WriteLine("Customer unsubscribed");
         }
 
         public Customer(string name)

@@ -21,7 +21,7 @@ namespace Patterns.Valeriya
 
         public void ReactOnGoodArrivalIgnore ()
         {
-            Console.WriteLine("Customer ignored good's arrval");
+            Console.WriteLine("Customer ignored good's arrival");
         }
 
         public void ReactOnGoodArrivalBuy ()

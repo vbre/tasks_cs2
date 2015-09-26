@@ -7,28 +7,36 @@ namespace Patterns.Valeriya
     class Shop: IPublisher
     {
         private static Timer timer = new Timer(5000);
-        private List<ISubscriber> customerList = new List<ISubscriber>();
+        private Dictionary<ISubscriber, MyHandler> customersRegistry = new Dictionary<ISubscriber, MyHandler>();
 
         public delegate void MyHandler();
         public event MyHandler GoodArrived;
 
-        public void AddSubscriber(ISubscriber obj)
+        public void AddSubscriber(ISubscriber subscriber, MyHandler action)
         {
-            customerList.Add(obj);
+            customersRegistry.Add(subscriber, action);
+            GoodArrived += action;
         }
 
-        public void RemoveSubscriber(ISubscriber obj)
+        public void RemoveSubscriber(ISubscriber subscriber, MyHandler action)
         {
-            customerList.Remove(obj);
+            customersRegistry.Remove(subscriber);
+            GoodArrived -= action;
         }
 
         public void NotifySubscribers()
         {
             if (GoodArrived != null)
+            {
                 GoodArrived();
+            }
+            else
+            {
+                Console.WriteLine("There are no subscribers");
+            }
         }
 
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private void NotifyByTimer(Object source, ElapsedEventArgs e)
         {
             NotifySubscribers();
         }
@@ -36,7 +44,7 @@ namespace Patterns.Valeriya
         public Shop ()
         {
             timer.Start();
-            timer.Elapsed += OnTimedEvent;
+            timer.Elapsed += NotifyByTimer;
         }
     }
 }

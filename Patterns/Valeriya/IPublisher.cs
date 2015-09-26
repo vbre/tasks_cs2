@@ -9,8 +9,8 @@ namespace Patterns
 {
     interface IPublisher
     {
-        void AddSubscriber(ISubscriber obj);
-        void RemoveSubscriber(ISubscriber obj);
+        void AddSubscriber(ISubscriber obj, Valeriya.Shop.MyHandler action);
+        void RemoveSubscriber(ISubscriber obj, Valeriya.Shop.MyHandler action);
         void NotifySubscribers();
     }
 }

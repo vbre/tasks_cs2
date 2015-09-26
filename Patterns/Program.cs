@@ -74,12 +74,9 @@ namespace Patterns
             Customer c1 = new Customer("Fred");
             Customer c2 = new Customer("John");
             Customer c3 = new Customer("Molly");
-            store.AddSubscriber(c1);
-            store.AddSubscriber(c2);
-            store.AddSubscriber(c3);
-            store.GoodArrived += c1.ReactOnGoodArrivalBuy;
-            store.GoodArrived += c2.ReactOnGoodArrivalIgnore;
-            store.GoodArrived += c3.ReactOnGoodArrivalUnSubscribe;
+            store.AddSubscriber(c1, c1.ReactOnGoodArrivalBuy);
+            store.AddSubscriber(c2, c2.ReactOnGoodArrivalIgnore);
+            store.AddSubscriber(c3, c3.ReactOnGoodArrivalUnSubscribe);
             Console.ReadKey();
 
             #endregion
